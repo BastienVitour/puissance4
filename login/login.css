@@ -1,0 +1,35 @@
+header{
+    display: flex;
+    justify-content: space-between;
+    background-color: #A6A6A8;
+}
+
+nav{
+    display: flex;
+}
+
+#titre{
+    text-align: center;
+    background-color: #CECECE;
+}
+#accueil_link, #memory_link, #scores_link, #contact_link {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
+#login{
+    text-align: center;
+    background-color: #E8E9F3;
+}
+
+    
+
+footer{
+    display: flex;
+    justify-content: space-around;
+    background-color:#272635;
+}
+
+
+
