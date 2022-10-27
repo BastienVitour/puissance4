@@ -1,0 +1,23 @@
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+nav {
+    display:flex;
+    justify-content: end;
+}
+
+#navig {
+    display: flex;
+    align-items: space-between;
+}
+
+h4 a {
+    text-decoration: none;
+    color: currentColor;
+}
+
+#welcome {
+    text-align: center;
+}
