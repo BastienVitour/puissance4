@@ -3,21 +3,45 @@ header {
     justify-content: space-between;
 }
 
+
+
+#accueil_link, #memory_link, #scores_link, #contact_link {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 nav {
-    display:flex;
-    justify-content: end;
-}
-
-#navig {
     display: flex;
-    align-items: space-between;
 }
 
-h4 a {
+a {
     text-decoration: none;
     color: currentColor;
 }
 
 #welcome {
     text-align: center;
+}
+
+#stats {
+    display: flex;
+}
+
+#num_games, #best_time, #connected_players, #registered_players {
+    padding: 50px;
+    text-align: center;
+}
+
+#team {
+    text-align: center;
+}
+
+#team_members {
+    display:flex;
+    justify-content: space-around;
+}
+
+footer {
+    display:flex;
+    justify-content: space-around;
 }
