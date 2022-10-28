@@ -153,3 +153,7 @@ footer{
 #bouton_connexion:hover {
     background-color: rgb(217, 141, 0);
 }
+ul li {
+    list-style-type: square;
+    color: white;
+}
