@@ -2,10 +2,12 @@ header{
     display: flex;
     justify-content: space-between;
     background-color: 	#11102f;
+    color: azure;
 }
 
 nav{
     display: flex;
+    color: white;
 }
 
 #titre{
@@ -22,7 +24,7 @@ nav{
 #login{
     text-align: center;
     background-color: #11102f;
-    padding: 100px;
+    padding: 170px;
 }
 
     
@@ -32,9 +34,8 @@ footer{
     display: flex;
     justify-content: space-around;
     background-color:#272635;
-    position:absolute;
-    bottom:0;
-    width: 100%;
+
+
 }
 
 
