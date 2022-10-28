@@ -1,16 +1,6 @@
-header {
-    display: flex;
-    justify-content: space-between;
-}
-
-
-.links {
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-nav {
-    display: flex;
+body {
+    background-color: rgb(17, 16, 47);
+    color: whitesmoke;
 }
 
 a {
@@ -22,14 +12,49 @@ a:hover {
     color: orange;
 }
 
+/*Css de la partie header (début)*/
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.links {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+nav {
+    display: flex;
+}
+
+/*Css de la partie header (fin)*/
+
+#bg_image {
+    background-image: url(https://images.hdqwalls.com/wallpapers/cyber-outrun-vaporwave-synth-retro-car-4k-m6.jpg);
+    background-attachment: fixed;
+    background-position: 50%;
+    background-position-y: 47%;
+    background-size: 100%;
+    padding-bottom: 30px;
+    margin-bottom: 50px;
+}
+
 #welcome {
     text-align: center;
     margin-top: 50px;
     margin-bottom: 50px;
 }
 
+#welcome p {
+    font-size: larger;
+}
+
+/*Css de la partie stats (début)*/
+
 #stats {
     display: flex;
+    margin-bottom: 50px;
 }
 
 #num_games, #best_time, #connected_players, #registered_players {
@@ -38,6 +63,7 @@ a:hover {
     border-radius: 5px;
     margin: 10px;
     margin-bottom: 10px;
+    font-size: larger;
 }
 
 #num_games {
@@ -56,6 +82,11 @@ a:hover {
     background-color: darkorange;
 }
 
+/*Css de la partie stats (fin)*/
+
+
+/*Css de la partie team (début)*/
+
 #team {
     text-align: center;
     margin-bottom: 25px;
@@ -67,20 +98,11 @@ a:hover {
     margin: 25px;
 }
 
+/*Css de la partie team (fin)*/
+
 #not_credit {
     display:flex;
     justify-content: space-around;
-}
-
-/*footer {
-    position:absolute;
-    bottom:0;
-    width: 100%;
-}*/
-
-body {
-    background-color: rgb(17, 16, 47);
-    color: whitesmoke;
 }
 
 button {
