@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(17, 16, 47);
+    background-color: rgb(19, 17, 56);
     color: whitesmoke;
 }
 
@@ -61,14 +61,14 @@ nav {
 }
 
 button {
-    background-color: orange;
+    background-color: #fe7f00;
     border-radius: 3px;
     padding: 10px;
     color: white;
 }
 
 button:hover {
-    background-color: rgb(217, 141, 0);
+    background-color: #de6f00;
 }
 
 button a:hover {
@@ -112,15 +112,6 @@ button a:hover {
 
 /*Css de la partie stats (fin)*/
 
-/*Css de la partie connect/register (début)*/
-
-#connect_register {
-    background-color: blue;
-}
-
-/*Css de la partie connect/register (fin)*/
-
-
 /*Css de la partie team (début)*/
 
 #team {
@@ -135,7 +126,7 @@ button a:hover {
 }
 
 #sylvian, #bastien, #florian {
-    background-color: darkblue;
+    background-color: #120D29;
     padding: 25px;
     font-size: larger;
 }
@@ -144,6 +135,11 @@ button a:hover {
 
 /*Css de la partie footer (début)*/
 
+footer {
+    background-color: #120D29;
+    margin-top: 20px;
+}
+
 #not_credit {
     display:flex;
     justify-content: space-around;
@@ -151,6 +147,10 @@ button a:hover {
 
 ul li {
     list-style-type: square;
+}
+
+.text_orange {
+    color: orange;
 }
 
 /*Css de la partie footer (fin)*/
