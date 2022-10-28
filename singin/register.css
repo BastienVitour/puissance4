@@ -69,9 +69,8 @@ body{
 .creditt{
     color: whitesmoke;
 }
-#bouton_connexion{
-    background-color: #fe7f00
-    ;
+button {
+    background-color: orange;
     float: center;
     border-style: solid;
     border: 0px;
@@ -79,25 +78,12 @@ body{
     color: white;
 }
 
-#bouton_connexion:hover {
-    background-color: #252446;
+button:hover {
+    background-color: rgb(217, 141, 0);
 }
 
-#bouton_connexion a:hover {
-
-        color: white;
-
-}
-#bouton_inscription{
-    background-color: #fe7f00
-    ;
-    float: center;
-    border-style: solid;
-    border: 0px;
-    padding: 10px;
+button a:hover {
     color: white;
 }
 
-#bouton_inscription:hover{
-    background-color: #252446;
-}
+
