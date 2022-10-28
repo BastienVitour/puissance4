@@ -14,9 +14,23 @@ a:hover {
 
 /*Css de la partie header (début)*/
 
+#bg_image {
+    background-image: url(https://images.hdqwalls.com/wallpapers/cyber-outrun-vaporwave-synth-retro-car-4k-m6.jpg);
+    background-attachment: fixed;
+    background-position: 50%;
+    background-position-y: 47%;
+    background-size: 100%;
+    padding-bottom: 30px;
+    margin-bottom: 50px;
+}
+
 header {
     display: flex;
     justify-content: space-between;
+}
+
+#power_memory {
+    margin-left: 15px;
 }
 
 .links {
@@ -30,15 +44,7 @@ nav {
 
 /*Css de la partie header (fin)*/
 
-#bg_image {
-    background-image: url(https://images.hdqwalls.com/wallpapers/cyber-outrun-vaporwave-synth-retro-car-4k-m6.jpg);
-    background-attachment: fixed;
-    background-position: 50%;
-    background-position-y: 47%;
-    background-size: 100%;
-    padding-bottom: 30px;
-    margin-bottom: 50px;
-}
+/*Css de la partie welcome (début)*/
 
 #welcome {
     text-align: center;
@@ -46,9 +52,31 @@ nav {
     margin-bottom: 50px;
 }
 
-#welcome p {
+#welcome h1 {
+    font-size: 3em;
+}
+
+#welcome p{
     font-size: larger;
 }
+
+button {
+    background-color: orange;
+    border-radius: 3px;
+    padding: 10px;
+    color: white;
+}
+
+button:hover {
+    background-color: rgb(217, 141, 0);
+}
+
+button a:hover {
+    color: white;
+}
+
+/*Css de la partie welcome (fin)*/
+
 
 /*Css de la partie stats (début)*/
 
@@ -84,6 +112,14 @@ nav {
 
 /*Css de la partie stats (fin)*/
 
+/*Css de la partie connect/register (début)*/
+
+#connect_register {
+    background-color: blue;
+}
+
+/*Css de la partie connect/register (fin)*/
+
 
 /*Css de la partie team (début)*/
 
@@ -98,24 +134,23 @@ nav {
     margin: 25px;
 }
 
+#sylvian, #bastien, #florian {
+    background-color: darkblue;
+    padding: 25px;
+    font-size: larger;
+}
+
 /*Css de la partie team (fin)*/
+
+/*Css de la partie footer (début)*/
 
 #not_credit {
     display:flex;
     justify-content: space-around;
 }
 
-button {
-    background-color: orange;
-    border-radius: 3px;
-    padding: 10px;
-    color: white;
+ul li {
+    list-style-type: square;
 }
 
-button:hover {
-    background-color: rgb(217, 141, 0);
-}
-
-button a:hover {
-    color: white;
-}
+/*Css de la partie footer (fin)*/
