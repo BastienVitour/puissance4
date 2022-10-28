@@ -108,19 +108,8 @@ ul li {
     list-style-type: square;
 }
 
-button {
-    background-color: orange;
-    border-radius: 3px;
-    padding: 10px;
-    color: white;
-}
-
-button:hover {
-    background-color: rgb(217, 141, 0);
-}
-
-button a:hover {
-    color: white;
+.text_orange {
+    color: orange;
 }
 
 /*Css de la partie footer (fin)*/

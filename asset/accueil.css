@@ -61,14 +61,14 @@ nav {
 }
 
 button {
-    background-color: orange;
+    background-color: #fe7f00;
     border-radius: 3px;
     padding: 10px;
     color: white;
 }
 
 button:hover {
-    background-color: rgb(217, 141, 0);
+    background-color: #de6f00;
 }
 
 button a:hover {
@@ -126,7 +126,7 @@ button a:hover {
 }
 
 #sylvian, #bastien, #florian {
-    background-color: darkblue;
+    background-color: #120D29;
     padding: 25px;
     font-size: larger;
 }
@@ -147,6 +147,10 @@ footer {
 
 ul li {
     list-style-type: square;
+}
+
+.text_orange {
+    color: orange;
 }
 
 /*Css de la partie footer (fin)*/
