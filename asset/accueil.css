@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(17, 16, 47);
+    background-color: rgb(19, 17, 56);
     color: whitesmoke;
 }
 
@@ -112,15 +112,6 @@ button a:hover {
 
 /*Css de la partie stats (fin)*/
 
-/*Css de la partie connect/register (début)*/
-
-#connect_register {
-    background-color: blue;
-}
-
-/*Css de la partie connect/register (fin)*/
-
-
 /*Css de la partie team (début)*/
 
 #team {
@@ -143,6 +134,11 @@ button a:hover {
 /*Css de la partie team (fin)*/
 
 /*Css de la partie footer (début)*/
+
+footer {
+    background-color: #120D29;
+    margin-top: 20px;
+}
 
 #not_credit {
     display:flex;

@@ -1,0 +1,127 @@
+body {
+    background-color: rgb(17, 16, 47);
+    color: whitesmoke;
+}
+
+a {
+    text-decoration: none;
+    color: currentColor;
+}
+
+a:hover {
+    color: orange;
+}
+
+/*Css de la partie header (début)*/
+
+#bg_image {
+    background-image: url(https://images.hdqwalls.com/wallpapers/cyber-outrun-vaporwave-synth-retro-car-4k-m6.jpg);
+    background-attachment: fixed;
+    background-position: 50%;
+    background-position-y: 47%;
+    background-size: 100%;
+    padding-bottom: 30px;
+    margin-bottom: 50px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+#power_memory {
+    margin-left: 15px;
+}
+
+.links {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+nav {
+    display: flex;
+}
+
+/*Css de la partie header (fin)*/
+
+/*Css de la partie intro (début)*/
+
+#intro {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#intro h1 {
+    font-size: 3em;
+}
+
+#intro p{
+    font-size: larger;
+}
+
+/*Css de la partie intro (fin)*/
+
+/*Css du tableau (début)*/
+
+#table {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+table {
+    border: 3px solid whitesmoke;
+    font-size: larger;
+    border-collapse: collapse;
+}
+
+th {
+    border: 2px solid whitesmoke;
+    padding: 0px 50px 0px 50px;
+}
+
+td {
+    border: 2px solid whitesmoke;
+    padding: 20px 0px 20px 0px;
+}
+
+tfoot tr td {
+    border-top: 5px solid whitesmoke;
+}
+
+/*Css du tableau (fin)*/
+
+/*Css de la partie footer (début)*/
+
+footer {
+    background-color: #120D29;
+    margin-top: 20px;
+}
+
+#not_credit {
+    display:flex;
+    justify-content: space-around;
+}
+
+ul li {
+    list-style-type: square;
+}
+
+button {
+    background-color: orange;
+    border-radius: 3px;
+    padding: 10px;
+    color: white;
+}
+
+button:hover {
+    background-color: rgb(217, 141, 0);
+}
+
+button a:hover {
+    color: white;
+}
+
+/*Css de la partie footer (fin)*/
+
