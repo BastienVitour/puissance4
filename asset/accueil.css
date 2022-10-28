@@ -4,8 +4,7 @@ header {
 }
 
 
-
-#accueil_link, #memory_link, #scores_link, #contact_link {
+.links {
     padding-left: 10px;
     padding-right: 10px;
 }
