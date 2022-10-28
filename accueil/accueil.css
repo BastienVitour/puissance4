@@ -1,0 +1,156 @@
+body {
+    background-color: rgb(19, 17, 56);
+    color: whitesmoke;
+}
+
+a {
+    text-decoration: none;
+    color: currentColor;
+}
+
+a:hover {
+    color: orange;
+}
+
+/*Css de la partie header (début)*/
+
+#bg_image {
+    background-image: url(https://images.hdqwalls.com/wallpapers/cyber-outrun-vaporwave-synth-retro-car-4k-m6.jpg);
+    background-attachment: fixed;
+    background-position: 50%;
+    background-position-y: 47%;
+    background-size: 100%;
+    padding-bottom: 30px;
+    margin-bottom: 50px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+#power_memory {
+    margin-left: 15px;
+}
+
+.links {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+nav {
+    display: flex;
+}
+
+/*Css de la partie header (fin)*/
+
+/*Css de la partie welcome (début)*/
+
+#welcome {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#welcome h1 {
+    font-size: 3em;
+}
+
+#welcome p{
+    font-size: larger;
+}
+
+button {
+    background-color: #fe7f00;
+    border-radius: 3px;
+    padding: 10px;
+    color: white;
+}
+
+button:hover {
+    background-color: #de6f00;
+}
+
+button a:hover {
+    color: white;
+}
+
+/*Css de la partie welcome (fin)*/
+
+
+/*Css de la partie stats (début)*/
+
+#stats {
+    display: flex;
+    margin-bottom: 50px;
+}
+
+#num_games, #best_time, #connected_players, #registered_players {
+    padding: 50px;
+    text-align: center;
+    border-radius: 5px;
+    margin: 10px;
+    margin-bottom: 10px;
+    font-size: larger;
+}
+
+#num_games {
+    background-color: blue;
+}
+
+#best_time {
+    background-color: mediumorchid;
+}
+
+#connected_players {
+    background-color: rgb(37, 181, 37);
+}
+
+#registered_players {
+    background-color: darkorange;
+}
+
+/*Css de la partie stats (fin)*/
+
+/*Css de la partie team (début)*/
+
+#team {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+#team_members {
+    display:flex;
+    justify-content: space-around;
+    margin: 25px;
+}
+
+#sylvian, #bastien, #florian {
+    background-color: #120D29;
+    padding: 25px;
+    font-size: larger;
+}
+
+/*Css de la partie team (fin)*/
+
+/*Css de la partie footer (début)*/
+
+footer {
+    background-color: #120D29;
+    margin-top: 20px;
+}
+
+#not_credit {
+    display:flex;
+    justify-content: space-around;
+}
+
+ul li {
+    list-style-type: square;
+}
+
+.text_orange {
+    color: orange;
+}
+
+/*Css de la partie footer (fin)*/
