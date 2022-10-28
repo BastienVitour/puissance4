@@ -1,7 +1,7 @@
 header{
     display: flex;
     justify-content: space-between;
-    background-color: #A6A6A8;
+    background-color: 	#11102f;
 }
 
 nav{
@@ -11,6 +11,7 @@ nav{
 #titre{
     text-align: center;
     background-color: #CECECE;
+    padding: 100px;
 }
 #accueil_link, #memory_link, #scores_link, #contact_link {
     padding-left: 10px;
@@ -20,15 +21,20 @@ nav{
 
 #login{
     text-align: center;
-    background-color: #E8E9F3;
+    background-color: #11102f;
+    padding: 100px;
 }
 
     
 
 footer{
+    padding: 30px;
     display: flex;
     justify-content: space-around;
     background-color:#272635;
+    position:absolute;
+    bottom:0;
+    width: 100%;
 }
 
 
