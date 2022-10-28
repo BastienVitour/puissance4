@@ -1,0 +1,17 @@
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.links {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+nav {
+    display: flex;
+}
+body{
+
+}
