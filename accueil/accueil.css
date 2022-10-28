@@ -83,6 +83,16 @@ button a:hover {
 #stats {
     display: flex;
     margin-bottom: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+#memorimage {
+    margin-right: 25px;
+}
+
+#numbers {
+    display: flex;
 }
 
 #num_games, #best_time, #connected_players, #registered_players {
