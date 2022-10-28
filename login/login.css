@@ -1,18 +1,17 @@
 header{
     display: flex;
     justify-content: space-between;
-    background-color: 	#11102f;
-    color: azure;
+    color: whitesmoke;
 }
 
 nav{
     display: flex;
-    color: white;
+    color: whitesmoke;
 }
 
 #titre{
     text-align: center;
-    background-color: #CECECE;
+    color: whitesmoke;
     padding: 100px;
 }
 #accueil_link, #memory_link, #scores_link, #contact_link {
@@ -23,20 +22,35 @@ nav{
 
 #login{
     text-align: center;
-    background-color: #11102f;
+
     padding: 170px;
 }
-
+input{
+    width: 30%;
+    background-color: #48468a;
+}
     
 
 footer{
-    padding: 30px;
+
     display: flex;
     justify-content: space-around;
-    background-color:#272635;
+    
+    color: whitesmoke;
 
 
 }
-
-
-
+a{
+    text-decoration: none;
+    color: currentColor;
+}
+a:hover
+{
+    color : orange;
+}
+body{
+    background-color: #11102F;
+}
+.creditt{
+    color: whitesmoke;
+}
