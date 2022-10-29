@@ -1,3 +1,6 @@
+body{
+    background-color: #11102f;
+}
 header {
     display: flex;
     justify-content: space-between;
@@ -34,9 +37,7 @@ a {
     background-size: 100%;
     color: white;
 }
-body{
-    background-color: #11102f;
-}
+
 p{
     color: white;
 }
