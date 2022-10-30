@@ -54,6 +54,7 @@ nav {
 table {
     border: 3px solid whitesmoke;
     border-collapse: collapse;
+    background-color: rgb(29, 26, 89);
 }
 
 #grille_5 td {
@@ -78,6 +79,11 @@ table {
 
 #blank_case {
     background-color: whitesmoke;
+}
+
+caption {
+    font-size: 5em;
+    margin: 100px 0px 50px 0px;
 }
 
 /*Css de la grille (fin)*/
