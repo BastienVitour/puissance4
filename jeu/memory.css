@@ -49,6 +49,7 @@ nav {
 .grille {
     display: flex;
     justify-content: center;
+    margin-right: 25%;
 }
 
 table {
@@ -87,6 +88,27 @@ caption {
 }
 
 /*Css de la grille (fin)*/
+
+/*Css du chat (début)*/
+
+#chat {
+    display: flex;
+    flex-direction: column;
+}
+
+#chat_background {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background-color: whitesmoke;
+    padding: 500px 0px 0px 100px;
+}
+
+#message_input {
+    margin: 0px 15px 15px 0px;
+}
+
+/*Css du chat (fin)*/
 
 /*Css de la partie footer (début)*/
 
