@@ -52,34 +52,38 @@ nav {
     margin-right: 25%;
 }
 
-table {
-    border: 3px solid whitesmoke;
+/*table {
+    border: 3px solid whitesmoke; 
     border-collapse: collapse;
-    background-color: rgb(29, 26, 89);
-}
+    background-color: #ff7700;
+}*/
 
 #grille_5 td {
-    border: 2px solid whitesmoke;
     padding: 100px;
+    border-radius: 25px;
+    background-color: #ff7700;
+    border: 10px solid rgb(19, 17, 56);
 }
 
 #grille_8 td {
-    border: 2px solid whitesmoke;
+    border: 6px solid rgb(19, 17, 56);
     padding: 62.5px;
+    border-radius: 10px;
+    background-color: #ff7700;
 }
 
 #grille_12 td {
-    border: 2px solid whitesmoke;
     padding: 41.7px;
+    border-radius: 10px;
+    background-color: #ff7700;
+    border: 4px solid rgb(19, 17, 56);
 }
 
 #grille_20 td {
-    border: 2px solid whitesmoke;
     padding: 25px;
-}
-
-#blank_case {
-    background-color: whitesmoke;
+    border-radius: 8px;
+    background-color: #ff7700;
+    border: 4px solid rgb(19, 17, 56);
 }
 
 caption {
@@ -181,6 +185,8 @@ caption {
 
 /*Css des messages (fin)*/
 
+/*Css de la zone d'input*/
+
 #message_input {
     margin-bottom: 25px;
     margin: 0px 25px 25px 25px;
@@ -195,6 +201,8 @@ input {
     border: none;
     font-weight: bold;
 }
+
+/*Css de la zone d'input (fin)*/
 
 /*Css du chat (fin)*/
 
