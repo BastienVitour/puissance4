@@ -52,6 +52,14 @@
 
         <!--Fin du header-->
 
+        <h2>Sélectionnez une difficulté :</h2> 
+        <ul>
+            <li>Niveau facile : 24 cases</li>
+            <li>Niveau intermédiare : 64 cases</li>
+            <li>Niveau expert : 144 cases</li>
+            <li>Niveau impossible : 400 cases</li>
+        </ul>
+
         <!--Début de la grille-->
 
             <div id="grille_5" class="grille">
@@ -97,7 +105,7 @@
 
             </div>
 
-            <div id="grille_8" class="grille">
+<!--            <div id="grille_8" class="grille">
 
                 <table>
                     <caption>Niveau : Intermédiaire</caption>
@@ -183,9 +191,9 @@
                     </tr>
                 </table>
 
-            </div>
+            </div> -->
 
-            <div id="grille_12" class="grille">
+<!--            <div id="grille_12" class="grille">
 
                 <table>
                     <caption>Niveau : Expert</caption>
@@ -359,9 +367,9 @@
                     </tr>
                 </table>
 
-            </div>
+            </div> -->
 
-            <div id="grille_20" class="grille">
+<!--            <div id="grille_20" class="grille">
 
                 <table>
                     <caption>Niveau : Impossible</caption>
@@ -807,7 +815,7 @@
                     </tr>
                 </table>
                     
-            </div>
+            </div> -->
 
         <!--Fin de la grille-->
 
@@ -815,7 +823,72 @@
 
         <div id="chat">
 
-            <div id="chat_background">
+                <div id="chat_title">
+
+                    <img src="../image/bot_avatar.png" alt="bot" width="50">
+                    <p>Chat Général </p>
+
+                </div>
+
+                <div id="messages_area">
+
+                    <div class="user_message">
+
+                        <div class="me">
+                            Moi
+                        </div>
+
+                        <div class="user_text">
+                            Hello
+                        </div>
+
+                        <div class="user_message_date">
+                            Aujourd'hui à 10:05
+                        </div>
+
+                    </div>
+
+                    <div class="others_message">
+
+                        <div id="others_image">
+                            <img src="../image/bot_avatar_whitesmoke.png" alt="others_avatar" width="50">
+                        </div>
+
+                        <div id="not_others_image">
+
+                            <div class="other">
+                                Memory Bot
+                            </div>
+
+                            <div class="others_text">
+                                I am the best at this game no one can beat me
+                            </div>
+
+                            <div class="others_message_date">
+                                Aujourd'hui à 10:53
+                            </div>
+                    
+                        </div>
+
+                    </div>
+
+                    <div class="user_message">
+
+                        <div class="me">
+                            Moi
+                        </div>
+
+                        <div class="user_text">
+                            We'll see about that
+                        </div>
+
+                        <div class="user_message_date">
+                            Aujourd'hui à 11:16
+                        </div>
+
+                    </div>
+
+                </div>
 
                 <div id="message_input">
 
@@ -823,9 +896,8 @@
                         <input type="text" name="message" id="message" placeholder="Votre message...">
                         <button type="submit">Envoyer</button>
                     </form>
+
                 </div>
-        
-            </div>
 
         </div>
 

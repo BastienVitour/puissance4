@@ -92,20 +92,108 @@ caption {
 /*Css du chat (début)*/
 
 #chat {
-    display: flex;
-    flex-direction: column;
-}
-
-#chat_background {
-    position: fixed;
+    position: absolute;
     bottom: 0;
     right: 0;
     background-color: whitesmoke;
-    padding: 500px 0px 0px 100px;
+    padding: 0px 0px 0px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 2px solid rgb(175, 175, 175);
+    border-radius: 3px 0px 0px 3px;
 }
 
+/*Css du titre du chat (début)*/
+
+#chat_title {
+    background-color: rgb(255, 119, 0);
+    font-size: x-large;
+    display: flex;
+    align-items: center;
+    border-radius: 5px 5px 0px 0px;
+
+}
+
+#chat_title img {
+    margin-left: 15px;
+}
+
+#chat_title p {
+    margin-left: 15px;
+}
+
+/*Css du titre du chat (fin)*/
+
+/*Css des messages (début)*/
+
+#messages_area {
+    width: 400px;
+    height: 400px;
+    margin-top: 15px;
+}
+
+.user_message {
+    color: rgb(120, 120, 120);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin: 15px 0px 0px 15px;
+}
+
+.user_text {
+    background-color: #ff7700;
+    color: whitesmoke;
+    border-radius: 5px;
+    padding: 7px;
+    margin: 5px 15px 5px 0px;
+    max-width: 225px;
+    word-wrap: break-word;
+}
+
+.me, .user_message_date {
+    font-size: small;
+    margin-right: 15px;
+}
+
+.others_message {
+    color: rgb(120, 120, 120);
+    display: flex;
+    align-items: center;
+    margin: 15px 0px 0px 15px;
+}
+
+.others_text {
+    background-color: lightgrey;
+    color: black;
+    border-radius: 5px;
+    padding: 7px;
+    margin: 5px 0px 5px 15px;
+    width: fit-content;
+    max-width: 225px;
+    word-wrap: break-word;
+}
+
+.other, .others_message_date {
+    font-size: small;
+    margin-left: 15px;
+}
+
+/*Css des messages (fin)*/
+
 #message_input {
-    margin: 0px 15px 15px 0px;
+    margin-bottom: 25px;
+    margin: 0px 25px 25px 25px;
+}
+
+input {
+    width: 250px;
+    padding: 10px 0px 10px 10px;
+}
+
+#message_input button {
+    border: none;
+    font-weight: bold;
 }
 
 /*Css du chat (fin)*/
