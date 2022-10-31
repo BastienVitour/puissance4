@@ -116,7 +116,9 @@ input{
         padding-left: 20px;
     
 }
-
+input {
+    color: white;
+}
 .name{
     margin-right: 2.5%;
     width: 29%;
