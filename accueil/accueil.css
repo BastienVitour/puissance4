@@ -171,6 +171,10 @@ td {
     color: #fe7f00;
 }
 
+#invitation a {
+    text-decoration: underline;
+}
+
 /*Css de la partie invitation (début)*/
 
 /*Css de la partie team (début)*/
