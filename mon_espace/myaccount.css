@@ -92,7 +92,6 @@ a:hover {
     display: flex;
 }
 
-* {box-sizing:border-box}
 
 #barre {
   width: 80%; 
@@ -135,7 +134,7 @@ a:hover {
 
 
 
-#icon{
+#modification{
     display: flex;
     text-align: center;
     justify-content: space-around;
@@ -180,8 +179,42 @@ input{
         border: 0px;
         height: 40px;
         padding-left: 20px;
+        color: white;
     
 }
+
+
+#edit_info{
+    text-align: center;
+}
+.old_edit{
+    padding-right: 33%;
+    background-color: #252446;
+    border: 0px;
+}
+
+.new_edit{
+    padding-right: 33%;
+    background-color: #252446;
+    border: 0px;
+}
+.security_edit{
+    padding-right: 20%;
+    margin-left: 7%;
+    background-color: #252446;
+    border: 0px;
+
+}
+
+form{
+    padding-left: 25%;
+    padding-bottom: 15%;
+
+}
+
+
+
+
 
 
 
@@ -205,6 +238,7 @@ footer{
     padding-right: 8%;
     padding-bottom: 1%; 
     font-size: 120%;
+    margin-left: 25%;
 
 }
 

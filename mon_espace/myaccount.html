@@ -120,18 +120,54 @@
 
 
   
-    <div id="icon"> <!-- Début des icones pour modifier ses informations-->
+    <div id="modification"> <!-- Début des icones pour modifier ses informations-->
         <div id="mail"> <!-- Image liens vers les options modifier adresse mail-->
-            <a href="edit_mail.html">
-            <img alt="Mail" src="https://icones.pro/wp-content/uploads/2021/03/icone-gmail-logo-png-orange.png" id="email"></a>
+            <li><a href="#edit_mail">
+            <img alt="Mail" src="https://icones.pro/wp-content/uploads/2021/03/icone-gmail-logo-png-orange.png" id="email"></a></li>
             <p id="pl">Modifier votre adresse mail</p>
         </div>     
         <div id="mdp"> <!-- Image liens vers les options modifier password-->
-            <a href="edit_password.html">
+            <a href="#edit_password">
             <img alt="Password" src="https://icones.pro/wp-content/uploads/2022/08/icone-de-cadenas-de-securite-orange.png" id="password"></a>
             <p id="pl"> Modifier votre mot de passe</p>
         </div>
     </div> <!-- Fin des icones pour modifier ses informations-->
+
+
+    <br>
+    <br id="edit_mail">
+    <br>
+    <br>
+
+
+    <div id="form"> <!-- Début du Formulaire de modification d'email-->
+        <h4 id="edit_info">Modifier votre adresse mail</h4>
+        <form class="form">
+            <input type="text" class="old_edit" placeholder="Ancienne adresse mail"><br><br> <!-- Zone de texte "Ancienne adresse mail" -->
+            <input type="Sujet" class="new_edit" placeholder="Nouvelle adresse mail"><br><br> <!-- Zone de texte "Nouvelle adresse mail" -->
+            <input type="Message" class="security_edit" placeholder="Mot de passe"></textarea><br><br> <!-- Zone de texte "Mot de passe" -->
+            <button id="bouton_connexion"> Envoyer </button> <!-- Bouton Envoyer -->
+        </form>
+    </div> <!-- Fin du FFormulaire de modification d'email-->
+
+
+    <br>
+    <br id="edit_password">
+    <br>
+    <br>
+
+
+    <div id="form"> <!-- Début du Formulaire de modification de mot de passe-->
+        <h4 id="edit_info">Modifier votre mot de passe</h4>
+        <form class="form">
+            <input type="text" class="old_edit" placeholder="Ancien mot de passe"><br><br> <!-- Zone de texte "Ancien mot de passe" -->
+            <input type="Sujet" class="new_edit" placeholder="Nouveau mot de passe"><br><br> <!-- Zone de texte "Nouveau mot de passe" -->
+            <input type="Message" class="security_edit" placeholder="Votre adresse mail"></textarea><br><br> <!-- Zone de texte "Votre adresse mail" -->
+            <button id="bouton_connexion"> Envoyer </button> <!-- Bouton Envoyer -->
+        </form>
+    </div> <!-- Fin du FFormulaire de modification de mot de passe-->
+
+
 
 
         <footer> <!-- Début du Footer-->
