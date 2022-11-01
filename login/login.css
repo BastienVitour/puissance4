@@ -1,3 +1,4 @@
+/*haut de la page */
 header{
     display: flex;
     justify-content: space-between;
@@ -19,20 +20,25 @@ nav{
     
     background-image: url(https://images.hdqwalls.com/wallpapers/cyber-outrun-vaporwave-synth-retro-car-4k-m6.jpg);
 }
-h1{
-    text-align: center;
-    color: whitesmoke;
-    padding: 90px;
-}
+
 #accueil_link, #memory_link, #scores_link, #contact_link {
     padding-left: 10px;
     padding-right: 10px;
 }
 
+/* fin du haut de la page*/
 
+
+h1{ /* titre Principale*/
+    text-align: center;
+    color: whitesmoke;
+    padding: 90px;
+}
+
+
+/* partie de la connexion*/
 #login{
     text-align: center;
-
     padding: 140px;
 }
 input{
@@ -45,30 +51,7 @@ input{
 
 }
 
-    
-footer{
-    background-color: #120d29;
-}
-
-#not_credit {
-    display:flex;
-    justify-content: space-around;
-}
-a{
-    text-decoration: none;
-    color: currentColor;
-}
-a:hover
-{
-    color : orange;
-}
-body{
-    background-color: #131138;
-    color: whitesmoke;
-}
-.creditt{
-    color: whitesmoke;
-}
+/* bouton connexion et inscription */
 #bouton_connexion{
     background-color: #fe7f00
     ;
@@ -100,4 +83,42 @@ body{
 
 #bouton_inscription:hover{
     background-color: #252446;
+}
+/*  Fin bouton connexion et inscription */
+/*  Fin partie de la connexion*/
+
+
+/* Bas de la page*/
+footer{
+    background-color: #120d29;
+}
+
+.creditt{
+    color: whitesmoke;
+}
+
+#not_credit {
+    display:flex;
+    justify-content: space-around;
+}
+
+/* Fin bas de la page*/
+
+
+
+
+
+
+/* general */
+a{
+    text-decoration: none;
+    color: currentColor;
+}
+a:hover
+{
+    color : orange;
+}
+body{
+    background-color: #131138;
+    color: whitesmoke;
 }
