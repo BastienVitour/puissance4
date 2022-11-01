@@ -44,6 +44,24 @@ nav {
 
 /*Css de la partie header (fin)*/
 
+/*Css de la partie paramètres de jeu (début)*/
+
+#settings {
+    display: flex;
+    justify-content: space-around;
+    max-width: 70%;
+}
+
+#settings h2 {
+    font-size: xx-large;
+}
+
+#settings li {
+    font-size: large;
+}
+
+/*Css de la partie paramètres de jeu (fin)*/
+
 /*Css de la grille (début)*/
 
 .grille {
