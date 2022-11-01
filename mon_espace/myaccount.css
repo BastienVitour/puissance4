@@ -1,0 +1,201 @@
+body{
+    background-color: #11102f;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+#accueil_link, #memory_link, #scores_link, #contact_link {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+nav {
+    display: flex;
+}
+
+
+a {
+    text-decoration: none;
+    color: currentColor;
+}
+
+
+
+#h1{
+    text-align:center;
+    padding-top: 7%;
+    padding-bottom: 7%;
+    background-image: url(https://images.hdqwalls.com/wallpapers/cyber-outrun-vaporwave-synth-retro-car-4k-m6.jpg);
+    background-attachment: fixed;
+    background-position: 50%;
+    background-position-y: 47%;
+    background-size: 100%;
+    color: white;
+}
+
+
+p{
+    color: white;
+}
+#pl{
+    color: white;
+    font-size: 120%;
+}
+h4{
+    color: white;
+}
+a{
+    color: white;
+}
+a:hover {
+    color: orange;
+}
+
+
+#profil{
+    display: flex;
+}
+#profil_data{
+    margin-top: 5%;
+}
+#profil_avatar{
+    margin-left: 30%;
+    margin-top: 3%;
+    margin-right: 7%;
+}
+#avatar{
+    width: 200px;
+    height: 200px;
+
+}
+
+
+#level{
+    padding-top: 10%;
+    padding-bottom: 10%;
+    padding-left: 5%;
+    display: flex;
+}
+
+* {box-sizing:border-box}
+
+#barre {
+  width: 80%; 
+  background-color: #ddd; 
+  margin-left: 5%;
+  margin-right: 5%;
+
+}
+
+#level_progress {
+  text-align: right;
+  padding-top: 10px; 
+  padding-bottom: 22px; 
+  color: rgb(101, 67, 3); 
+    width: 90%; 
+    background-color: #04AA6D;
+}
+
+
+
+
+#game_stats{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 10%;
+}
+
+img{
+    width: 150px;
+    height: 150px;
+}
+
+
+
+
+
+#icon{
+    display: flex;
+    text-align: center;
+    justify-content: space-around;
+    margin-bottom: 2%;
+    margin-top: 4%;
+}
+
+#mail{
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 3%;
+    margin-right: 0%;
+    padding-top: 3%;
+    padding-left: 6%;
+    padding-bottom: 2%;
+    padding-right: 6%;
+    background-color: #120D29;
+}
+#email{
+    width: 64px;
+    height: 64px;
+}
+#mdp{
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 3%;
+    margin-right: 0%;
+    padding-top: 3%;
+    padding-left: 6%;
+    padding-bottom: 2%;
+    padding-right: 6%;
+    background-color: #120D29;
+}
+#password{
+    width: 64px;
+    height: 64px;
+}
+
+input{
+        width: 30%;
+        background-color: #252446;
+        border: 0px;
+        height: 40px;
+        padding-left: 20px;
+    
+}
+
+
+
+footer{
+    background-color: #120D29;
+}
+#not_credit{
+    display: flex;
+    justify-content: space-around;
+}
+.text_orange{
+    color: orange ;
+}
+#bouton_connexion{
+    background-color: orange;
+    float: center;
+    border-style: solid;
+    border: 0px;
+    padding: 10px;
+    color: white;
+    padding-right: 8%;
+    padding-bottom: 1%; 
+    font-size: 120%;
+
+}
+
+#bouton_connexion:hover {
+    background-color: rgb(217, 141, 0);
+}
+ul li {
+    list-style-type: square;
+    color: white;
+}
