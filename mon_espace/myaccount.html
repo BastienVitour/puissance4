@@ -31,7 +31,10 @@
                         </div> <!-- Bouton lien vers Contact-->
                         <div id="contact_link">
                         <h4><a href="../Contacte/contact.html">NOUS CONTACTER</a></h4>
-                        </div> 
+                        </div>
+                        <div id="connexion_link">
+                        <h4><a href="../login/login.html">  CONNEXION</a></h4>
+                        </div>
                 </nav>
             </header> 
         </div> <!-- Fin du Header -->
@@ -58,11 +61,11 @@
             </a>
         </div>
         <div id="profil_data"> <!-- Information du profil-->
-            <p>Payer_Name</p>
-            <p>When_joined</p>
+            <h4 id="nickname">Xx_DarKSylvian_xX</H4> <!-- Pseudo du compte -->
+            <p>Inscrit depuis le 06 octobre 2019</p> <!-- Historique d'inscription -->
             <br>
-            <p>Best scores</p>
-            <p>Best time</p>
+            <p id="best">Meilleur score : 6780</p> <!-- Meilleur score -->
+            <p id="best">Meilleur temps : 38.56s mode Facile</p> <!-- Meilleur temps et sur quelle mode-->
         </div>
     </div> <!-- Fin du profil-->
 
@@ -80,8 +83,8 @@
             <a href="level_easy.html">
             <img alt="easy" src="https://rank-boost.fr/wp-content/uploads/2018/11/1893128_1.jpg" id="easy"></a>
             <p id="pl">Facile</p>
-            <br><p> Joué : 5</p>
-            <br><p> Meilleur temps : 38.56s</p>
+            <br><p id="played"> Joué : 5</p>
+            <br><p id="played"> Meilleur temps : 38.56s</p>
 
 
         </div>
@@ -89,8 +92,8 @@
             <a href="level_medium.html">
             <img alt="medium" src="https://rank-boost.fr/wp-content/uploads/2018/11/2155508_1.jpg" id="medium"></a>
             <p id="pl">Intermédiaire</p>
-            <br><p> Joué : 3</p>
-            <br><p> Meilleur temps : 56.08s</p>
+            <br><p id="played"> Joué : 3</p>
+            <br><p id="played"> Meilleur temps : 56.08s</p>
 
 
         </div>
@@ -98,8 +101,8 @@
             <a href="level_expert.html">
             <img alt="expert" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSY3erdpD5A1U_RlNGJZ5Cq69JrKAAyiCf23A&usqp=CAU" id="expert"></a>
             <p id="pl">Expert</p>
-            <br><p> Joué : 1</p>
-            <br><p> Meilleur temps : X</p>
+            <br><p id="played"> Joué : 1</p>
+            <br><p id="played"> Meilleur temps : X</p>
 
 
         </div>
@@ -107,8 +110,8 @@
             <a href="level_impossible.html">
             <img alt="impossible" src="https://ih1.redbubble.net/image.502355746.2051/st,small,507x507-pad,600x600,f8f8f8.u4.jpg" id="impossible"></a>
             <p id="pl">Impossible</p> 
-            <br><p> Joué : 0</p>
-            <br><p> Meilleur temps : X</p>
+            <br><p id="played"> Joué : 0</p>
+            <br><p id="played"> Meilleur temps : X</p>
 
         </div>    
     </div> <!-- Fin des scores des niveaux de jeu -->
@@ -129,7 +132,6 @@
             <p id="pl"> Modifier votre mot de passe</p>
         </div>
     </div> <!-- Fin des icones pour modifier ses informations-->
-
 
 
         <footer> <!-- Début du Footer-->

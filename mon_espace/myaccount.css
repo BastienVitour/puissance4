@@ -7,7 +7,7 @@ header {
 }
 
 
-#accueil_link, #memory_link, #scores_link, #contact_link {
+#accueil_link, #memory_link, #scores_link, #contact_link, #connexion_link {
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -57,12 +57,24 @@ a:hover {
 
 #profil{
     display: flex;
-}
-#profil_data{
+    background-color: #120D29;
+    margin-left: 17%;
     margin-top: 5%;
+    margin-bottom: 10%;
+    margin-right: 10%;
+    padding-left: 5%;
+    padding-top: 3%;
+    padding-bottom: 5%;
+    padding-right: 5%;
+    
 }
+
+#nickname{
+    text-align: center;
+
+}
+
 #profil_avatar{
-    margin-left: 30%;
     margin-top: 3%;
     margin-right: 7%;
 }
@@ -110,11 +122,15 @@ a:hover {
     margin-bottom: 10%;
 }
 
-img{
+#easy, #medium, #expert, #impossible {
     width: 150px;
     height: 150px;
 }
 
+#played{
+    margin-bottom: 0%;
+    margin-top: 0%;
+}
 
 
 
@@ -199,3 +215,6 @@ ul li {
     list-style-type: square;
     color: white;
 }
+
+
+
