@@ -109,6 +109,10 @@ footer {
     align-items: center;
 }
 
+.bouton_reseaux_sociaux{
+    border: 2px solid #120D29;
+}
+
 ul li {
     list-style-type: square;
 }
