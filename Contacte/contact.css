@@ -152,20 +152,18 @@ footer{
     color: orange ;
 }
 #bouton_connexion{
-    background-color: orange;
+    background-color: #fe7f00;
     float: center;
     border-style: solid;
     border: 0px;
     padding: 10px;
     color: white;
     padding-right: 8%;
-    padding-bottom: 1%; 
     font-size: 120%;
-
 }
 
 #bouton_connexion:hover {
-    background-color: rgb(217, 141, 0);
+    background-color: #252446;
 }
 ul li {
     list-style-type: square;
