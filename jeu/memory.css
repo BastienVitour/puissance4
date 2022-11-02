@@ -114,8 +114,8 @@ caption {
 /*Css du chat (début)*/
 
 #chat {
-    position: absolute;
-    bottom: 0;
+    position: fixed;
+    bottom: 27%;
     right: 0;
     background-color: whitesmoke;
     display: flex;
