@@ -169,5 +169,12 @@ footer{
 }
 ul li {
     list-style-type: square;
-    color: white;
+}
+
+.text_orange {
+    color: orange;
+}
+
+.gris {
+    color: whitesmoke;
 }
