@@ -118,7 +118,6 @@ caption {
     bottom: 0;
     right: 0;
     background-color: whitesmoke;
-    padding: 0px 0px 0px 0px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -260,6 +259,11 @@ footer {
 #not_credit {
     display:flex;
     justify-content: space-around;
+}
+
+#reseaux_sociaux {
+    display: flex;
+    align-items: center;
 }
 
 ul li {

@@ -104,6 +104,11 @@ footer {
     justify-content: space-around;
 }
 
+#reseaux_sociaux {
+    display: flex;
+    align-items: center;
+}
+
 ul li {
     list-style-type: square;
 }
