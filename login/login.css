@@ -21,7 +21,7 @@ nav{
     background-image: url(https://images.hdqwalls.com/wallpapers/cyber-outrun-vaporwave-synth-retro-car-4k-m6.jpg);
 }
 
-#accueil_link, #memory_link, #scores_link, #contact_link , #connexion_link{
+.link, #accueil_link, #memory_link, #scores_link, #contact_link , #connexion_link{
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -100,6 +100,19 @@ footer{
 #not_credit {
     display:flex;
     justify-content: space-around;
+}
+
+/* lien ul */
+ul li {
+    list-style-type: square;
+}
+
+.text_orange {
+    color: orange;
+}
+
+.gris {
+    color: whitesmoke;
 }
 
 /* Fin bas de la page*/
