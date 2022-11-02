@@ -114,8 +114,8 @@ caption {
 /*Css du chat (début)*/
 
 #chat {
-    position: absolute;
-    bottom: 0;
+    position: fixed;
+    bottom: 27%;
     right: 0;
     background-color: whitesmoke;
     display: flex;
@@ -264,6 +264,10 @@ footer {
 #reseaux_sociaux {
     display: flex;
     align-items: center;
+}
+
+.bouton_reseaux_sociaux {
+    border: 2px solid #120D29;
 }
 
 ul li {
