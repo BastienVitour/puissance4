@@ -8,3 +8,6 @@ story 4 : SELECT * FROM user WHERE password="1234" AND email='sylvian.vidal@edu.
 
 story 5 : INSERT INTO game VALUES(NULL, "The Power Of Memory");
 
+
+
+story 9 : INSERT INTO `message` (`id`, `id_game`, `id_user`, `message`, `date_message`) VALUES (NULL, '1', '1', 'bonjour', '2022-11-03 16:33:10.000000');
