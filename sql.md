@@ -1,5 +1,7 @@
 # puissance4
 
+story 2 : INSERT INTO `user` (`id`, `email`, `password`, `pseudo`, `date_inscription`) VALUES (NULL, 'bvitour2004@gmail.com', 'p4s5W0rD', 'Basvit', '2022-11-03 14:44:36.000000')
+
 
 story 3 : UPDATE `user` SET `password` = 'user_1passwordedit' WHERE `user`.`id`
           UPDATE `user` SET `email` = 'user_1edit@gmail.com' WHERE `user`.`id` = 1 AND `user`.`password` = 'user_1password' = 'user_1password'
