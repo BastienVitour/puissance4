@@ -12,6 +12,12 @@ story 5 : INSERT INTO game VALUES(NULL, "The Power Of Memory");
 
 story 6 : SELECT `game`.`game_name`, `user`.pseudo, `difficulty`.`level`, `score` FROM `score` INNER JOIN `user` INNER JOIN `game` INNER JOIN `difficulty` ON score.id_user=user.id AND score.id_game=game.id AND score.id_difficulty=difficulty.id ORDER BY id_game, id_difficulty DESC, score DESC
 
+story 7 : filtre par difficulté :SELECT `game`.`game_name`, `user`.pseudo, `difficulty`.`level`, `score` FROM `score` INNER JOIN `user` INNER JOIN `game` INNER JOIN `difficulty` ON score.id_user=user.id AND score.id_game=game.id AND score.id_difficulty=difficulty.id WHERE id_difficulty=1 ORDER BY id_game, id_difficulty DESC, score DESC
+
+filtre par jeu :
+
+filtre par joueur : 
+
 story 8 : UPDATE score SET score = score WHERE "score" . "user_id" =1 
 
 
