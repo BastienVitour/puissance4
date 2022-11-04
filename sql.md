@@ -10,6 +10,8 @@ story 4 : SELECT * FROM user WHERE password="1234" AND email='sylvian.vidal@edu.
 
 story 5 : INSERT INTO game VALUES(NULL, "The Power Of Memory");
 
+story 6 : SELECT `game`.`game_name`, `user`.pseudo, `difficulty`.`level`, `score` FROM `score` INNER JOIN `user` INNER JOIN `game` INNER JOIN `difficulty` ON score.id_user=user.id AND score.id_game=game.id AND score.id_difficulty=difficulty.id ORDER BY id_game, id_difficulty DESC, score ASC
+
 
 
 story 9 : INSERT INTO `message` (`id`, `id_game`, `id_user`, `message`, `date_message`) VALUES (NULL, '1', '1', 'bonjour', '2022-11-03 16:33:10.000000');
