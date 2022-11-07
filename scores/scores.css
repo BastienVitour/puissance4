@@ -136,6 +136,27 @@ th {
 td {
 /*    border: 2px solid whitesmoke; */
     padding: 20px 0px 20px 0px;
+    font-size: larger;
+}
+
+.classement {
+    width: 18%;
+}
+
+.gamename {
+    width: 18%;
+}
+
+.pseudo {
+    width: 15%;
+}
+
+.difficulty {
+    width: 17%;
+}
+
+.score {
+    width: 12%;
 }
 
 /*tfoot tr td {
