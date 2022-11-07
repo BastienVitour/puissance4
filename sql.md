@@ -27,4 +27,6 @@ story 9 : INSERT INTO `message` (`id`, `id_game`, `id_user`, `message`, `date_me
 
 story 10 : 
 SELECT message.message, user.pseudo, message.date_message FROM message INNER JOIN user ON message.id_user= user.id WHERE (NOW()+0-date_message+0)<1000000;
-PAS FINI
+
+manque le php
+
