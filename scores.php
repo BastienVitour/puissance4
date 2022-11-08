@@ -15,39 +15,9 @@
         <!--Début du header avec l'image de fond-->
 
         <div id="bg_image">
-            <header>
-
-                <h2 id="power_memory">The Power Of Memory</h2>
-
-                <nav>
-
-                        <div class="links">
-                        <h4><a href="index.html">ACCUEIL</a></h4>
-                        </div>
-
-                        <div class="links">
-                        <h4><a href="memory.html">JEU</a></h4>
-                        </div>
-
-                        <div class="links">
-                        <h4><a href="scores.html">SCORES</a></h4>
-                        </div>
-
-                        <div class="links">
-                        <h4><a href="myaccount.html">MON ESPACE</a></h4>
-                        </div>
-
-                        <div class="links">
-                        <h4><a href="login.html">CONNEXION</a></h4>
-                        </div>
-                        
-                        <div class="links">
-                        <h4><a href="contact.html">NOUS CONTACTER</a></h4>
-                        </div>
-
-                </nav>
-                
-            </header>
+        <?php
+            include_once 'view/header.inc.php'
+            ?>
 
             <!--Fin du header-->
 
@@ -337,50 +307,10 @@
 
             <!--Fin du tableau-->
 
-            <footer>
-                <div id="not_credit">
-                    <div id="information">
-                        <h4>Information</h4>
-                            <p>
-                                <span class="text_orange">Tel : </span>00 00 00 00 00
-                            </p>
-                            
-                            <p>
-                                <span class="text_orange">Email : </span>test@gmail.com
-                            </p>
-                            
-                            <p>
-                                <span class="text_orange">Localisation : </span>Paris
-                            </p>
+            <?php
 
-                            <div id="reseaux_sociaux">
-                                <a href="https://facebook.com" target="_blank"><img class="bouton_reseaux_sociaux" src="assets/images/facebook.png" width="32" ></a>
-                                <a href="https://github.com/sylv0r/puissance4" target="_blank"><img class="bouton_reseaux_sociaux" src="assets/images/github.png" width="30"></a>
-                                <a href="https://gmail.com" target="_blank"><img class="bouton_reseaux_sociaux" src="assets/images/mail.png" width="30"></a>
-                                <a href="https://pinterest.com" target="_blank"><img class="bouton_reseaux_sociaux" src="assets/images/pinterest.png" width="30"></a>
-                                <a href="https://twitter.com" target="_blank"><img class="bouton_reseaux_sociaux" src="assets/images/twitter.png" width="30"></a>
-                                <a href="https://trello.com/b/kty67NDZ/puisssance-4" target="_blank"><img class="bouton_reseaux_sociaux" src="assets/images/trello.png" width="35"></a>
-                            </div>
-
-                    </div>
-    
-                    <div id="power_of_memory">
-                        <h4>Power Of Memory</h4>
-                        <ul>
-
-                            <li class="text_orange"><a href="memory.html" class="gris">Jouer !</a></li>
-                            <li class="text_orange"><a href="scores.html" class="gris">Les scores</a></li>
-                            <li class="text_orange"><a href="contact.html" class="gris">Nous contacter</a></li>
-
-                        </ul>
-                    </div>
-                </div>
-                
-                <div id="credit">
-                <p>Copyright ® 2022 Tout droit réservés</p>
-                </div>
-    
-            </footer>
+        include_once 'view/footer.inc.php';
+        ?>
     
             <!--Fin du footer-->
 

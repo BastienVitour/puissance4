@@ -20,39 +20,9 @@
         <div class="image_back">  <!--div pour l'image de fond -->
 
             <!--debut de la Nav barre -->
-        <header>
-
-            <h4 >The Power Of Memory</h4>
-
-            <nav>
-
-                    <div class="links">
-                    <h4><a href="index.html">ACCUEIL</a></h4>
-                    </div>
-
-                    <div class="links">
-                    <h4><a href="memory.html">  JEU  </a></h4>
-                    </div>
-
-                    <div class="links">
-                    <h4><a href="scores.html">  SCORES  </a></h4>
-                    </div>
-
-                    <div class="links">
-                        <h4><a href="myaccount.html">MON ESPACE</a></h4>
-                    </div>
-
-                    <div class="links">
-                    <h4><a href="contact.html">  NOUS CONTACTER</a></h4>
-                    </div>
-
-                    <div class="links">
-                        <h4><a href="register.html">  INSCRIPTION</a></h4>
-                    </div>
-                    
-            </nav>
-            
-        </header>
+            <?php
+            include_once 'view/header.inc.php'
+            ?>
             <!--fin de la nav barre -->
             
             <!--Titre principal-->
@@ -72,7 +42,7 @@
 
     <div id="profil"> <!-- Début du profil-->
         <div id="profil_avatar"> <!-- Photo de profil-->
-            <a href="change_avatar.html">
+            <a href="change_avatar.php">
             <img alt="Avatar" src="https://cdn1.epicgames.com/epic/offer/WatchDogs2_PortraitPromo-1280x1420-8ef789a7185a709178f51c0e9d42ee9a.jpg" id="avatar">
             </a>
         </div>
@@ -96,7 +66,7 @@
     <div id="game_stats"> <!-- Début des scores des niveaux de jeu -->
         
         <div id="facile"> <!-- Niveau facile -->
-            <a href="level_easy.html">
+            <a href="level_easy.php">
             <img alt="easy" src="assets/images/facile.jpeg" id="easy"></a>
             <p id="pl">Facile</p>
             <br><p id="played"> Joué : 5</p>
@@ -105,7 +75,7 @@
 
         </div>
         <div id="intermediaire"> <!-- Niveau intermédiaire --> 
-            <a href="level_medium.html">
+            <a href="level_medium.php">
             <img alt="medium" src="assets/images/medium.jpeg" id="medium"></a>
             <p id="pl">Intermédiaire</p>
             <br><p id="played"> Joué : 3</p>
@@ -114,7 +84,7 @@
 
         </div>
         <div id="expert"> <!-- Niveau expert -->
-            <a href="level_expert.html">
+            <a href="level_expert.php">
             <img alt="expert" src="assets/images/expert.jpeg" id="expert"></a>
             <p id="pl">Expert</p>
             <br><p id="played"> Joué : 1</p>
@@ -123,7 +93,7 @@
 
         </div>
         <div id="impossible"> <!-- Niveau impossible -->     
-            <a href="level_impossible.html">
+            <a href="level_impossible.php">
             <img alt="impossible" src="assets/images/impossible.jpeg" id="impossible"></a>
             <p id="pl">Impossible</p> 
             <br><p id="played"> Joué : 0</p>
@@ -186,55 +156,10 @@
 
 
 
-        <footer> <!-- Début du Footer-->
+    <?php
 
-            <div id="not_credit"> <!-- Début des Non Crédits du Footer-->
-                <div id="information"> <!--Début Catégorie Information du Footer-->
-
-                    <h4>Information</h4> <!-- Début information Comment nous retrouvez-->
-                        <p>
-                            <span class="text_orange">Tel : </span>00 00 00 00 00 
-                        </p>
-
-                        <p>
-                            <span class="text_orange">Email : </span>test@gmail.com
-                        </p>
-
-                        <p>
-                            <span class="text_orange">Localisation : </span>Paris
-                    </p> <!-- Fin information Comment nous retrouvez-->
-
-                    <div id="reseaux_sociaux"> <!-- Début information nos Réseaux-->
-                            <a href="https://facebook.com/"> <!-- Icone liens vers Facebook -->
-                                <img class="bouton_reseaux_sociaux" src="assets/images/facebook.png" width="32" ></img></a>
-                            <a href="https://github.com/sylv0r/puissance4"> <!-- Icone liens vers Github -->
-                                <img class="bouton_reseaux_sociaux" src="assets/images/github.png" width="30"></img></a>
-                            <a href="https://gmail.com/"> <!-- Icone liens vers Email -->
-                                <img class="bouton_reseaux_sociaux" src="assets/images/mail.png" width="30"></img></a>
-                            <a href="https://pinterest.com/"> <!-- Icone liens vers Pinterest -->
-                                <img class="bouton_reseaux_sociaux" src="assets/images/pinterest.png" width="30"></img></a>
-                            <a href="https://twitter.com/"> <!-- Icone liens vers Twitter -->
-                                <img class="bouton_reseaux_sociaux" src="assets/images/twitter.png" width="30"></img></a>
-                            <a href="https://trello.com/b/kty67NDZ/puisssance-4" target="_blank"><img class="bouton_reseaux_sociaux" src="assets/images/trello.png" width="35"></a>
-                    </div> <!-- Fin information nos Réseaux-->
-
-                </div> <!--Fin Catégorie Information du Footer-->
-
-                    <div id="power_of_memory"> <!-- Début Catégorie Power Of Memory du Footer-->
-                        <h4>Power Of Memory</h4>
-                            <ul>
-                                <li class="text_orange"><a href="memory.html" class="gris">Jouer !</a></li>
-                                <li class="text_orange"><a href="scores.html" class="gris">Les scores</a></li>
-                                <li class="text_orange"><a href="contact.html" class="gris">Nous contacter</a></li>
-                            </ul>
-                    </div> <!-- Fin Catégorie Power Of Memory du Footer-->
-        </div> <!-- Fin des Non Crédits du Footer-->
-
-        <div id="credit"> <!-- Début des Crédits du Footer-->
-            <p>Copyright ® 2022 Tout droit réservés</p>
-        </div> <!-- Fin des  Crédits du Footer-->
-
-    </footer> <!-- Fin du Footer-->
+include_once 'view/footer.inc.php';
+?><!-- Fin du Footer-->
 
 
     </div> <!-- Fin de la div Body-->
