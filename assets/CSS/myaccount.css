@@ -1,7 +1,10 @@
 body{
     background-color: #11102f;
 }
-
+body {
+    margin: 0;
+    padding: 0;
+}
         /* Début du CSS header, navigation, bannière */
 
 header {
@@ -25,6 +28,9 @@ h1{ /* titre Principale*/
     color: whitesmoke;
     padding: 90px;
 }
+#power_memory {
+    margin-left: 15px;
+}
 .image_back{ /* Image de bannière */
     background-attachment: fixed;
     background-position: 50%;
@@ -32,7 +38,7 @@ h1{ /* titre Principale*/
     background-position-y:47% ;
     background-size: 100%;
     color: white;
-    padding: 20px;
+
 
     background-image: url(https://images.hdqwalls.com/wallpapers/cyber-outrun-vaporwave-synth-retro-car-4k-m6.jpg);
 }

@@ -2,6 +2,10 @@ body {
     background-color: rgb(19, 17, 56);
     color: whitesmoke;
 }
+body {
+    margin: 0;
+    padding: 0;
+}
 
 a {
     text-decoration: none;
@@ -13,7 +17,9 @@ a:hover {
 }
 
 /*Css de la partie header (début)*/
-
+#power_memory {
+    margin-left: 15px;
+}
 #bg_image {
     background-image: url(https://images.hdqwalls.com/wallpapers/cyber-outrun-vaporwave-synth-retro-car-4k-m6.jpg);
     background-attachment: fixed;

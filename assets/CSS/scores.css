@@ -2,6 +2,10 @@ body {
     background-color: rgb(17, 16, 47);
     color: whitesmoke;
 }
+body {
+    margin: 0;
+    padding: 0;
+}
 
 a {
     text-decoration: none;
