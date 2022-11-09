@@ -1,3 +1,8 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
 /*haut de la page */
 header{
     display: flex;
@@ -12,18 +17,21 @@ nav{
 }
 
 .image_back{
+    background-image: url(https://images.hdqwalls.com/wallpapers/cyber-outrun-vaporwave-synth-retro-car-4k-m6.jpg);
     background-attachment: fixed;
     background-position: 50%;
-    background-position-y:47% ;
+    background-position-y: 47%;
     background-size: 100%;
-    padding: 20px;
-    
-    background-image: url(https://images.hdqwalls.com/wallpapers/cyber-outrun-vaporwave-synth-retro-car-4k-m6.jpg);
+    padding-bottom: 30px;
+    margin-bottom: 50px;
 }
 
-.link, #accueil_link, #memory_link, #scores_link, #contact_link , #connexion_link{
+.links{
     padding-left: 10px;
     padding-right: 10px;
+}
+#power_memory {
+    margin-left: 15px;
 }
 
 /* fin du haut de la page*/
