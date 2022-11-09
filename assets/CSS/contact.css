@@ -1,6 +1,10 @@
 body{
     background-color: #11102f;
 }
+body {
+    margin: 0;
+    padding: 0;
+}
 
         /* Début du CSS header, navigation, bannière */
 
@@ -19,7 +23,9 @@ a { /* Liens de navigations */
     padding-left: 10px;
     padding-right: 10px;
 }
-
+#power_memory {
+    margin-left: 15px;
+}
 h1{ /* titre Principale*/
     text-align: center;
     color: whitesmoke;
@@ -32,171 +38,104 @@ h1{ /* titre Principale*/
     background-position-y:47% ;
     background-size: 100%;
     color: white;
-    padding: 20px;
+
 
     background-image: url(https://images.hdqwalls.com/wallpapers/cyber-outrun-vaporwave-synth-retro-car-4k-m6.jpg);
 }
 
-                /* Fin du CSS (header, navigation, bannière) */
+        /* Fin du CSS (header, navigation, bannière) */
 
 
-                /* Début Mon profil */
+        /* Début du CSS des icones pour nous contacter (Telephone, Mail, Maps) */
 
-#profil{
-    display: flex;
-    background-color: #120D29;
-    margin-left: 17%;
-    margin-top: 5%;
-    margin-bottom: 10%;
-    margin-right: 10%;
-    padding-left: 5%;
-    padding-top: 3%;
-    padding-bottom: 5%;
-    padding-right: 5%;
-    
-}
-
-#profil_avatar{
-    margin-top: 3%;
-    margin-right: 7%;
-}
-#avatar{
-    width: 200px;
-    height: 200px;
-
-}
-#nickname{
-    text-align: center;
-
-}
-                /* Fin Mon profil */
-
-
-                /* Début Barre de Progression */
-
-#level{
-    padding-top: 10%;
-    padding-bottom: 10%;
-    padding-left: 5%;
-    display: flex;
-}
-
-
-#barre {
-    width: 80%; 
-    background-color: #ddd; 
-    margin-left: 5%;
-    margin-right: 5%;
-
-}
-
-#level_progress {
-    text-align: right;
-    padding-top: 10px; 
-    padding-bottom: 22px; 
-    color: rgb(101, 67, 3); 
-    width: 90%; 
-    background-color: #04AA6D;
-}
-
-                /* Fin Barre de Progression */
-
-
-                /* Début des stats de game*/
-
-#game_stats{
-    display: flex;
-    justify-content: space-between;
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-bottom: 10%;
-}
-
-#easy, #medium, #expert, #impossible {
-    width: 150px;
-    height: 150px;
-}
-#played{
-    margin-bottom: 0%;
-    margin-top: 0%;
-}
-
-                /* Fin des stats de game*/
-
-
-                /* Début des modifications (mail et password) */
-
-#modification{
+#icon{ /* Les 3 icones (phone, mail, gps) */
     display: flex;
     text-align: center;
     justify-content: space-around;
     margin-bottom: 2%;
     margin-top: 4%;
 }
-#pl{
+
+#phone{ /* Icone lien du Téléphone */
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 8;
+    margin-right: 0%;
+    padding-top: 3%;
+    padding-left: 6%;
+    padding-bottom: 2%;
+    padding-right: 6%;
+    background-color: #120D29;    
+}
+#telephone{ /* Image */
+    width: 64px;
+    height: 64px;
+}
+
+#mail{ /* Icone lien du Mail */
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 3%;
+    margin-right: 0%;
+    padding-top: 3%;
+    padding-left: 6%;
+    padding-bottom: 2%;
+    padding-right: 6%;
+    background-color: #120D29;
+}
+#email{ /* Image */
+    width: 64px;
+    height: 64px;
+}
+
+#gps{ /* Icone lien de la position Google Maps */
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 3%;
+    margin-right: 0%;
+    padding-top: 3%;
+    padding-left: 6%;
+    padding-bottom: 2%;
+    padding-right: 6%;
+    background-color: #120D29;
+}
+#maps{ /* Image */
+    width: 64px;
+    height: 64px;
+}
+
+#pl{ /* Textes sous les icones */
     color: white;
     font-size: 120%;
 }
-#mail{
-    margin-top: 1%;
-    margin-bottom: 1%;
-    margin-left: 3%;
-    margin-right: 0%;
-    padding-top: 3%;
-    padding-left: 6%;
-    padding-bottom: 2%;
-    padding-right: 6%;
-    background-color: #120D29;
-}
-#email{
-    width: 64px;
-    height: 64px;
-}
-#mdp{
-    margin-top: 1%;
-    margin-bottom: 1%;
-    margin-left: 3%;
-    margin-right: 0%;
-    padding-top: 3%;
-    padding-left: 6%;
-    padding-bottom: 2%;
-    padding-right: 6%;
-    background-color: #120D29;
-}
-#password{
-    width: 64px;
-    height: 64px;
-}
-                /* Fin des modifications (mail et password) */
+
+        /* Fin du CSS des icones pour nous contacter (Telephone, Mail, Maps) */
 
 
-                /* Début des formulaires de modification */
+        /* Début du Formulaire d'Aide */
 
 form{
     padding-left: 25%;
     padding-bottom: 15%;
+}
 
+.name{
+    margin-right: 2.5%;
+    width: 29%;
 }
-#edit_info{
-    text-align: center;
+.email{
+    width: 29%;
 }
-.old_edit{
+.subject{
     padding-right: 33%;
     background-color: #252446;
     border: 0px;
 }
-
-.new_edit{
+.message{
     padding-right: 33%;
+    padding-bottom: 20%;
     background-color: #252446;
     border: 0px;
-}
-.security_edit{
-    padding-right: 20%;
-    margin-left: 7%;
-    background-color: #252446;
-    border: 0px;
-
 }
 #bouton_connexion{
     background-color: #fe7f00;
@@ -207,17 +146,15 @@ form{
     color: white;
     padding-right: 8%;
     font-size: 120%;
-    margin-left: 25%;
-
 }
-
 #bouton_connexion:hover {
     background-color: #252446;
 }
 
-                /* Fin des formulaires de modification */
+        /* Fin du Formulaire d'Aide */
 
-                 /* Début du Footer */
+
+        /* Début du Footer */
 
 footer{
     background-color: #120D29;
@@ -236,11 +173,13 @@ footer{
 ul li {
     list-style-type: square;
 }
-        
-                /* Fin du Footer */
-        
-        
-                /* Réglage général */
+
+        /* Fin du Footer */
+
+
+        /* Réglage général */
+
+
 
 p{
     color: white;
@@ -249,9 +188,7 @@ p{
 h4{
     color: white;
 }
-a{
-    color: white;
-}
+
 a:hover {
     color: orange;
 }
@@ -268,5 +205,3 @@ input{
 input {
     color: white;
 }
-
-
