@@ -1,0 +1,274 @@
+body{
+    background-color: #11102f;
+}
+body {
+    margin: 0;
+    padding: 0;
+}
+        /* Début du CSS header, navigation, bannière */
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+nav {
+    display: flex;
+}
+a { /* Liens de navigations */
+    text-decoration: none;
+    color: currentColor;
+}
+.links { /* Class pour les liens de navigations */
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+h1{ /* titre Principale*/
+    text-align: center;
+    color: whitesmoke;
+    padding: 90px;
+}
+#power_memory {
+    margin-left: 15px;
+}
+.image_back{ /* Image de bannière */
+    background-attachment: fixed;
+    background-position: 50%;
+    background-position-y: 47%;
+    background-position-y:47% ;
+    background-size: 100%;
+    color: white;
+
+
+    background-image: url(https://images.hdqwalls.com/wallpapers/cyber-outrun-vaporwave-synth-retro-car-4k-m6.jpg);
+}
+
+                /* Fin du CSS (header, navigation, bannière) */
+
+
+                /* Début Mon profil */
+
+#profil{
+    display: flex;
+    background-color: #120D29;
+    margin-left: 17%;
+    margin-top: 5%;
+    margin-bottom: 10%;
+    margin-right: 10%;
+    padding-left: 5%;
+    padding-top: 3%;
+    padding-bottom: 5%;
+    padding-right: 5%;
+    
+}
+
+#profil_avatar{
+    margin-top: 3%;
+    margin-right: 7%;
+}
+#avatar{
+    width: 200px;
+    height: 200px;
+
+}
+#nickname{
+    text-align: center;
+
+}
+                /* Fin Mon profil */
+
+
+                /* Début Barre de Progression */
+
+#level{
+    padding-top: 10%;
+    padding-bottom: 10%;
+    padding-left: 5%;
+    display: flex;
+}
+
+
+#barre {
+    width: 80%; 
+    background-color: #ddd; 
+    margin-left: 5%;
+    margin-right: 5%;
+
+}
+
+#level_progress {
+    text-align: right;
+    padding-top: 10px; 
+    padding-bottom: 22px; 
+    color: rgb(101, 67, 3); 
+    width: 90%; 
+    background-color: #04AA6D;
+}
+
+                /* Fin Barre de Progression */
+
+
+                /* Début des stats de game*/
+
+#game_stats{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 10%;
+}
+
+#easy, #medium, #expert, #impossible {
+    width: 150px;
+    height: 150px;
+}
+#played{
+    margin-bottom: 0%;
+    margin-top: 0%;
+}
+
+                /* Fin des stats de game*/
+
+
+                /* Début des modifications (mail et password) */
+
+#modification{
+    display: flex;
+    text-align: center;
+    justify-content: space-around;
+    margin-bottom: 2%;
+    margin-top: 4%;
+}
+#pl{
+    color: white;
+    font-size: 120%;
+}
+#mail{
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 3%;
+    margin-right: 0%;
+    padding-top: 3%;
+    padding-left: 6%;
+    padding-bottom: 2%;
+    padding-right: 6%;
+    background-color: #120D29;
+}
+#email{
+    width: 64px;
+    height: 64px;
+}
+#mdp{
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 3%;
+    margin-right: 0%;
+    padding-top: 3%;
+    padding-left: 6%;
+    padding-bottom: 2%;
+    padding-right: 6%;
+    background-color: #120D29;
+}
+#password{
+    width: 64px;
+    height: 64px;
+}
+                /* Fin des modifications (mail et password) */
+
+
+                /* Début des formulaires de modification */
+
+form{
+    padding-left: 25%;
+    padding-bottom: 15%;
+
+}
+#edit_info{
+    text-align: center;
+}
+.old_edit{
+    padding-right: 33%;
+    background-color: #252446;
+    border: 0px;
+}
+
+.new_edit{
+    padding-right: 33%;
+    background-color: #252446;
+    border: 0px;
+}
+.security_edit{
+    padding-right: 20%;
+    margin-left: 7%;
+    background-color: #252446;
+    border: 0px;
+
+}
+#bouton_connexion{
+    background-color: #fe7f00;
+    float: center;
+    border-style: solid;
+    border: 0px;
+    padding: 10px;
+    color: white;
+    padding-right: 8%;
+    font-size: 120%;
+    margin-left: 25%;
+
+}
+
+#bouton_connexion:hover {
+    background-color: #252446;
+}
+
+                /* Fin des formulaires de modification */
+
+                 /* Début du Footer */
+
+footer{
+    background-color: #120D29;
+}
+#not_credit{
+    display: flex;
+    justify-content: space-around;
+}
+
+.text_orange{
+    color: orange ;
+}
+.gris {
+    color: whitesmoke;
+}
+ul li {
+    list-style-type: square;
+}
+        
+                /* Fin du Footer */
+        
+        
+                /* Réglage général */
+
+p{
+    color: white;
+}
+
+h4{
+    color: white;
+}
+
+a:hover {
+    color: orange;
+}
+
+
+input{
+        width: 30%;
+        background-color: #252446;
+        border: 0px;
+        height: 40px;
+        padding-left: 20px;
+    
+}
+input {
+    color: white;
+}
