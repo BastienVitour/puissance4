@@ -176,116 +176,49 @@ require_once 'includes/database.inc.php'
                             <th class="datetime">Date et Heure</th>
                         </tr>
                     </table>
-                    
-                    <table id="first" class="podium">
-                        <tr>
-                            <td class="classement">1</td>
-                            <td class="gamename"></td>
-                            <td class="pseudo"></td>
-                            <td class="difficulty"></td>
-                            <td class="score"></td>
-                            <td class="datetime"></td>
-                        </tr>
-                    </table>
 
-                    <table id="second" class="podium">
-                        <tr>
-                            <td class="classement">2</td>
-                            <td class="gamename">The Power Of Memory</td>
-                            <td class="pseudo">Basvit</td>
-                            <td class="difficulty">Intermédiaire</td>
-                            <td class="score">345</td>
-                            <td class="datetime">05/11/2022 09:40</td>
-                        </tr>
-                    </table>
+                    <?php
+                        $classement = 1;
 
-                    <table id="third" class="podium">
-                        <tr>
-                            <td class="classement">3</td>
-                            <td class="gamename"></td>
-                            <td class="pseudo"></td>
-                            <td class="difficulty"></td>
-                            <td class="score"></td>
-                            <td class="datetime"></td>
-                        </tr>
-                    </table>
+                        $requete = 'SELECT `game`.`game_name`, `user`.pseudo, `difficulty`.`level`, `score` FROM `score` INNER JOIN `user` INNER JOIN `game` INNER JOIN difficulty ON score.id_user=user.id AND score.id_game=game.id AND score.id_difficulty=difficulty.id ORDER BY id_game, id_difficulty DESC, score DESC';
+                        $previous = $mysqlClient->prepare($requete);
+                        $previous->execute();
+                        $result = $previous->fetchAll();
+                        foreach ($result as $case) { ?>
 
-                    <table class="therest">
-                        <tr>
-                            <td class="classement">4</td>
-                            <td class="gamename"></td>
-                            <td class="pseudo"></td>
-                            <td class="difficulty"></td>
-                            <td class="score"></td>
-                            <td class="datetime"></td>
-                        </tr>
-                    </table>
+                        <table 
+                        <?php 
+                        
+                        switch ($classement) {
+                            case 1 : ?>
+                                id="first" class="podium"
+                    <?php       break;     
+                            case 2 : ?>
+                                id="second" class="podium"
+                    <?php       break;
+                            case 3 : ?>
+                                id="third" class="podium"
+                    <?php       break;
+                            default : ?>
+                                class="therest"
+                    <?php       break;
+                                
+                        }
+                        
+                        ?>>
+                            <tr>
+                                <td class="classement"><?php echo $classement; $classement++; ?></td>
+                                <td class="gamename"><?php echo $case['game_name']; ?></td>
+                                <td class="pseudo"><?php echo $case['pseudo']; ?></td>
+                                <td class="difficulty"><?php echo $case['level']; ?></td>
+                                <td class="score"><?php echo $case['score']; ?></td>
+                                <td class="datetime"><?php// echo $case['datetime']; ?></td>
+                            </tr>
+                        </table>
 
-                    <table class="therest">
-                        <tr>
-                            <td class="classement">5</td>
-                            <td class="gamename"></td>
-                            <td class="pseudo"></td>
-                            <td class="difficulty"></td>
-                            <td class="score"></td>
-                            <td class="datetime"></td>
-                        </tr>
-                    </table>
-
-                    <table class="therest">
-                        <tr>
-                            <td class="classement">6</td>
-                            <td class="gamename"></td>
-                            <td class="pseudo"></td>
-                            <td class="difficulty"></td>
-                            <td class="score"></td>
-                            <td class="datetime"></td>
-                        </tr>
-                    </table>
-
-                    <table class="therest">
-                        <tr>
-                            <td class="classement">7</td>
-                            <td class="gamename"></td>
-                            <td class="pseudo"></td>
-                            <td class="difficulty"></td>
-                            <td class="score"></td>
-                            <td class="datetime"></td>
-                        </tr>
-                    </table>
-
-                    <table class="therest">
-                        <tr>
-                            <td class="classement">8</td>
-                            <td class="gamename"></td>
-                            <td class="pseudo"></td>
-                            <td class="difficulty"></td>
-                            <td class="score"></td>
-                            <td class="datetime"></td>
-                        </tr>
-                    </table>
-
-                    <table class="therest">
-                        <tr>
-                            <td class="classement">9</td>
-                            <td class="gamename"></td>
-                            <td class="pseudo"></td>
-                            <td class="difficulty"></td>
-                            <td class="score"></td>
-                            <td class="datetime"></td>
-                        </tr>
-                    </table>
-
-                    <table class="therest">
-                        <tr>
-                            <td class="classement">10</td>
-                            <td class="gamename"></td>
-                            <td class="pseudo">Sylvian</td>
-                            <td class="difficulty"></td>
-                            <td class="score"></td>
-                            <td class="datetime"></td>
-                        </tr>
-                    </table>
+                    <?php
+                        }
+                    ?>
 
                     <table id="me" class="podium">
                         <tr>
