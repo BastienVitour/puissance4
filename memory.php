@@ -62,6 +62,8 @@ require_once 'includes/database.inc.php'
 
         <!--Début de la grille-->
 
+        <div id="center_part">
+
             <div id="grille_5" class="grille">
 
                 <table>
@@ -817,7 +819,120 @@ require_once 'includes/database.inc.php'
                     
             </div> -->
 
-        <!--Fin de la grille-->
+            <!--Fin de la grille-->
+
+            <!--Début de la partie chat-->
+
+        <div id="chat">
+
+            <div id="chat_title">
+
+                <img src="assets/images/bot_avatar.png" alt="bot" width="50">
+                <p>Chat Général </p>
+
+            </div>
+
+            <div id="messages_area">
+
+                <?php 
+                
+                $requete = 'SELECT message.message, user.pseudo, message.date_message FROM message INNER JOIN user ON message.id_user= user.id WHERE (NOW()+0-date_message+0)<1000000';
+                $prepare = $mysqlClient->prepare($requete);
+                $prepare->execute();
+                $result = $prepare->fetchAll();
+
+                ?>
+
+                <div class="user_message">
+
+                    <div class="me">
+                        <?php 
+                        
+                        foreach($result as $message) {
+                            echo $message['pseudo'];
+                        }
+                        
+                        ?>
+                    </div>
+
+                    <div class="user_text">
+                        <?php 
+                        
+                        foreach($result as $message) {
+                            echo $message['message'];
+                        }
+                        
+                        ?>
+                    </div>
+
+                    <div class="user_message_date">
+                        <?php 
+                        
+                        foreach($result as $message) {
+                            echo $message['date_message'];
+                        }
+                        
+                        ?>
+                    </div>
+
+                </div>
+
+                <div class="others_message">
+
+                    <div id="others_image">
+                        <img src="assets/images/bot_avatar_whitesmoke.png" alt="others_avatar" width="50">
+                    </div>
+
+                    <div id="not_others_image">
+
+                        <div class="other">
+                            Memory Bot
+                        </div>
+
+                        <div class="others_text">
+                            I am the best at this game no one can beat me
+                        </div>
+
+                        <div class="others_message_date">
+                            Aujourd'hui à 10:53
+                        </div>
+                
+                    </div>
+
+                </div>
+
+                <div class="user_message">
+
+                    <div class="me">
+                        Moi
+                    </div>
+
+                    <div class="user_text">
+                        We'll see about that
+                    </div>
+
+                    <div class="user_message_date">
+                        Aujourd'hui à 11:16
+                    </div>
+
+                </div>               
+
+            </div>
+
+            <div id="message_input">
+
+                <form action="" method="post">
+                    <input type="text" name="message" id="message" placeholder="Votre message...">
+                    <button type="submit">Envoyer</button>
+                </form>
+
+            </div>
+
+            </div>
+
+            <!--Fin de la partie chat-->
+
+            </div>
 
         <!--Début des stats de jeu-->
 
@@ -840,91 +955,9 @@ require_once 'includes/database.inc.php'
 
         <!--Fin des stats de jeu-->
 
-        <!--Début de la partie chat-->
+        
 
-        <div id="chat">
-
-                <div id="chat_title">
-
-                    <img src="assets/images/bot_avatar.png" alt="bot" width="50">
-                    <p>Chat Général </p>
-
-                </div>
-
-                <div id="messages_area">
-
-                    <div class="user_message">
-
-                        <div class="me">
-                            Moi
-                        </div>
-
-                        <div class="user_text">
-                            Hello
-                        </div>
-
-                        <div class="user_message_date">
-                            Aujourd'hui à 10:05
-                        </div>
-
-                    </div>
-
-                    <div class="others_message">
-
-                        <div id="others_image">
-                            <img src="assets/images/bot_avatar_whitesmoke.png" alt="others_avatar" width="50">
-                        </div>
-
-                        <div id="not_others_image">
-
-                            <div class="other">
-                                Memory Bot
-                            </div>
-
-                            <div class="others_text">
-                                I am the best at this game no one can beat me
-                            </div>
-
-                            <div class="others_message_date">
-                                Aujourd'hui à 10:53
-                            </div>
-                    
-                        </div>
-
-                    </div>
-
-                    <div class="user_message">
-
-                        <div class="me">
-                            Moi
-                        </div>
-
-                        <div class="user_text">
-                            We'll see about that
-                        </div>
-
-                        <div class="user_message_date">
-                            Aujourd'hui à 11:16
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div id="message_input">
-
-                    <form action="" method="post">
-                        <input type="text" name="message" id="message" placeholder="Votre message...">
-                        <button type="submit">Envoyer</button>
-                    </form>
-
-                </div>
-
-        </div>
-
-        <!--Fin de la partie chat-->
-
-        <!--Début des rèbles du jeu-->
+        <!--Début des règles du jeu-->
 
         <div id="rules">
 

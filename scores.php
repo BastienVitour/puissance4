@@ -181,10 +181,13 @@ require_once 'includes/database.inc.php'
                         $classement = 1;
 
                         $requete = 'SELECT `game`.`game_name`, `user`.pseudo, `difficulty`.`level`, `score` FROM `score` INNER JOIN `user` INNER JOIN `game` INNER JOIN difficulty ON score.id_user=user.id AND score.id_game=game.id AND score.id_difficulty=difficulty.id ORDER BY id_game, id_difficulty DESC, score DESC';
-                        $previous = $mysqlClient->prepare($requete);
-                        $previous->execute();
-                        $result = $previous->fetchAll();
-                        foreach ($result as $case) { ?>
+                        $prepare = $mysqlClient->prepare($requete);
+                        $prepare->execute();
+                        $result = $prepare->fetchAll();
+                        foreach ($result as $case) { 
+                            
+                            if ($classement <11) {
+                              ?>
 
                         <table 
                         <?php 
@@ -217,7 +220,7 @@ require_once 'includes/database.inc.php'
                         </table>
 
                     <?php
-                        }
+                        }}
                     ?>
 
                     <table id="me" class="podium">
