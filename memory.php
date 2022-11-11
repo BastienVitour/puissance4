@@ -1,5 +1,5 @@
 <?php 
-require_once 'includes/database.inc.php'
+require_once 'includes/database.inc.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -835,47 +835,37 @@ require_once 'includes/database.inc.php'
             <div id="messages_area">
 
                 <?php 
-                
-                $requete = 'SELECT message.message, user.pseudo, message.date_message FROM message INNER JOIN user ON message.id_user= user.id WHERE (NOW()+0-date_message+0)<1000000';
-                $prepare = $mysqlClient->prepare($requete);
-                $prepare->execute();
-                $result = $prepare->fetchAll();
 
-                ?>
+                $_SESSION['user'] = 3;
+                
+                $messages = $mysqlClient->prepare('SELECT message.message, user.pseudo, message.date_message, message.id_user FROM message INNER JOIN user ON message.id_user= user.id WHERE (NOW()+0-date_message+0)<1000000');
+                $messages->execute();
+                $messages = $messages->fetchAll();
+
+                //date_format($message['date_message'], '%d/%m/%Y %H:%i');
+
+                foreach ($messages as $message) {
+
+                    
+                    if ($message['id_user'] == $_SESSION['user']) { ?>
 
                 <div class="user_message">
 
                     <div class="me">
-                        <?php 
-                        
-                        foreach($result as $message) {
-                            echo $message['pseudo'];
-                        }
-                        
-                        ?>
+                        <?php echo $message['pseudo'] ?>
                     </div>
 
                     <div class="user_text">
-                        <?php 
-                        
-                        foreach($result as $message) {
-                            echo $message['message'];
-                        }
-                        
-                        ?>
+                        <?php echo $message['message'] ?>
                     </div>
 
                     <div class="user_message_date">
-                        <?php 
-                        
-                        foreach($result as $message) {
-                            echo $message['date_message'];
-                        }
-                        
-                        ?>
+                        <?php echo $message['date_message'] ?>
                     </div>
 
                 </div>
+
+                <?php } else { ?>
 
                 <div class="others_message">
 
@@ -886,36 +876,22 @@ require_once 'includes/database.inc.php'
                     <div id="not_others_image">
 
                         <div class="other">
-                            Memory Bot
+                            <?php echo $message['pseudo'] ?>
                         </div>
 
                         <div class="others_text">
-                            I am the best at this game no one can beat me
+                            <?php echo $message['message'] ?>
                         </div>
 
                         <div class="others_message_date">
-                            Aujourd'hui à 10:53
+                            <?php echo $message['date_message'] ?>
                         </div>
                 
                     </div>
 
                 </div>
 
-                <div class="user_message">
-
-                    <div class="me">
-                        Moi
-                    </div>
-
-                    <div class="user_text">
-                        We'll see about that
-                    </div>
-
-                    <div class="user_message_date">
-                        Aujourd'hui à 11:16
-                    </div>
-
-                </div>               
+                <?php }} ?>             
 
             </div>
 
