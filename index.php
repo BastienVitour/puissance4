@@ -74,6 +74,14 @@ require_once 'includes/database.inc.php'
 
             <div id="numbers">
 
+                <?php
+
+                    //$stats = $mysqlClient->prepare('SELECT MIN(score) AS best_score, COUNT(email) AS registered FROM score LEFT JOIN user');
+                    //$stats->execute();
+                    //$stats = $stats->fetchAll();
+
+                ?>
+
                 <div id="left">
 
                     <div id="num_games">
@@ -81,7 +89,12 @@ require_once 'includes/database.inc.php'
                     </div>
 
                     <div id="best_time">
-                    <p>XX sec <br> Temps Record</p>
+                    <p><?php
+                    
+                    $best = $mysqlClient->prepare('SELECT MIN(score) AS best_score FROM score');
+                    $best->execute();
+                    $best = $best->fetch();
+                    echo $best['best_score'].' secs'; ?><br> Temps Record</p>
                     </div>
             
                 </div>
@@ -93,7 +106,11 @@ require_once 'includes/database.inc.php'
                     </div>
 
                     <div id="registered_players">
-                    <p>XXXX <br> Joueurs Inscrits</p>
+                    <p><?php
+                    $regi = $mysqlClient->prepare('SELECT COUNT(email) AS registered FROM user');
+                    $regi->execute();
+                    $regi = $regi->fetch();
+                    echo $regi['registered']; ?> <br> Joueurs Inscrits</p>
                     </div>
 
                 </div>
