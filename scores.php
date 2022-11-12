@@ -166,6 +166,7 @@ require_once 'includes/database.inc.php'
 
                     </table> -->
                     
+                    <!--L'entête du tableau-->
                     <table id="what">
                         <tr>
                             <th class="classement">Classement</th>
@@ -180,11 +181,21 @@ require_once 'includes/database.inc.php'
                     <?php
                         $classement = 1;
 
-                        $scores = $mysqlClient->prepare('SELECT `game`.`game_name`, `user`.pseudo, `difficulty`.`level`, `score` FROM `score` INNER JOIN `user` INNER JOIN `game` INNER JOIN difficulty ON score.id_user=user.id AND score.id_game=game.id AND score.id_difficulty=difficulty.id ORDER BY id_game, id_difficulty DESC, score DESC');
+                        //On va récupérer les infos de la base de données
+                        //--> nom du jeu, pseudo de l'utilisateur, niveau de difficulté, score
+                        $scores = $mysqlClient->prepare('SELECT `game`.`game_name`, `user`.pseudo, `difficulty`.`level`, `score` FROM `score` INNER JOIN `user` INNER JOIN `game` INNER JOIN difficulty ON score.id_user=user.id AND score.id_game=game.id AND score.id_difficulty=difficulty.id ORDER BY id_game, id_difficulty DESC, score');
                         $scores->execute();
                         $scores = $scores->fetchAll();
+
                         foreach ($scores as $case) { 
+
+                            //$date = $case['datetime'];
+
+                            //On formate la date pour respecter un meilleur format
+                            //$theDate = new DateTime($date);
+                            //$message_datetime = $theDate->format('d/m/Y H:i');
                             
+                            //On ne garde que les 10 premiers du classement
                             if ($classement <11) {
                               ?>
 
@@ -192,15 +203,19 @@ require_once 'includes/database.inc.php'
                         <?php 
                         
                         switch ($classement) {
+                            //Si ce joueur est premier
                             case 1 : ?>
                                 id="first" class="podium"
-                    <?php       break;     
+                    <?php       break;
+                            //Si ce joueur est deuxième     
                             case 2 : ?>
                                 id="second" class="podium"
                     <?php       break;
+                            //Troisième
                             case 3 : ?>
                                 id="third" class="podium"
                     <?php       break;
+                            //Le reste du classement (jusqu'à 10)
                             default : ?>
                                 class="therest"
                     <?php       break;
@@ -213,7 +228,7 @@ require_once 'includes/database.inc.php'
                                 <td class="gamename"><?php echo $case['game_name']; ?></td>
                                 <td class="pseudo"><?php echo $case['pseudo']; ?></td>
                                 <td class="difficulty"><?php echo $case['level']; ?></td>
-                                <td class="score"><?php echo $case['score']; ?></td>
+                                <td class="score"><?php echo $case['score'].' sec'; ?></td>
                                 <td class="datetime"><?php// echo $case['datetime']; ?></td>
                             </tr>
                         </table>
@@ -222,6 +237,9 @@ require_once 'includes/database.inc.php'
                         }}
                     ?>
 
+                    <!--Ici on affichera le classement de l'utilisateur actuel pour qu'il puisse se comparer aux autres
+                        même s'il n'est pas dans le top 10
+                    -->
                     <table id="me" class="podium">
                         <tr>
                             <td class="classement"></td>
@@ -234,8 +252,6 @@ require_once 'includes/database.inc.php'
                     </table>
 
                 </div>
-
-                
 
                 <div class="side">
                     

@@ -838,34 +838,59 @@ require_once 'includes/database.inc.php';
 
                 $_SESSION['user'] = 3;
                 
-                $messages = $mysqlClient->prepare('SELECT message.message, user.pseudo, message.date_message, message.id_user FROM message INNER JOIN user ON message.id_user= user.id WHERE (NOW()+0-date_message+0)<1000000');
+                //On va récupérer les infos de la base de données
+                //-->contenu du message, nom de l'utilisateur, date d'envoi du message
+                $messages = $mysqlClient->prepare('SELECT message.message, user.pseudo, message.date_message, message.id_user, DAY(message.date_message) AS `day` FROM message INNER JOIN user ON message.id_user= user.id WHERE (NOW()+0-date_message+0)<1000000');
                 $messages->execute();
                 $messages = $messages->fetchAll();
 
-                //date_format($message['date_message'], '%d/%m/%Y %H:%i');
-
                 foreach ($messages as $message) {
 
+                    $date = $message['date_message'];
+
+                    //On formate la date pour respecter un meilleur format
+                    $theDate = new DateTime($date);
+                    $message_datetime = $theDate->format('H:i');
+
+                    //echo $message['day'];
+                    //echo date('d');
                     
+                    //Si celui qui a envoyé le message est l'utilisateur actuel
                     if ($message['id_user'] == $_SESSION['user']) { ?>
 
                 <div class="user_message">
 
+                <!--Le nom de l'utilisateur-->
                     <div class="me">
                         <?php echo $message['pseudo'] ?>
                     </div>
 
+                    <!--Le message de l'utilisateur-->
                     <div class="user_text">
                         <?php echo $message['message'] ?>
                     </div>
 
+                    <!--La date/heure de l'envoi du message-->
                     <div class="user_message_date">
-                        <?php echo $message['date_message'] ?>
+                        <?php
+                        
+                        //Si le message a été envoyé aujourd'hui
+                        if ($message['day'] == date('d')) {
+                        
+                            echo 'Aujourd\'hui à '.$message_datetime; 
+                            
+                        } else {
+                            echo 'Hier à '.$message_datetime;
+                        }
+                        
+                        ?>
                     </div>
 
                 </div>
 
-                <?php } else { ?>
+                <?php } else { 
+                    //Sinon si le message ne vient pas de l'utilisateur actuel
+                    ?>
 
                 <div class="others_message">
 
@@ -875,16 +900,28 @@ require_once 'includes/database.inc.php';
 
                     <div id="not_others_image">
 
+                    <!--Le nom de l'utilisateur-->
                         <div class="other">
                             <?php echo $message['pseudo'] ?>
                         </div>
 
+                        <!--Le message de l'utilisateur-->
                         <div class="others_text">
                             <?php echo $message['message'] ?>
                         </div>
 
+                        <!--La date d'envoi du message-->
                         <div class="others_message_date">
-                            <?php echo $message['date_message'] ?>
+                            <?php
+                            //Si le message a été envoyé aujourd'hui
+                            if ($message['day'] == date('d')) {
+                        
+                                echo 'Aujourd\'hui à '.$message_datetime; 
+                                
+                            } else {
+                                echo 'Hier à '.$message_datetime;
+                            } 
+                            ?>
                         </div>
                 
                     </div>
