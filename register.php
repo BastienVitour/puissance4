@@ -178,7 +178,7 @@ if(!empty($_POST)){
                 $error=smtpmailer($to,$from, $name ,$subj, $msg);
             
             
-        
+                header('Location: login.php');
                 exit;
                 }
             }
