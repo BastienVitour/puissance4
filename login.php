@@ -135,7 +135,7 @@ if(!empty($_POST)){
         
             
 
-            header('Location: test.php');
+            header('Location: accueil.php');
             
         
                 exit;
