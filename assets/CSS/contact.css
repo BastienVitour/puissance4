@@ -1,5 +1,6 @@
 body{
     background-color: #11102f;
+    
 }
 body {
     margin: 0;
@@ -117,6 +118,7 @@ h1{ /* titre Principale*/
 form{
     padding-left: 25%;
     padding-bottom: 15%;
+    color: white;
 }
 
 .name{

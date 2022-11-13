@@ -1,6 +1,79 @@
 <?php 
 require_once 'includes/database.inc.php'
 ?>
+<?php
+
+
+
+
+$valid=true;
+$error = false;
+
+if(!empty($_POST)){
+
+     
+    // On se place sur le bon formulaire grâce au "name" de la balise "input"
+    if (isset($_POST['login']))
+        {
+         $mail= $_POST['mail'];
+         $subject=$_POST['subject'];
+         $nom= $_POST['nom'];
+         $message= $_POST['message'];
+
+     
+        // Vérification du nom
+        if(empty($nom)) 
+            {
+            $valid = false;
+            $er_mdp = " Veuillez vérifier le formulaire";
+            }
+        //verrification du subject
+        if(empty($subject))  
+            {
+            $valid=false;
+            $er_subject="Le sujet ne peut être vide";
+            }
+
+        // Vérification du mail
+        if(empty($mail))
+            {
+            $valid = false;
+            $er_formulaire = " Veuillez vérifier le formulaire";
+            }
+        // On vérifit que le mail est dans le bon format
+        elseif(!preg_match("/^[a-z0-9\-_.]+@[a-z]+\.[a-z]{2,3}$/i", $mail))
+            {    
+            $valid = false;
+            $er_mail = " Veuillez vérifier le formulaire";
+            }
+        if(strlen($message)<15)
+            {
+            $valid=false;
+            $er_formulaire="Veuillez vérifier le formulaire";
+            }
+            
+    if($valid)
+        {
+        $er_formulaire="Votre message a bien été envoyé";
+   
+        }
+
+
+        
+            
+    }
+}
+        
+    
+
+
+
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -62,12 +135,20 @@ require_once 'includes/database.inc.php'
 
 
     <div id="form"> <!-- Début du Formulaire d'aide-->
-        <form class="form">
-            <input type="text" class="name" placeholder="Nom"> <!-- Zone de texte "Nom" -->
-            <input type="Email" class="email" placeholder="Email"><br><br> <!-- Zone de texte "Email" -->
-            <input type="Sujet" class="subject" placeholder="Sujet"><br><br> <!-- Zone de texte "Sujet" -->
-            <input type="Message" class="message" placeholder="Message"></textarea><br><br> <!-- Zone de texte "Message" -->
-            <button id="bouton_connexion"> Envoyer </button> <!-- Bouton Envoyer -->
+
+        <form class="form" method="POST" action="contact.php">
+        <?php
+                if (isset($er_formulaire)){
+            ?>
+                <div><p ><?= $er_formulaire ?></p></div>
+            <?php 
+                }
+            ?>
+            <input type="text" class="name" placeholder="Nom" name="nom" > <!-- Zone de texte "Nom" -->
+            <input type="text" class="email" placeholder="Email" name="mail" ><br><br> <!-- Zone de texte "Email" -->
+            <input type="text" class="subject" placeholder="Sujet" name="subject" ><br><br> <!-- Zone de texte "Sujet" -->
+            <input type="text" class="message" placeholder="Message" name="message" ><br><br> <!-- Zone de texte "Message" -->
+            <button id="bouton_connexion" type="submit" name="login"> Envoyer </button> <!-- Bouton Envoyer -->
         </form>
     </div> <!-- Fin du Formulaire d'aide-->
 
