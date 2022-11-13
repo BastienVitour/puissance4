@@ -1,8 +1,12 @@
 <?php 
-require_once 'includes/database.inc.php'
+$pdo=require_once 'includes/database.inc.php';
+session_start();
+$DB = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'root');
 ?>
 <!DOCTYPE html>
 <html>
+
+
 
 
 <head> <!-- Début du Head -->
@@ -14,6 +18,8 @@ require_once 'includes/database.inc.php'
     <link rel="shortcut icon" href="assets/images/icone.png" type="image/x-icon">
     <script src='myaccount.js'></script>
 </head> <!-- Fin du Head -->
+
+
 
 
 <body>
@@ -58,6 +64,9 @@ require_once 'includes/database.inc.php'
         </div>
     </div> <!-- Fin du profil-->
 
+
+
+
     <div id="level"> <!-- Début de la barre de progression -->
         <p>18</p> <!-- Level précédent -->
         <div id="barre">
@@ -65,6 +74,9 @@ require_once 'includes/database.inc.php'
         </div>
         <p>19</p> <!-- Level Suivant-->
     </div> <!-- Fin de la barre de progression -->
+
+
+
 
     <div id="game_stats"> <!-- Début des scores des niveaux de jeu -->
         
@@ -115,12 +127,15 @@ require_once 'includes/database.inc.php'
             <img alt="Mail" src="https://icones.pro/wp-content/uploads/2021/03/icone-gmail-logo-png-orange.png" id="email"></a></li>
             <p id="pl">Modifier votre adresse mail</p>
         </div>     
+
         <div id="mdp"> <!-- Image liens vers les options modifier password-->
             <a href="#edit_password">
             <img alt="Password" src="https://icones.pro/wp-content/uploads/2022/08/icone-de-cadenas-de-securite-orange.png" id="password"></a>
             <p id="pl"> Modifier votre mot de passe</p>
         </div>
     </div> <!-- Fin des icones pour modifier ses informations-->
+
+
 
 
     <br>
@@ -130,15 +145,122 @@ require_once 'includes/database.inc.php'
 
 
 
+
+                                <!-- PHP POUR LA MODIFICATION DE L'EMAIL -->
+
+                                <?php 
+$error = false;
+
+if (isset($_POST['new_mail'])) {
+    // ici on a bien recu des donnees d'un formulaire
+
+    // on verifie donc l'adresse email
+    if (filter_var($_POST['new_mail'], FILTER_VALIDATE_EMAIL) !== false) {
+        // l'email est valide donc je cree les variables 
+
+        $new_mail = $_POST['new_mail'];
+        $password = $_POST['mdp'];
+        $old_mail = $_POST['old_mail'];
+
+    }
+    else {
+        // Si l'email n'est pas valide renvoie $error
+        $error = 'Email invalide';
+    }
+}
+
+if (isset($new_mail)) 
+{ 
+    // Vérification du $old_mail dans la base de donnée
+    // SI email reconnue a celui dans une base de donnée renvoie l'id de l'user lié a cette email
+    // SI email non reconnue dans la base de donnée renvoie rien
+    $requete_om = 'SELECT id 
+                FROM user 
+                WHERE email= :old_mail';
+    $bdd_mail = $mysqlClient->prepare($requete_om);
+    $bdd_mail->execute(['old_mail' => $old_mail]);
+    $bdd_mail = $bdd_mail->fetch();
+
+
+
+        // Vérification du $password dans la base de donnée
+    // SI mot de passe reconnue a celui dans une base de donnée renvoie l'id de l'user lié a cette email
+    // SI mot de passe non reconnue dans la base de donnée renvoie rien
+    $requete_pw = 'SELECT id 
+                FROM user 
+                WHERE password= :mdp';
+    $bdd_password = $mysqlClient->prepare($requete_pw);
+    $bdd_password->execute(['mdp' => $password]);
+    $bdd_password = $bdd_password->fetch();
+
+
+
+
+    if ($bdd_mail != NULL && $bdd_password != NULL ){ // SI email et mot de passe trouvé 
+
+
+
+        $DB = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'root');
+
+        $DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $data = [
+            'new_mail' => $new_mail,
+            'mdp' => $password,
+
+ 
+        ];
+        $sql = "UPDATE user SET email=:new_mail WHERE password=:mdp";
+        $stmt= $DB->prepare($sql);
+        $stmt->execute($data);
+        echo '<p class="style_css">Modification effectuée</p>'.'<br>';
+
+    }
+
+
+                // Erreurs
+    elseif ($bdd_mail != NULL && $bdd_password == NULL) { // SI email trouvé mais mot de passe inexistant
+        echo '<p class="style_css">Mot de passe invalide</p>';
+    }
+    elseif ($bdd_mail == NULL && $bdd_password != NULL) { // SI mot de passe trouvé mais email inexistant
+        echo '<p class="style_css">Email invalide</p>';
+    }
+    else { // SI email et mot de passe inexistant
+        echo '<p class="style_css">Mot de passe et email inexistant</p>';
+    }
+
+
+
+
+       //} if ($bdd_mail != 'old_mail'){
+        // ($bdd_mail != NULL  && $_SESSION["user"]["id"] == $bdd_mail["id"])
+          //  echo ("PTN C BON");
+         //   $_SESSION['user']["email"] = $_POST['new_mail'];
+}
+
+elseif($error !== false) {
+        echo "<p>$error</p>";
+}
+    ?>
+
+    
+                                <!-- PHP POUR LA MODIFICATION DE L'EMAIL -->
+
+
+
+
+
+    </form>
     <div id="form"> <!-- Début du Formulaire de modification d'email-->
         <h4 id="edit_info">Modifier votre adresse mail</h4>
-        <form methode="POST" action="myaccount.php" class="form">
-            <input type="mail" class="old_edit" placeholder="Ancienne adresse mail"><br><br> <!-- Zone de texte "Ancienne adresse mail" -->
-            <input type="mail" class="new_edit" placeholder="Nouvelle adresse mail"><br><br> <!-- Zone de texte "Nouvelle adresse mail" -->
-            <input type="Message" class="security_edit" placeholder="Mot de passe"></textarea><br><br> <!-- Zone de texte "Mot de passe" -->
-            <button id="bouton_connexion"> Envoyer </button> <!-- Bouton Envoyer -->
+        <form method="POST" action="myaccount.php" class="form">
+            <input type="text" class="old_edit" name="old_mail" placeholder="Ancienne adresse mail"><br><br> <!-- Zone de texte "Ancienne adresse mail" -->
+            <input type="text" class="new_edit" name="new_mail" placeholder="Nouvelle adresse mail"><br><br> <!-- Zone de texte "Nouvelle adresse mail" -->
+            <input type="password" class="security_edit" name="mdp"      placeholder="Mot de passe"></textarea><br><br> <!-- Zone de texte "Mot de passe" -->
+            <button type="submit" name="submit" id="bouton_connexion" value="envoyer"> Envoyer </button> <!-- Bouton Envoyer -->
         </form>
-    </div> <!-- Fin du FFormulaire de modification d'email-->
+    </div> <!-- Fin du Formulaire de modification d'email-->
+
+
 
 
     <br>
@@ -147,15 +269,112 @@ require_once 'includes/database.inc.php'
     <br>
 
 
+
+
+                                    <!-- PHP POUR LA MODIFICATION DU MOT DE PASSE -->
+
+<?php 
+$error = false;
+
+
+
+if (isset($_POST['new_mdp'])) 
+{ 
+    $new_password = $_POST['new_mdp'];
+    $mail = $_POST['mail'];
+    $old_password = $_POST['old_mdp'];
+    // Vérification du $old_mail dans la base de donnée
+    // SI email reconnue a celui dans une base de donnée renvoie l'id de l'user lié a cette email
+    // SI email non reconnue dans la base de donnée renvoie rien
+    $requete_pw = 'SELECT id 
+                FROM user 
+                WHERE password= :old_mdp';
+    $bdd_mdp = $mysqlClient->prepare($requete_pw);
+    $bdd_mdp->execute(['old_mdp' => $old_password]);
+    $bdd_mdp = $bdd_mdp->fetch();
+
+
+
+        // Vérification du $password dans la base de donnée
+    // SI mot de passe reconnue a celui dans une base de donnée renvoie l'id de l'user lié a cette email
+    // SI mot de passe non reconnue dans la base de donnée renvoie rien
+    $requete_om = 'SELECT id 
+                FROM user 
+                WHERE email= :mail';
+    $bdd_mail = $mysqlClient->prepare($requete_om);
+    $bdd_mail->execute(['mail' => $mail]);
+    $bdd_mail = $bdd_mail->fetch();
+
+
+
+
+
+    if ($bdd_mail != NULL && $bdd_mdp != NULL ){ // SI email et mot de passe trouvé 
+
+
+
+        $DB = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'root');
+
+        $DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $data = [
+            'new_mdp' => $new_password,
+            'mail' => $mail,
+
+ 
+        ];
+        $sql = "UPDATE user SET password=:new_mdp WHERE email=:mail";
+        $stmt= $DB->prepare($sql);
+        $stmt->execute($data);
+        echo '<p class="style_css">Modification effectuée</p>'.'<br>';
+
+    }
+
+
+                // Erreurs
+    elseif ($bdd_mail != NULL && $bdd_mdp == NULL) { // SI email trouvé mais mot de passe inexistant
+        echo '<p class="style_css">Mot de passe invalide</p>';
+    }
+    elseif ($bdd_mail == NULL && $bdd_mdp != NULL) { // SI mot de passe trouvé mais email inexistant
+        echo '<p class="style_css">Email invalide</p>';
+    }
+    else { // SI email et mot de passe inexistant
+        echo '<p class="style_css">Mot de passe et email inexistant</p>';
+    }
+
+
+
+
+       //} if ($bdd_mail != 'old_mail'){
+        // ($bdd_mail != NULL  && $_SESSION["user"]["id"] == $bdd_mail["id"])
+          //  echo ("PTN C BON");
+         //   $_SESSION['user']["email"] = $_POST['new_mail'];
+}
+
+elseif($error !== false) {
+        echo "<p>$error</p>";
+}
+    ?>
+
+    
+                                <!-- PHP POUR LA MODIFICATION DU MOT DE PASSE -->
+
+
+
+
     <div id="form"> <!-- Début du Formulaire de modification de mot de passe-->
         <h4 id="edit_info">Modifier votre mot de passe</h4>
-        <form class="form">
-            <input type="text" class="old_edit" placeholder="Ancien mot de passe"><br><br> <!-- Zone de texte "Ancien mot de passe" -->
-            <input type="Sujet" class="new_edit" placeholder="Nouveau mot de passe"><br><br> <!-- Zone de texte "Nouveau mot de passe" -->
-            <input type="Message" class="security_edit" placeholder="Votre adresse mail"></textarea><br><br> <!-- Zone de texte "Votre adresse mail" -->
+        <form method="POST" class="form">
+            <input type="text" class="old_edit" name="old_mdp" placeholder="Ancien mot de passe"><br><br> <!-- Zone de texte "Ancien mot de passe" -->
+            <input type="text" class="new_edit" name="new_mdp" placeholder="Nouveau mot de passe"><br><br> <!-- Zone de texte "Nouveau mot de passe" -->
+            <input type="text" class="security_edit" name="mail" placeholder="Votre adresse mail"></textarea><br><br> <!-- Zone de texte "Votre adresse mail" -->
             <button id="bouton_connexion"> Envoyer </button> <!-- Bouton Envoyer -->
         </form>
-    </div> <!-- Fin du FFormulaire de modification de mot de passe-->
+    </div> <!-- Fin du Formulaire de modification de mot de passe-->
+
+
+
+
+
 
 
 
