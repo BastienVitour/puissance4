@@ -178,7 +178,7 @@ if(!empty($_POST)){
                 $error=smtpmailer($to,$from, $name ,$subj, $msg);
             
             
-                header('Location: login.php');
+        
                 exit;
                 }
             }
@@ -249,7 +249,7 @@ if(!empty($_POST)){
                 }
             ?>
                 <!-- Inpur pour le mot de passe-->
-                <input type="password" name="pwd1" class="input-mdp" placeholder="Mot de passe" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}([&#@=€$%*?\/:!\-+])" required>
+                <input type="password" name="pwd1" class="input-mdp" placeholder="Mot de passe"  required>
             </div>
             <br>
             <div id="motdepasse">
@@ -261,7 +261,7 @@ if(!empty($_POST)){
                 }
             ?>                                                                                                      <!-- pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}([&#@=€$%*?\/:!\-+])"-->
                 <!-- Input pour confirmer le mot de passe -->
-                <input type="password" name="pwd2" class="input-mdp" placeholder="Confirmer Mot de passe" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}([&#@=€$%*?\/:!\-+])"  required>
+                <input type="password" name="pwd2" class="input-mdp" placeholder="Confirmer Mot de passe"   required>
             </div>
         
         <br>
