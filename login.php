@@ -130,12 +130,12 @@ if(!empty($_POST)){
             $stmt2->execute([$email]);
             $user = $stmt2->fetch();
             $_SESSION["user_id"]=$user;
-            
+            echo $_SESSION["user_id"]['id'];
          
         
             
 
-            header('Location: accueil.php');
+            header('Location: login.php');
             
         
                 exit;
@@ -185,7 +185,7 @@ if(!empty($_POST)){
                 }
             ?>
                 <!--input pour l'email-->
-                <input type="Email" class="input_connexion" name="mail" placeholder="Email">
+                <input type="email" class="input_connexion" name="mail" placeholder="Email">
             </div>
             <br>
             <div id="motdepasse">
@@ -197,7 +197,7 @@ if(!empty($_POST)){
                 }
             ?>
                 <!-- input pour le mot de passe-->
-                <input type="password" class="input-mdp" name="pwd" placeholder="Mot de passe">
+                <input type="password" class="input-mdp" name="pwd" placeholder="Mot de passe" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}([&#@=€$%*?\/:!\-+])">
             </div>
         
         <br>
