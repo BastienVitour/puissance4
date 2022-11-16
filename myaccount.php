@@ -2,6 +2,7 @@
 $pdo=require_once 'includes/database.inc.php';
 session_start();
 $DB = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'root');
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -45,7 +46,7 @@ $DB = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'ro
 
             <!-- PHP PROFIL -->
 <?php
-    $requete_pseudo = 'SELECT pseudo FROM user WHERE id=3';
+    $requete_pseudo = 'SELECT pseudo FROM user WHERE id=4';
     $pseudo = $mysqlClient->prepare($requete_pseudo);
     $pseudo->execute();
     $pseudo = $pseudo->fetchAll();
@@ -446,7 +447,20 @@ if (isset($_POST['new_mail'])) {
         $error = 'Email invalide';
     }
 }
+if (isset($new_mail)){
+    // On vérifit que le mail est disponible
 
+    $email = $_POST['new_mail'];
+    $stmt = $DB->prepare("SELECT email FROM user WHERE email='$email'");
+    $stmt->execute([$email]); 
+    $user = $stmt->fetch();
+    if ($user) {
+    $valid=false;
+    $er_mail = "Le mail est deja utilisé";
+    $new_mail=null;
+    echo "<p class='style_css'>.$er_mail.<p>";
+    }
+}
 if (isset($new_mail)) 
 { 
     // Vérification du $old_mail dans la base de donnée
@@ -464,11 +478,12 @@ if (isset($new_mail))
         // Vérification du $password dans la base de donnée
     // SI mot de passe reconnue a celui dans une base de donnée renvoie l'id de l'user lié a cette email
     // SI mot de passe non reconnue dans la base de donnée renvoie rien
+    $passwordhash= hash('sha256',$password);
     $requete_pw = 'SELECT id 
                 FROM user 
                 WHERE password= :mdp';
     $bdd_password = $mysqlClient->prepare($requete_pw);
-    $bdd_password->execute(['mdp' => $password]);
+    $bdd_password->execute(['mdp' => $passwordhash]);
     $bdd_password = $bdd_password->fetch();
 
 
@@ -483,7 +498,7 @@ if (isset($new_mail))
         $DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $data = [
             'new_mail' => $new_mail,
-            'mdp' => $password,
+            'mdp' => $passwordhash,
 
  
         ];
@@ -501,8 +516,7 @@ if (isset($new_mail))
     }
     elseif ($bdd_mail == NULL && $bdd_password != NULL) { // SI mot de passe trouvé mais email inexistant
         echo '<p class="style_css">Email invalide</p>';
-    }
-    else { // SI email et mot de passe inexistant
+    }else { // SI email et mot de passe inexistant
         echo '<p class="style_css">Mot de passe et email inexistant</p>';
     }
 
@@ -562,6 +576,7 @@ if (isset($_POST['new_mdp']))
     $new_password = $_POST['new_mdp'];
     $mail = $_POST['mail'];
     $old_password = $_POST['old_mdp'];
+    $passwordhash= hash('sha256',$old_password);
     // Vérification du $old_mail dans la base de donnée
     // SI email reconnue a celui dans une base de donnée renvoie l'id de l'user lié a cette email
     // SI email non reconnue dans la base de donnée renvoie rien
@@ -569,7 +584,7 @@ if (isset($_POST['new_mdp']))
                 FROM user 
                 WHERE password= :old_mdp';
     $bdd_mdp = $mysqlClient->prepare($requete_pw);
-    $bdd_mdp->execute(['old_mdp' => $old_password]);
+    $bdd_mdp->execute(['old_mdp' => $passwordhash]);
     $bdd_mdp = $bdd_mdp->fetch();
 
 
@@ -595,6 +610,7 @@ if (isset($_POST['new_mdp']))
         $DB = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'root');
 
         $DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $new_password= hash('sha256',$_POST['new_mdp']);
         $data = [
             'new_mdp' => $new_password,
             'mail' => $mail,
