@@ -1,4 +1,5 @@
-<?php 
+<?php
+session_start();
 require_once 'includes/database.inc.php'
 ?>
 <!DOCTYPE html>
@@ -47,124 +48,6 @@ require_once 'includes/database.inc.php'
                 </div>
 
                 <div id="tables">
-
-<!--                    <table>
-                        <thead>
-                            <tr id="head">
-                                <th><h2>Classement</h2></th>
-                                <th><h2>Nom du Jeu</h2></th>
-                                <th><h2>Pseudo</h2></th>
-                                <th><h2>Difficulté</h2></th>
-                                <th><h2>Score</h2></th>
-                                <th><h2>Date et heure</h2></th>
-                            </tr>
-                    </thead>
-
-                    <tbody>
-                        <tr id="first" class="podium">
-                            <th>1</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr id="second" class="podium">
-                            <th>2</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr id="third" class="podium">
-                            <th>3</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr class="even">
-                            <th>4</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr class="odd">
-                            <th>5</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr class="even">
-                            <th>6</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr class="odd">
-                            <th>7</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr class="even">
-                            <th>8</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr class="odd">
-                            <th>9</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr class="even">
-                            <th>10</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                    </tbody>
-                    
-                    <tfoot>
-                        <tr id="user_row">
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tfoot>
-
-                    </table> -->
                     
                     <!--L'entête du tableau-->
                     <table id="what">
@@ -183,17 +66,20 @@ require_once 'includes/database.inc.php'
 
                         //On va récupérer les infos de la base de données
                         //--> nom du jeu, pseudo de l'utilisateur, niveau de difficulté, score
-                        $scores = $mysqlClient->prepare('SELECT `game`.`game_name`, `user`.pseudo, `difficulty`.`level`, `score` FROM `score` INNER JOIN `user` INNER JOIN `game` INNER JOIN difficulty ON score.id_user=user.id AND score.id_game=game.id AND score.id_difficulty=difficulty.id ORDER BY id_game, id_difficulty DESC, score');
+                        $scores = $mysqlClient->prepare('SELECT `game`.`game_name`, `user`.pseudo, `difficulty`.`level`, `score`, `score`.date_game AS `datetime` 
+                                                         FROM `score` INNER JOIN `user` INNER JOIN `game` INNER JOIN difficulty 
+                                                         ON score.id_user=user.id AND score.id_game=game.id AND score.id_difficulty=difficulty.id 
+                                                         ORDER BY id_game, id_difficulty DESC, score');
                         $scores->execute();
                         $scores = $scores->fetchAll();
 
                         foreach ($scores as $case) { 
 
-                            //$date = $case['datetime'];
+                            $date = $case['datetime'];
 
                             //On formate la date pour respecter un meilleur format
-                            //$theDate = new DateTime($date);
-                            //$message_datetime = $theDate->format('d/m/Y H:i');
+                            $theDate = new DateTime($date);
+                            $theDate = $theDate->format('d/m/Y H:i');
                             
                             //On ne garde que les 10 premiers du classement
                             if ($classement <11) {
@@ -229,7 +115,7 @@ require_once 'includes/database.inc.php'
                                 <td class="pseudo"><?php echo $case['pseudo']; ?></td>
                                 <td class="difficulty"><?php echo $case['level']; ?></td>
                                 <td class="score"><?php echo $case['score'].' sec'; ?></td>
-                                <td class="datetime"><?php// echo $case['datetime']; ?></td>
+                                <td class="datetime"><?php echo $theDate; ?></td>
                             </tr>
                         </table>
 

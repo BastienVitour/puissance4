@@ -127,14 +127,10 @@ table {
     padding: 35px 0px 35px 0px;
 }
 
-/*.even {
-    background-color: rgb(0, 0, 160);
-} */
-
 th {
 /*    border: 2px solid whitesmoke; */
     padding: 0px 50px 0px 50px;
-    font-size: xx-large;
+    font-size: x-large;
 }
 
 td {
@@ -162,10 +158,6 @@ td {
 .score {
     width: 12%;
 }
-
-/*tfoot tr td {
-    border-top: 5px solid whitesmoke;
-} */
 
 /*Css du tableau (fin)*/
 
