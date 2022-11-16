@@ -12,7 +12,7 @@ require_once 'includes/database.inc.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/CSS/memory.css">
     <link rel="shortcut icon" href="assets/images/icone.png" type="image/x-icon">
-    <title>Memory</title>
+    <title>Memory </title>
 </head>
 <body>
 
