@@ -137,9 +137,9 @@ if(!empty($_POST)){
 
             
             $retour = mail('sylvian.vidal@gmail.com', 'Envoi depuis la page Contact', 'email de confirmation', 'From: the power of memory');
-            if ($retour)
+            if ($retour){
                 echo '<p>Votre message a bien été envoyé.</p>';
-            
+            }
             header('Location: login.php');
             exit;
 
