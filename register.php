@@ -15,7 +15,7 @@ session_start();
 include('includes/database.inc.php');
 $error = false;
  // S'il y a une session alors on ne retourne plus sur cette page
-if (isset($_SESSION['id'])){
+if (isset($_SESSION['user_id'])){
     header('Location: index.php');
     exit;
     }
@@ -320,7 +320,7 @@ if(!empty($_POST)){
                 }
             ?>
                 <!-- Inpur pour le mot de passe-->
-                <input type="password" name="pwd1" class="input-mdp" placeholder="Mot de passe"  required>
+                <input type="password" name="pwd1" class="input-mdp" placeholder="Mot de passe" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}([&#@=€$%*?\/:!\-+])"  required>
             </div>
             <br>
             <div id="motdepasse">
@@ -332,7 +332,7 @@ if(!empty($_POST)){
                 }
             ?>                                                                                                      <!-- pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}([&#@=€$%*?\/:!\-+])"-->
                 <!-- Input pour confirmer le mot de passe -->
-                <input type="password" name="pwd2" class="input-mdp" placeholder="Confirmer Mot de passe"   required>
+                <input type="password" name="pwd2" class="input-mdp" placeholder="Confirmer Mot de passe"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}([&#@=€$%*?\/:!\-+])" required>
             </div>
         
         <br>

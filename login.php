@@ -49,11 +49,9 @@ if(!empty($_POST)){
         $DB = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'root');
 
         $DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        $passwordhash= hash('sha256',$_POST['pw1']);
         
-        
-        $stmt = $DB->prepare("SELECT `password` FROM user WHERE `password`='$passwordhash'");
+        $pwd = $_POST['pwd'];
+        $stmt = $DB->prepare("SELECT `password` FROM user WHERE `password`=?");
         $stmt->execute([$pwd]); 
         $user = $stmt->fetch();
         if ($user) {
@@ -207,13 +205,11 @@ if(!empty($_POST)){
             <button id="bouton_connexion" name="login" type="submit" >
                 Connexion
             </button>
-       
-            <!-- Bouton pour l'inscription-->
-            <a href="register.php"><buttton id="bouton_inscription"  >
-                Inscription
-            </butttone></a>
         </form>
-        
+            <!-- Bouton pour l'inscription-->
+            <button id="bouton_inscription"  onclick="window.location.href = 'register.php';">
+                Inscription
+            </button>
     </div>
     <!-- fin de la partie de connexion-->
 
