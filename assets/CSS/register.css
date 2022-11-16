@@ -1,4 +1,8 @@
 /*haut de la page */
+body {
+    margin: 0;
+}
+
 header{
     display: flex;
     justify-content: space-between;
@@ -8,7 +12,10 @@ header{
 nav{
     display: flex;
     color: whitesmoke;
+}
 
+#power_memory {
+    margin-left: 15px;
 }
 
 .image_back{
@@ -16,12 +23,10 @@ nav{
     background-position: 50%;
     background-position-y:47% ;
     background-size: 100%;
-    padding: 20px;
-
     background-image: url(https://images.hdqwalls.com/wallpapers/cyber-outrun-vaporwave-synth-retro-car-4k-m6.jpg);
 }
 
-#accueil_link, #memory_link, #scores_link, #contact_link ,#connexion_link,.link{
+.links{
     padding-left: 10px;
     padding-right: 10px;
 }
