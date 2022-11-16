@@ -15,7 +15,7 @@ session_start();
 include('includes/database.inc.php');
 $error = false;
  // S'il y a une session alors on ne retourne plus sur cette page
-if (isset($_SESSION['id'])){
+if (isset($_SESSION['user_id'])){
     header('Location: index.php');
     exit;
     }
@@ -143,114 +143,14 @@ if(!empty($_POST)){
             if ($retour)
                 echo '<p>Votre message a bien été envoyé.</p>';
             
-           
+            header('Location: login.php');
+            exit;
 
 
 
 
-
-               /*         
-            ##########Script Information#########
-            # Purpose: Send mail Using PHPMailer#
-            #          & Gmail SMTP Server 	  #
-            # Created: 24-11-2019 			  #
-            #	Author : Hafiz Haider			  #
-            # Version: 1.0					  #
-            # Website: www.BroExperts.com 	  #
-            #####################################
-
-            //Include required PHPMailer files
                 
-            //Define name spaces
-               
-            //Create instance of PHPMailer
-                $mail = new PHPMailer();
-            //Set mailer to use smtp
-                $mail->isMail();
-            //Define smtp host
-                $mail->Host = "smtp.gmail.com";
-            //Enable smtp authentication
-                $mail->SMTPAuth = true;
-            //Set smtp encryption type (ssl/tls)
-                $mail->SMTPSecure = "tls";
-            //Port to connect smtp
-                $mail->Port = "587";
-            //Set gmail username
-                $mail->Username = "the.power.of.memory.email@gmail.com";
-            //Set gmail password
-                $mail->Password = "A1aaaaaaaa@";
-            //Email subject
-                $mail->Subject = "Test email using PHPMailer";
-            //Set sender email
-                $mail->setFrom('the.power.of.memory.email@gmail.com');
-            //Enable HTML
-                $mail->isHTML(true);
-            //Attachment
-                $mail->addAttachment('img/attachment.png');
-            //Email body
-                $mail->Body = "<h1>This is HTML h1 Heading</h1></br><p>This is html paragraph</p>";
-            //Add recipient
-                $mail->addAddress('sylvian.vidal95@gmail.com');
-            //Finally send email
-                if ( $mail->send() ) {
-                    echo "Email Sent..!";
-                }else{
-                    echo "Message could not be sent. Mailer Error:{$mail->ErrorInfo} ";
-                }
-            //Closing smtp connection
-                $mail->smtpClose();
 
-
-
-
-
-
-            function smtpmailer($to, $from, $from_name, $subject, $body)
-                {
-                    $mail = new PHPMailer();
-                    $mail->isMail();
-                    $mail->SMTPAuth = true; 
-             
-                    $mail->SMTPSecure = 'ssl'; 
-                    $mail->Host = 'sntp.gmail.com';
-                    $mail->Port = 465;  
-                    $mail->Username = 'the.power.of.memory.email@gmail.com';
-                    $mail->Password = 'kjqsbvljqbvljqbdvljqsbvaaaa@';   
-               
-               //   $path = 'reseller.pdf';
-               //   $mail->AddAttachment($path);
-               
-                    $mail->IsHTML(true);
-                    $mail->From="the.power.of.memory.email@gmail.com";
-                    $mail->FromName=$from_name;
-                    $mail->Sender=$from;
-                    $mail->AddReplyTo($from, $from_name);
-                    $mail->Subject = $subject;
-                    $mail->Body = $body;
-                    $mail->AddAddress($to);
-                    if(!$mail->Send())
-                    {
-                        $error ="Please try Later, Error Occured while Processing...";
-                        return $error; 
-                    }
-                    else 
-                    {
-                        $error = "Thanks You !! Your email is sent.";  
-                        return $error;
-                    }
-                }
-                
-                $to   = 'sylvian.vidal95@gmail.com';
-                $from = 'the.power.of.memory.email@gmail.com';
-                $name = 'codingbot';
-                $subj = 'email de confirmation';
-                $msg = 'vous etes bien inscrit';
-                
-                $error=smtpmailer($to,$from, $name ,$subj, $msg);
-                echo $error;
-            */
-               /* header('Location: login.php');
-                exit;*/
                 }
             }
 }
@@ -320,7 +220,7 @@ if(!empty($_POST)){
                 }
             ?>
                 <!-- Inpur pour le mot de passe-->
-                <input type="password" name="pwd1" class="input-mdp" placeholder="Mot de passe"  required>
+                <input type="password" name="pwd1" class="input-mdp" placeholder="Mot de passe" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}([&#@=€$%*?\/:!\-+])"  required>
             </div>
             <br>
             <div id="motdepasse">
@@ -332,7 +232,7 @@ if(!empty($_POST)){
                 }
             ?>                                                                                                      <!-- pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}([&#@=€$%*?\/:!\-+])"-->
                 <!-- Input pour confirmer le mot de passe -->
-                <input type="password" name="pwd2" class="input-mdp" placeholder="Confirmer Mot de passe"   required>
+                <input type="password" name="pwd2" class="input-mdp" placeholder="Confirmer Mot de passe"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}([&#@=€$%*?\/:!\-+])" required>
             </div>
         
         <br>
