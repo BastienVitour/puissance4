@@ -43,76 +43,354 @@ $DB = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'ro
 
 
 
+            <!-- PHP PROFIL -->
+<?php
+    $requete_pseudo = 'SELECT pseudo FROM user WHERE id=3';
+    $pseudo = $mysqlClient->prepare($requete_pseudo);
+    $pseudo->execute();
+    $pseudo = $pseudo->fetchAll();
+    foreach ($pseudo as $name) {
+    }
+    $name = $name['pseudo'];
+?>
+            <!-- PHP PROFIL -->
+
+            
 
 
+
+
+            <!-- PHP DATE INSCRIPTION  -->
+            <?php
+    $requete_date_inscription = 'SELECT date_inscription FROM user WHERE id=3';
+    $date_inscription = $mysqlClient->prepare($requete_date_inscription);
+    $date_inscription->execute();
+    $date_inscription = $date_inscription->fetchAll();
+    foreach ($date_inscription as $date_login) {
+    }
+    $date_login=$date_login['date_inscription'];
+
+    $date_login= new DateTime($date_login);
+    $date_login = $date_login->format('j F Y');
+?>
+            <!-- PHP DATE INSCRIPTION -->
+
+
+
+
+
+
+
+            <!-- PHP MEILLEUR SCORE  -->
+<?php
+    $requete_meilleur_score = 'SELECT score FROM score ORDER BY `score`.`id_difficulty` ASC, `score`.`score` DESC';
+    $meilleur_score = $mysqlClient->prepare($requete_meilleur_score);
+    $meilleur_score->execute();
+    $meilleur_score = $meilleur_score->fetchAll();
+    foreach ($meilleur_score as $best_score) {
+    }
+    $best_score=$best_score['score'];
+?>
+            <!-- PHP MEILLEUR SCORE -->
+            <!-- PHP MEILLEUR SCORE DIFFICULTE  -->
+<?php
+        $DB_best_score = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'root');
+
+        $DB_best_score->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $data_best_score = [
+            'best_score' => $best_score,
+
+ 
+        ];
+        $sqlbs = 'SELECT id_difficulty , difficulty.level AS `level`  
+                  FROM score  
+                  INNER JOIN difficulty ON score.id_difficulty = difficulty.id
+                  WHERE score = :best_score';
+        $stmtbs= $DB->prepare($sqlbs);
+        $stmtbs->execute($data_best_score);
+
+
+
+    $stmtbs = $stmtbs->fetchAll();
+    foreach ($stmtbs as $best_score_diff) {
+    }
+    $best_score_diff=$best_score_diff['level']; 
+?>
+            <!-- PHP MEILLEUR SCORE DIFFICULTE -->
+
+
+
+
+
+
+
+            <!-- PHP MEILLEUR TEMPS  -->
+<?php
+
+    $requete_meilleur_temps = 'SELECT score FROM score ORDER BY `score`.`score` DESC';
+    $meilleur_temps = $mysqlClient->prepare($requete_meilleur_temps);
+    $meilleur_temps->execute();
+    $meilleur_temps = $meilleur_temps->fetchAll();
+    foreach ($meilleur_temps as $best_time) {
+    }
+    $best_time=$best_time['score'];
+?>
+            <!-- PHP MEILLEUR TEMPS -->
+            <!-- PHP MEILLEUR TEMPS DIFFICULTE  -->
+<?php
+        $DB_best_time = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'root');
+
+        $DB_best_time->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $data_best_time = [
+            'best_time' => $best_time,
+
+ 
+        ];
+        $sqlbt = 'SELECT id_difficulty , difficulty.level AS `level`  
+                  FROM score  
+                  INNER JOIN difficulty ON score.id_difficulty = difficulty.id
+                  WHERE score = :best_time';
+        $stmtbt= $DB->prepare($sqlbt);
+        $stmtbt->execute($data_best_time);
+
+
+
+    $stmtbt = $stmtbt->fetchAll();
+    foreach ($stmtbt as $best_time_diff) {
+    }
+    $best_time_diff=$best_time_diff['level'];
+?>
+            <!-- PHP MEILLEUR TEMPS DIFFICULTE -->
+
+
+
+            <!-- PHP PARTIES JOUEES TOTAL -->
+                <?php
+$dbpj = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'root');
+
+$dbpj->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$Sqlpj = 'SELECT count(*) as `total` FROM score';
+$stmtpj = $dbpj->query($Sqlpj);
+$stmtpj->execute();
+$totalpj = $stmtpj->fetchAll();
+foreach ($totalpj as $played_total) {
+}
+$played_total=$played_total['total'];
+
+?>
+            <!-- PHP PARTIES JOUEES TOTAL -->
 
 
 
 
     <div id="profil"> <!-- Début du profil-->
         <div id="profil_avatar"> <!-- Photo de profil-->
-            <a href="change_avatar.php">
             <img alt="Avatar" src="https://cdn1.epicgames.com/epic/offer/WatchDogs2_PortraitPromo-1280x1420-8ef789a7185a709178f51c0e9d42ee9a.jpg" id="avatar">
             </a>
         </div>
         <div id="profil_data"> <!-- Information du profil-->
-            <h4 id="nickname">Xx_DarKSylvian_xX</H4> <!-- Pseudo du compte -->
-            <p>Inscrit depuis le 06 octobre 2019</p> <!-- Historique d'inscription -->
+
+                <!-- PSEUDO -->
+        <h4 class="name_css"><?= $name; ?> </h4>
+                <!-- PSEUDO -->
+
+                <!-- DATE INSCRIPTION -->
+        <p class="style_css"> Inscrit le <?= $date_login; ?>
+                <!-- DATE INSCRIPTION -->
             <br>
-            <p id="best">Meilleur score : 6780</p> <!-- Meilleur score -->
-            <p id="best">Meilleur temps : 38.56s mode Facile</p> <!-- Meilleur temps et sur quelle mode-->
+            <br>
+            <br>
+            <br>
+            <br>
+        <!-- MEILLEUR SCORE -->
+        <p class="style_css"> Meilleure performance : <?= $best_score; ?>s en difficulté <?=$best_score_diff; ?>
+        <!-- MEILLEUR SCORE -->
+
+        <!-- MEILLEUR TEMPS -->
+        <p class="style_css"> Meilleur temps : <?= $best_time; ?>s en difficulté <?=$best_time_diff; ?>
+        <!-- MEILLEUR TEMPS -->
+
+        <!-- PARTIES JOUEES -->
+        <p class="style_css"> Total de parties jouées : <?= $played_total; ?> parties
+        <!-- PARTIES JOUEES -->
         </div>
     </div> <!-- Fin du profil-->
 
 
 
 
-    <div id="level"> <!-- Début de la barre de progression -->
-        <p>18</p> <!-- Level précédent -->
-        <div id="barre">
-        <div id="level_progress">90%</div>
-        </div>
-        <p>19</p> <!-- Level Suivant-->
-    </div> <!-- Fin de la barre de progression -->
+
+
 
 
 
 
     <div id="game_stats"> <!-- Début des scores des niveaux de jeu -->
         
+
+
+                <!-- PHP MEILLEUR TEMPS FACILE -->
+<?php
+
+$requete_meilleur_temps_facile = 'SELECT * FROM `score` WHERE `id_difficulty` = 1 ORDER BY `score`.`score` DESC';
+$meilleur_temps_facile = $mysqlClient->prepare($requete_meilleur_temps_facile);
+$meilleur_temps_facile->execute();
+$meilleur_temps_facile = $meilleur_temps_facile->fetchAll();
+foreach ($meilleur_temps_facile as $best_time_easy) {
+}
+$best_time_easy=$best_time_easy['score'];
+?>
+                <!-- PHP MEILLEUR TEMPS FACILE -->
+                <!-- PHP PARTIES JOUEES FACILE -->
+<?php
+$dbpj = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'root');
+
+$dbpj->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$Sqlpj = 'SELECT count(*) as `total` FROM score WHERE `id_difficulty` = 1';
+$stmtpj = $dbpj->query($Sqlpj);
+$stmtpj->execute();
+$totalpj = $stmtpj->fetchAll();
+foreach ($totalpj as $played_easy) {
+}
+$played_easy=$played_easy['total'];
+
+?>
+                <!-- PHP PARTIES JOUEES FACILE -->
+
+
         <div id="facile"> <!-- Niveau facile -->
-            <a href="level_easy.php">
+            <a href="memory.php">
             <img alt="easy" src="assets/images/facile.jpeg" id="easy"></a>
             <p id="pl">Facile</p>
-            <br><p id="played"> Joué : 5</p>
-            <br><p id="played"> Meilleur temps : 38.56s</p>
+            <br><p class="style_css"> Joué : <?= $played_easy; ?> parties
+            <br><p class="style_css"> Meilleurs temps : <?= $best_time_easy; ?> secondes
+
+
+
+
+
+
+
+                <!-- PHP MEILLEUR TEMPS MOYEN -->
+<?php
+
+$requete_meilleur_temps_moyen = 'SELECT * FROM `score` WHERE `id_difficulty` = 2 ORDER BY `score`.`score` DESC';
+$meilleur_temps_moyen = $mysqlClient->prepare($requete_meilleur_temps_moyen);
+$meilleur_temps_moyen->execute();
+$meilleur_temps_moyen = $meilleur_temps_moyen->fetchAll();
+foreach ($meilleur_temps_moyen as $best_time_medium) {
+}
+$best_time_medium=$best_time_medium['score'];
+?>
+                <!-- PHP MEILLEUR TEMPS MOYEN -->
+                <!-- PHP PARTIES JOUEES MOYEN -->
+<?php
+$dbpj = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'root');
+
+$dbpj->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$Sqlpj = 'SELECT count(*) as `total` FROM score WHERE `id_difficulty` = 2';
+$stmtpj = $dbpj->query($Sqlpj);
+$stmtpj->execute();
+$totalpj = $stmtpj->fetchAll();
+foreach ($totalpj as $played_medium) {
+}
+$played_medium=$played_medium['total'];
+
+?>
+                <!-- PHP PARTIES JOUEES MOYEN -->
 
 
         </div>
         <div id="intermediaire"> <!-- Niveau intermédiaire --> 
-            <a href="level_medium.php">
+            <a href="memory.php">
             <img alt="medium" src="assets/images/medium.jpeg" id="medium"></a>
             <p id="pl">Intermédiaire</p>
-            <br><p id="played"> Joué : 3</p>
-            <br><p id="played"> Meilleur temps : 56.08s</p>
+            <br><p class="style_css"> Joué : <?= $played_medium; ?> parties
+            <br><p class="style_css"> Meilleurs temps : <?= $best_time_medium; ?> secondes
 
+
+
+
+
+
+                <!-- PHP MEILLEUR TEMPS EXPERT -->
+<?php
+
+$requete_meilleur_temps_expert = 'SELECT * FROM `score` WHERE `id_difficulty` = 3 ORDER BY `score`.`score` DESC';
+$meilleur_temps_expert = $mysqlClient->prepare($requete_meilleur_temps_expert);
+$meilleur_temps_expert->execute();
+$meilleur_temps_expert = $meilleur_temps_expert->fetchAll();
+foreach ($meilleur_temps_expert as $best_time_expert) {
+}
+$best_time_expert=$best_time_expert['score'];
+?>
+                <!-- PHP MEILLEUR TEMPS EXPERT -->
+                <!-- PHP PARTIES JOUEES EXPERT -->
+<?php
+$dbpj = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'root');
+
+$dbpj->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$Sqlpj = 'SELECT count(*) as `total` FROM score WHERE `id_difficulty` = 3';
+$stmtpj = $dbpj->query($Sqlpj);
+$stmtpj->execute();
+$totalpj = $stmtpj->fetchAll();
+foreach ($totalpj as $played_expert) {
+}
+$played_expert=$played_expert['total'];
+
+?>
+                <!-- PHP PARTIES JOUEES EXPERT -->
 
         </div>
         <div id="expert"> <!-- Niveau expert -->
-            <a href="level_expert.php">
+            <a href="memory.php">
             <img alt="expert" src="assets/images/expert.jpeg" id="expert"></a>
             <p id="pl">Expert</p>
-            <br><p id="played"> Joué : 1</p>
-            <br><p id="played"> Meilleur temps : X</p>
+            <br><p class="style_css"> Joué : <?= $played_expert; ?> parties
+            <br><p class="style_css"> Meilleurs temps : <?= $best_time_expert; ?> secondes
 
 
+
+
+
+
+
+
+
+                <!-- PHP MEILLEUR TEMPS IMPOSSIBLE -->
+<?php
+
+$requete_meilleur_temps_impossible = 'SELECT * FROM `score` WHERE `id_difficulty` = 4 ORDER BY `score`.`score` DESC';
+$meilleur_temps_impossible = $mysqlClient->prepare($requete_meilleur_temps_impossible);
+$meilleur_temps_impossible->execute();
+$meilleur_temps_impossible = $meilleur_temps_impossible->fetchAll();
+foreach ($meilleur_temps_impossible as $best_time_impossible) {
+}
+$best_time_impossible=$best_time_impossible['score'];
+?>
+                <!-- PHP MEILLEUR TEMPS IMPOSSIBLE -->
+                <!-- PHP PARTIES JOUEES IMPOSSIBLE -->
+<?php
+$dbpj = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'root');
+
+$dbpj->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$Sqlpj = 'SELECT count(*) as `total` FROM score WHERE `id_difficulty` = 4';
+$stmtpj = $dbpj->query($Sqlpj);
+$stmtpj->execute();
+$totalpj = $stmtpj->fetchAll();
+foreach ($totalpj as $played_impossible) {
+}
+$played_impossible=$played_impossible['total'];
+
+?>
+                <!-- PHP PARTIES JOUEES IMPOSSIBLE -->
         </div>
         <div id="impossible"> <!-- Niveau impossible -->     
-            <a href="level_impossible.php">
+            <a href="memory.php">
             <img alt="impossible" src="assets/images/impossible.jpeg" id="impossible"></a>
             <p id="pl">Impossible</p> 
-            <br><p id="played"> Joué : 0</p>
-            <br><p id="played"> Meilleur temps : X</p>
+            <br><p class="style_css"> Joué : <?= $played_impossible; ?> parties
+            <br><p class="style_css"> Meilleurs temps : <?= $best_time_impossible; ?> secondes
 
         </div>    
     </div> <!-- Fin des scores des niveaux de jeu -->
@@ -252,11 +530,12 @@ elseif($error !== false) {
     </form>
     <div id="form"> <!-- Début du Formulaire de modification d'email-->
         <h4 id="edit_info">Modifier votre adresse mail</h4>
-        <form method="POST" action="myaccount.php" class="form">
+        <form method="POST"  action="#edit_mail" class="form">
             <input type="text" class="old_edit" name="old_mail" placeholder="Ancienne adresse mail"><br><br> <!-- Zone de texte "Ancienne adresse mail" -->
             <input type="text" class="new_edit" name="new_mail" placeholder="Nouvelle adresse mail"><br><br> <!-- Zone de texte "Nouvelle adresse mail" -->
             <input type="password" class="security_edit" name="mdp"      placeholder="Mot de passe"></textarea><br><br> <!-- Zone de texte "Mot de passe" -->
-            <button type="submit" name="submit" id="bouton_connexion" value="envoyer"> Envoyer </button> <!-- Bouton Envoyer -->
+            <button type="submit" name="submit" id="bouton_connexion" value="envoyer" > Envoyer </button> <!-- Bouton Envoyer -->
+
         </form>
     </div> <!-- Fin du Formulaire de modification d'email-->
 
@@ -363,7 +642,7 @@ elseif($error !== false) {
 
     <div id="form"> <!-- Début du Formulaire de modification de mot de passe-->
         <h4 id="edit_info">Modifier votre mot de passe</h4>
-        <form method="POST" class="form">
+        <form method="POST"  action ="#edit_password"class="form">
             <input type="text" class="old_edit" name="old_mdp" placeholder="Ancien mot de passe"><br><br> <!-- Zone de texte "Ancien mot de passe" -->
             <input type="text" class="new_edit" name="new_mdp" placeholder="Nouveau mot de passe"><br><br> <!-- Zone de texte "Nouveau mot de passe" -->
             <input type="text" class="security_edit" name="mail" placeholder="Votre adresse mail"></textarea><br><br> <!-- Zone de texte "Votre adresse mail" -->
