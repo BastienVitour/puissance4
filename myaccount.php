@@ -222,6 +222,41 @@ $played_total=$played_total['total'];
 
 
 
+            <!-- PHP MEILLEUR SCORE DIFFICULTE  -->
+<?php
+        $DB_best_score = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'root');
+
+        $DB_best_score->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $data_best_score = [
+            'best_score' => $best_score,
+
+ 
+        ];
+        $sqlbs = 'SELECT id_difficulty , score.pseudo AS `pseudo`  
+                  FROM score  
+                  INNER JOIN difficulty ON score.id_difficulty = difficulty.id
+                  WHERE score = :best_score';
+        $stmtbs= $DB->prepare($sqlbs);
+        $stmtbs->execute($data_best_score);
+
+
+
+    $stmtbs = $stmtbs->fetchAll();
+    foreach ($stmtbs as $user_rank) {
+    }
+    $user_rank=$user_rank['level']; 
+?>
+            <!-- PHP MEILLEUR SCORE DIFFICULTE -->
+
+
+
+
+
+<div id="rank">
+
+    <p class="style_css"> Vous etes classé : <?= $user_rank; ?> 
+
+</div>
 
 
 
