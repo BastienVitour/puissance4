@@ -3,7 +3,7 @@ require_once 'includes/database.inc.php'
 ?>
 <?php
 $DB = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'root');
-require "PHPMailer/PHPMailerAutoload.php";
+
 
 
 
@@ -205,11 +205,12 @@ if(!empty($_POST)){
             <button id="bouton_connexion" name="login" type="submit" >
                 Connexion
             </button>
-        </form>
+        
             <!-- Bouton pour l'inscription-->
-            <button id="bouton_inscription"  onclick="window.location.href = 'register.php';">
+            <a href="register.php"><buttn id="bouton_inscription">
                 Inscription
-            </button>
+            </butn></a>
+        </form>
     </div>
     <!-- fin de la partie de connexion-->
 

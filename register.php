@@ -5,9 +5,6 @@ require_once 'includes/database.inc.php'
 <?php
 $DB = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'root');
 
-require 'PHPMailer/class.phpmailer.php';
-require 'PHPMailer/class.smtp.php';
-require 'PHPMailer/PHPMailerAutoload.php';
 
 
 $valid=true;
@@ -15,11 +12,11 @@ session_start();
 include('includes/database.inc.php');
 $error = false;
  // S'il y a une session alors on ne retourne plus sur cette page
-if (isset($_SESSION['user_id'])){
+/*if (isset($_SESSION['user_id'])){
     header('Location: index.php');
     exit;
     }
-
+*/
 
 
 
