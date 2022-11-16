@@ -45,13 +45,15 @@ if(!empty($_POST)){
             $er_mdp = "Le mot de passe ne peut pas être vide";
 
         }else{
+
+        $passwordhash= hash('sha256',$pwd);
             // On vérifit que le mdp est bon
         $DB = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'root');
 
         $DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         
         $pwd = $_POST['pwd'];
-        $stmt = $DB->prepare("SELECT `password` FROM user WHERE `password`=?");
+        $stmt = $DB->prepare("SELECT `password` FROM user WHERE `password`='$passwordhash'");
         $stmt->execute([$pwd]); 
         $user = $stmt->fetch();
         if ($user) {
@@ -88,7 +90,7 @@ if(!empty($_POST)){
                 
             }else{
                 $valid=false;
-                $er_mail = "Le mail existe pas";
+                $er_mail = "Le mail existe ";
             }
             
             
@@ -135,7 +137,7 @@ if(!empty($_POST)){
         
             
 
-            header('Location: login.php');
+            header('Location: index.php');
             
         
                 exit;
