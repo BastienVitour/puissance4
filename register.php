@@ -4,8 +4,10 @@ require_once 'includes/database.inc.php'
 ?>
 <?php
 $DB = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'root');
-require "PHPMailer/PHPMailerAutoload.php";
 
+require 'PHPMailer/class.phpmailer.php';
+require 'PHPMailer/class.smtp.php';
+require 'PHPMailer/PHPMailerAutoload.php';
 
 
 $valid=true;
@@ -115,8 +117,12 @@ if(!empty($_POST)){
         if($valid){
             
 
+            $passwordhash= hash('sha256',$mdp);
+            
+
             //$mdp = crypt($mdp, "$6$rounds=5000$macleapersonnaliseretagardersecret$");
             $date_creation_compte = date('Y-m-d H:i:s');
+
 
             // On insert nos données dans la table utilisateur
             /*$DB->prepare("INSERT INTO user (pseudo, email, `password` , date_inscription) VALUES
@@ -128,58 +134,23 @@ if(!empty($_POST)){
             $DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             
             $sql = "INSERT INTO user (pseudo, email, `password` , date_inscription, date_last_connexion) VALUES
-            ('$_POST[pseudo]','$_POST[mail]','$_POST[pwd1]','$date_creation_compte','$date_creation_compte')";
+            ('$_POST[pseudo]','$_POST[mail]','$passwordhash','$date_creation_compte','$date_creation_compte')";
                 
             $DB->exec($sql);
-            echo 'Entrée ajoutée dans la table';
 
-            header('Location: register.php');
-            function smtpmailer($to, $from, $from_name, $subject, $body)
-                {
-                    $mail = new PHPMailer();
-                    $mail->IsSMTP();
-                    $mail->SMTPAuth = true; 
-             
-                    $mail->SMTPSecure = 'ssl'; 
-                    $mail->Host = 'sntp.gmail.com';
-                    $mail->Port = 465;  
-                    $mail->Username = 'sylvian.vidal95@gmail.com';
-                    $mail->Password = 'ENTER YOUR EMAIL PASSWORD';   
-               
-               //   $path = 'reseller.pdf';
-               //   $mail->AddAttachment($path);
-               
-                    $mail->IsHTML(true);
-                    $mail->From="sylvian.vidal95@gmail.com";
-                    $mail->FromName=$from_name;
-                    $mail->Sender=$from;
-                    $mail->AddReplyTo($from, $from_name);
-                    $mail->Subject = $subject;
-                    $mail->Body = $body;
-                    $mail->AddAddress($to);
-                    if(!$mail->Send())
-                    {
-                        $error ="Please try Later, Error Occured while Processing...";
-                        return $error; 
-                    }
-                    else 
-                    {
-                        $error = "Thanks You !! Your email is sent.";  
-                        return $error;
-                    }
-                }
-                
-                $to   = $mail;
-                $from = 'sylvian.vidal95@gmail.com';
-                $name = 'codingbot';
-                $subj = 'email de confirmation';
-                $msg = 'vous etes bien inscrit';
-                
-                $error=smtpmailer($to,$from, $name ,$subj, $msg);
             
+            $retour = mail('sylvian.vidal@gmail.com', 'Envoi depuis la page Contact', 'email de confirmation', 'From: the power of memory');
+            if ($retour)
+                echo '<p>Votre message a bien été envoyé.</p>';
             
-        
-                exit;
+            header('Location: login.php');
+            exit;
+
+
+
+
+                
+
                 }
             }
 }
