@@ -91,6 +91,12 @@ table {
     text-align: center;
 }
 
+#what {
+    border-collapse: separate;
+    background: linear-gradient(to right, blue, rebeccapurple);
+    margin-bottom: 25px;
+}
+
 #first {
 /*    background-color: goldenrod; */
     background: linear-gradient(to right, gold, goldenrod);
@@ -129,7 +135,7 @@ table {
 
 th {
 /*    border: 2px solid whitesmoke; */
-    padding: 0px 50px 0px 50px;
+    padding: 20px 50px 20px 50px;
     font-size: x-large;
 }
 
@@ -142,7 +148,6 @@ td {
 .classement {
     width: 18%;
 }
-
 .gamename {
     width: 18%;
 }
