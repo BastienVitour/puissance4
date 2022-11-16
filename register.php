@@ -4,8 +4,10 @@ require_once 'includes/database.inc.php'
 ?>
 <?php
 $DB = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'root');
-require "PHPMailer/PHPMailerAutoload.php";
 
+require 'PHPMailer/class.phpmailer.php';
+require 'PHPMailer/class.smtp.php';
+require 'PHPMailer/PHPMailerAutoload.php';
 
 
 $valid=true;
@@ -115,8 +117,12 @@ if(!empty($_POST)){
         if($valid){
             
 
+            $passwordhash= hash('sha256',$mdp);
+            
+
             //$mdp = crypt($mdp, "$6$rounds=5000$macleapersonnaliseretagardersecret$");
             $date_creation_compte = date('Y-m-d H:i:s');
+
 
             // On insert nos données dans la table utilisateur
             /*$DB->prepare("INSERT INTO user (pseudo, email, `password` , date_inscription) VALUES
@@ -128,46 +134,94 @@ if(!empty($_POST)){
             $DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             
             $sql = "INSERT INTO user (pseudo, email, `password` , date_inscription, date_last_connexion) VALUES
-            ('$_POST[pseudo]','$_POST[mail]','$_POST[pwd1]','$date_creation_compte','$date_creation_compte')";
+            ('$_POST[pseudo]','$_POST[mail]','$passwordhash','$date_creation_compte','$date_creation_compte')";
                 
             $DB->exec($sql);
-            echo 'Entrée ajoutée dans la table';
+
+            
+            $retour = mail('sylvian.vidal@gmail.com', 'Envoi depuis la page Contact', 'email de confirmation', 'From: the power of memory');
+            if ($retour)
+                echo '<p>Votre message a bien été envoyé.</p>';
+            
+           
+
+
+
+
+
+               /*         
+            ##########Script Information#########
+            # Purpose: Send mail Using PHPMailer#
+            #          & Gmail SMTP Server 	  #
+            # Created: 24-11-2019 			  #
+            #	Author : Hafiz Haider			  #
+            # Version: 1.0					  #
+            # Website: www.BroExperts.com 	  #
+            #####################################
+
+            //Include required PHPMailer files
+                
+            //Define name spaces
+               
+            //Create instance of PHPMailer
+                $mail = new PHPMailer();
+            //Set mailer to use smtp
+                $mail->isMail();
+            //Define smtp host
+                $mail->Host = "smtp.gmail.com";
+            //Enable smtp authentication
+                $mail->SMTPAuth = true;
+            //Set smtp encryption type (ssl/tls)
+                $mail->SMTPSecure = "tls";
+            //Port to connect smtp
+                $mail->Port = "587";
+            //Set gmail username
+                $mail->Username = "the.power.of.memory.email@gmail.com";
+            //Set gmail password
+                $mail->Password = "A1aaaaaaaa@";
+            //Email subject
+                $mail->Subject = "Test email using PHPMailer";
+            //Set sender email
+                $mail->setFrom('the.power.of.memory.email@gmail.com');
+            //Enable HTML
+                $mail->isHTML(true);
+            //Attachment
+                $mail->addAttachment('img/attachment.png');
+            //Email body
+                $mail->Body = "<h1>This is HTML h1 Heading</h1></br><p>This is html paragraph</p>";
+            //Add recipient
+                $mail->addAddress('sylvian.vidal95@gmail.com');
+            //Finally send email
+                if ( $mail->send() ) {
+                    echo "Email Sent..!";
+                }else{
+                    echo "Message could not be sent. Mailer Error:{$mail->ErrorInfo} ";
+                }
+            //Closing smtp connection
+                $mail->smtpClose();
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-            header('Location: register.php');
             function smtpmailer($to, $from, $from_name, $subject, $body)
                 {
                     $mail = new PHPMailer();
-                    $mail->IsSMTP();
+                    $mail->isMail();
                     $mail->SMTPAuth = true; 
              
                     $mail->SMTPSecure = 'ssl'; 
                     $mail->Host = 'sntp.gmail.com';
                     $mail->Port = 465;  
-                    $mail->Username = 'sylvian.vidal95@gmail.com';
-                    $mail->Password = 'ENTER YOUR EMAIL PASSWORD';   
+                    $mail->Username = 'the.power.of.memory.email@gmail.com';
+                    $mail->Password = 'kjqsbvljqbvljqbdvljqsbvaaaa@';   
                
                //   $path = 'reseller.pdf';
                //   $mail->AddAttachment($path);
                
                     $mail->IsHTML(true);
-                    $mail->From="sylvian.vidal95@gmail.com";
+                    $mail->From="the.power.of.memory.email@gmail.com";
                     $mail->FromName=$from_name;
                     $mail->Sender=$from;
                     $mail->AddReplyTo($from, $from_name);
@@ -186,17 +240,17 @@ if(!empty($_POST)){
                     }
                 }
                 
-                $to   = $mail;
-                $from = 'sylvian.vidal95@gmail.com';
+                $to   = 'sylvian.vidal95@gmail.com';
+                $from = 'the.power.of.memory.email@gmail.com';
                 $name = 'codingbot';
                 $subj = 'email de confirmation';
                 $msg = 'vous etes bien inscrit';
                 
                 $error=smtpmailer($to,$from, $name ,$subj, $msg);
-            
-            
-                header('Location: login.php');
-                exit;
+                echo $error;
+            */
+               /* header('Location: login.php');
+                exit;*/
                 }
             }
 }
@@ -266,7 +320,7 @@ if(!empty($_POST)){
                 }
             ?>
                 <!-- Inpur pour le mot de passe-->
-                <input type="password" name="pwd1" class="input-mdp" placeholder="Mot de passe" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}([&#@=€$%*?\/:!\-+])" required>
+                <input type="password" name="pwd1" class="input-mdp" placeholder="Mot de passe"  required>
             </div>
             <br>
             <div id="motdepasse">
@@ -278,7 +332,7 @@ if(!empty($_POST)){
                 }
             ?>                                                                                                      <!-- pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}([&#@=€$%*?\/:!\-+])"-->
                 <!-- Input pour confirmer le mot de passe -->
-                <input type="password" name="pwd2" class="input-mdp" placeholder="Confirmer Mot de passe"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}([&#@=€$%*?\/:!\-+])" required>
+                <input type="password" name="pwd2" class="input-mdp" placeholder="Confirmer Mot de passe"   required>
             </div>
         
         <br>
