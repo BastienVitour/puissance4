@@ -49,9 +49,11 @@ if(!empty($_POST)){
         $DB = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'root');
 
         $DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $passwordhash= hash('sha256',$_POST['pw1']);
         
-        $pwd = $_POST['pwd'];
-        $stmt = $DB->prepare("SELECT `password` FROM user WHERE `password`=?");
+        
+        $stmt = $DB->prepare("SELECT `password` FROM user WHERE `password`='$passwordhash'");
         $stmt->execute([$pwd]); 
         $user = $stmt->fetch();
         if ($user) {
@@ -130,12 +132,12 @@ if(!empty($_POST)){
             $stmt2->execute([$email]);
             $user = $stmt2->fetch();
             $_SESSION["user_id"]=$user;
-            
+            echo $_SESSION["user_id"]['id'];
          
         
             
 
-            header('Location: accueil.php');
+            header('Location: login.php');
             
         
                 exit;
@@ -185,7 +187,7 @@ if(!empty($_POST)){
                 }
             ?>
                 <!--input pour l'email-->
-                <input type="Email" class="input_connexion" name="mail" placeholder="Email">
+                <input type="email" class="input_connexion" name="mail" placeholder="Email">
             </div>
             <br>
             <div id="motdepasse">
@@ -197,7 +199,7 @@ if(!empty($_POST)){
                 }
             ?>
                 <!-- input pour le mot de passe-->
-                <input type="password" class="input-mdp" name="pwd" placeholder="Mot de passe">
+                <input type="password" class="input-mdp" name="pwd" placeholder="Mot de passe" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}([&#@=€$%*?\/:!\-+])">
             </div>
         
         <br>
@@ -205,11 +207,13 @@ if(!empty($_POST)){
             <button id="bouton_connexion" name="login" type="submit" >
                 Connexion
             </button>
-        </form>
+       
             <!-- Bouton pour l'inscription-->
-            <button id="bouton_inscription"  onclick="window.location.href = 'register.php';">
+            <a href="register.php"><buttton id="bouton_inscription"  >
                 Inscription
-            </button>
+            </butttone></a>
+        </form>
+        
     </div>
     <!-- fin de la partie de connexion-->
 
