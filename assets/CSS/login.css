@@ -1,0 +1,145 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/*haut de la page */
+header{
+    display: flex;
+    justify-content: space-between;
+    color: whitesmoke;
+}
+
+nav{
+    display: flex;
+    color: whitesmoke;
+
+}
+
+.image_back{
+    background-image: url(https://images.hdqwalls.com/wallpapers/cyber-outrun-vaporwave-synth-retro-car-4k-m6.jpg);
+    background-attachment: fixed;
+    background-position: 50%;
+    background-position-y: 47%;
+    background-size: 100%;
+    padding-bottom: 30px;
+    margin-bottom: 50px;
+}
+
+.links{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#power_memory {
+    margin-left: 15px;
+}
+
+/* fin du haut de la page*/
+
+
+h1{ /* titre Principale*/
+    text-align: center;
+    color: whitesmoke;
+    padding: 90px;
+}
+
+
+/* partie de la connexion*/
+#login{
+    text-align: center;
+    padding: 140px;
+}
+input{
+    width: 30%;
+    background-color: #252446;
+    border: 0px;
+    height: 40px;
+    padding-left: 20px;
+    color: whitesmoke;
+
+}
+
+/* bouton connexion et inscription */
+#bouton_connexion{
+    background-color: #fe7f00
+    ;
+    float: center;
+    border-style: solid;
+    border: 0px;
+    padding: 10px;
+    color: white;
+}
+
+#bouton_connexion:hover {
+    background-color: #252446;
+}
+
+#bouton_connexion a:hover {
+
+        color: white;
+
+}
+#bouton_inscription{
+    background-color: #fe7f00
+    ;
+    float: center;
+    border-style: solid;
+    border: 0px;
+    padding: 8.5px;
+    color: white;
+}
+
+#bouton_inscription:hover{
+    background-color: #252446;
+}
+/*  Fin bouton connexion et inscription */
+/*  Fin partie de la connexion*/
+
+
+/* Bas de la page*/
+footer{
+    background-color: #120d29;
+}
+
+.creditt{
+    color: whitesmoke;
+}
+
+#not_credit {
+    display:flex;
+    justify-content: space-around;
+}
+
+/* lien ul */
+ul li {
+    list-style-type: square;
+}
+
+.text_orange {
+    color: orange;
+}
+
+.gris {
+    color: whitesmoke;
+}
+
+/* Fin bas de la page*/
+
+
+
+
+
+
+/* general */
+a{
+    text-decoration: none;
+    color: currentColor;
+}
+a:hover
+{
+    color : #fe7f00;
+}
+body{
+    background-color: #131138;
+    color: whitesmoke;
+}
