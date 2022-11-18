@@ -31,8 +31,37 @@
                             <h4>Power Of Memory</h4>
                             <ul>
 
-                                <li class="text_orange"><a href="memory.php" class="gris">Jouer !</a></li>
-                                <li class="text_orange"><a href="scores.php" class="gris">Les scores</a></li>
+                            <?php
+                                if (isset($_SESSION['user_id'])) {
+                                $button_link = 'memory.php';
+                                }
+                                else {
+                                    $button_link = 'login.php';
+                                }
+                            ?>
+
+                                <li class="text_orange"><a href=<?= $button_link ?> class="gris">Jouer !</a></li>
+
+                            <?php
+                                if (isset($_SESSION['user_id'])) {
+                                $button_link = 'scores.php';
+                                }
+                                else {
+                                    $button_link = 'login.php';
+                                }
+                            ?>
+
+                                <li class="text_orange"><a href=<?= $button_link ?> class="gris">Les scores</a></li>
+
+                            <?php
+                                if (isset($_SESSION['user_id'])) {
+                                $button_link = 'contact.php';
+                                }
+                                else {
+                                    $button_link = 'login.php';
+                                }
+                            ?>
+
                                 <li class="text_orange"><a href="contact.php" class="gris">Nous contacter</a></li>
 
 

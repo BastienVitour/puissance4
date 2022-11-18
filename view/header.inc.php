@@ -36,33 +36,57 @@ $page_title = ['index', 'login', 'register', 'contact', 'memory', 'scores', 'mya
 
                 <div class="links">
                         <?php 
+
+                            if (isset($_SESSION['user_id'])) {
+                                $button_link = 'memory.php';
+                            }
+                            else {
+                                $button_link = 'login.php';
+                            }
+
                             if (strpos($url, 'memory')) { ?>
-                                <h4 style="color : #fe7f00;"><a href="memory.php">JEU</a></h4>
+                                <h4 style="color : #fe7f00;"><a href=<?= $button_link ?>>JEU</a></h4>
                         <?php    }
                             else { ?>
-                                <h4><a href="memory.php">JEU</a></h4>
+                                <h4><a href=<?= $button_link ?>>JEU</a></h4>
                          <?php   }
                         ?>
                 </div>
 
                 <div class="links">
                         <?php 
+
+                            if (isset($_SESSION['user_id'])) {
+                                $button_link = 'scores.php';
+                            }
+                            else {
+                                $button_link = 'login.php';
+                            }
+
                             if (strpos($url, 'scores')) { ?>
-                                <h4 style="color : #fe7f00;"><a href="scores.php">SCORES</a></h4>
+                                <h4 style="color : #fe7f00;"><a href=<?= $button_link ?>>SCORES</a></h4>
                         <?php    }
                             else { ?>
-                                <h4><a href="scores.php">SCORES</a></h4>
+                                <h4><a href=<?= $button_link ?>>SCORES</a></h4>
                          <?php   }
                         ?>
                 </div>
 
                 <div class="links">
                         <?php 
+
+                            if (isset($_SESSION['user_id'])) {
+                                $button_link = 'myaccount.php';
+                            }
+                            else {
+                                $button_link = 'login.php';
+                            }
+
                             if (strpos($url, 'myaccount')) { ?>
-                                <h4 style="color : #fe7f00;"><a href="myaccount.php">MON ESPACE</a></h4>
+                                <h4 style="color : #fe7f00;"><a href=<?= $button_link ?>>MON ESPACE</a></h4>
                         <?php    }
                             else { ?>
-                                <h4><a href="myaccount.php">MON ESPACE</a></h4>
+                                <h4><a href=<?= $button_link ?>>MON ESPACE</a></h4>
                          <?php   }
                         ?>
                 </div>
@@ -80,11 +104,19 @@ $page_title = ['index', 'login', 'register', 'contact', 'memory', 'scores', 'mya
 
                 <div class="links">
                         <?php 
+
+                            if (isset($_SESSION['user_id'])) {
+                                $button_link = 'contact.php';
+                            }
+                            else {
+                                $button_link = 'login.php';
+                            }
+
                             if (strpos($url, 'contact')) { ?>
-                                <h4 style="color : #fe7f00;"><a href="contact.php">NOUS CONTACTER</a></h4>
+                                <h4 style="color : #fe7f00;"><a href=<?= $button_link ?>>NOUS CONTACTER</a></h4>
                         <?php    }
                             else { ?>
-                                <h4><a href="contact.php">NOUS CONTACTER</a></h4>
+                                <h4><a href=<?= $button_link ?>>NOUS CONTACTER</a></h4>
                          <?php   }
                         ?>
                 </div>

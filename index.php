@@ -36,7 +36,16 @@ require_once 'includes/database.inc.php'
 
             <p>Venez challenger les cerveaux les plus agiles !</p>
 
-            <a href="memory.php"><button>JOUER !</button></a>
+            <?php
+            if (isset($_SESSION['user_id'])) {
+                $button_link = 'memory.php';
+            }
+            else {
+                $button_link = 'login.php';
+            }
+            ?>
+
+            <a href=<?= $button_link ?>><button>JOUER !</button></a>
 
             </div>
         </div>
