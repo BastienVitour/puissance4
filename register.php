@@ -161,78 +161,89 @@ if(!empty($_POST)){
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='assets/CSS/register.css'>
     <link rel="shortcut icon" href="assets/images/icone.png" type="image/x-icon">
-    <script src='main.js'></script>
     
 </head>
 <body>
     <div id="mainblock">
         <div class="image_back">  <!--div pour l'image de fond -->
-
-            <!--debut de la Nav barre -->
-            <?php
+        
+        <!--debut de la Nav barre -->
+        <?php
             include_once 'view/header.inc.php'
             ?>
             <!--fin de la nav barre -->
     
             <!--Titre principal-->
-        <h1>
-            INSCRIPTION
-        </h1>
-    </div>
-
-    <!--debut de l'insciption-->
-    <div id="login">
-        <form method="POST" action="register.php" >
-            <div id="email">
-            <?php
+            <h1>
+                INSCRIPTION
+            </h1>
+        </div>
+        
+        <!--debut de l'insciption-->
+        <div id="login">
+            <form method="POST" action="register.php" >
+                <div id="email">
+                    <?php
                 if (isset($er_mail)){
-            ?>
+                    ?>
                 <div><?= $er_mail ?></div>
-            <?php 
+                <?php 
                 }
-            ?>
+                ?>
                 <!-- Input pour l'email-->
                 <input type="text" class="input_connexion" placeholder="Email" name="mail" required>
             </div>
             <br>
             <div id="pseudo">
-            <?php
+                <?php
         //si erreur sur le nom alors on affiche
-                if (isset($er_pseudo)){
+        if (isset($er_pseudo)){
             ?>
                 <div><?= $er_pseudo ?></div>
-            <?php 
+                <?php 
                 }
-            ?>
+                ?>
                 <!-- Input pour le pseudo-->
                 <input type="text" class="input-mdp" name="pseudo" placeholder="Pseudo" pattern=".{4,}" >
             </div>
             <br>
             <div id="motdepasse">
-            <?php
+                <?php
                 if (isset($er_mdp)){
-            ?>
+                    ?>
                 <div><?= $er_mdp ?></div>
-            <?php 
+                <?php 
                 }
-            ?>
-                <!-- Inpur pour le mot de passe-->
-                <input type="password" name="pwd1" class="input-mdp" placeholder="Mot de passe" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}([&#@=€$%*?\/:!\-+])"  required>
+                ?>
+                <!-- Inpur pour le mot de passe         pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}([&#@=€$%*?\/:!\-+])"  required-->
+                <input type="password" name="pwd1" OnKeyDown="Check();" id="mdp1" class="input-mdp" placeholder="Mot de passe" >
+                <br>
+                <br>
+
+                <div id="barrePlusText">
+                <div id="pbarre">
+                <p id="faible" align="center" class="pbarre"></p>
+                <p id="moyen" align="center" class="pbarre"></p>
+                <p id="elevee" align="center" class="pbarre"></p>
+                </div>
+                
+                <p id="fme"> </p>
             </div>
-            <br>
-            <div id="motdepasse">
-            <?php
+        </div>
+            
+            <div  id="motdepasse">
+                <?php
                 if (isset($er_mdp)){
-            ?>
+                    ?>
                 <div><?= $er_mdp ?></div>
-            <?php 
+                <?php 
                 }
-            ?>                                                                                                      <!-- pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}([&#@=€$%*?\/:!\-+])"-->
+                ?>                                                                                                      <!-- pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}([&#@=€$%*?\/:!\-+])"-->
                 <!-- Input pour confirmer le mot de passe -->
-                <input type="password" name="pwd2" class="input-mdp" placeholder="Confirmer Mot de passe"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}([&#@=€$%*?\/:!\-+])" required>
+                <input type="password" name="pwd2" class="input-mdp" placeholder="Confirmer Mot de passe" >
             </div>
-        
-        <br>
+            
+            <br>
             <!-- Bouton pour l'inscription-->
             <button type="submit" name="inscription" id="bouton_inscription">
                 Inscription
@@ -240,19 +251,20 @@ if(!empty($_POST)){
         </form>
     </div>
     <!--fin de l'insciption-->
-
+    
     <!--debut du footer-->
     <?php
 
-        include_once 'view/footer.inc.php';
-        ?>
+include_once 'view/footer.inc.php';
+?>
 
-    <!--Fin du footer-->
-
-
+<!--Fin du footer-->
 
 
-    
+
+
+
+<script src='assets/JS/register.js'></script>
 </body>
 </html>
 

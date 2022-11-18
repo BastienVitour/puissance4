@@ -57,6 +57,34 @@ input{
     color: whitesmoke;
 
 }
+
+#pbarre{
+    display: flex;
+    width: 300px;
+    padding: 0;
+    margin: 0;
+    background-color: gray;
+    
+}
+.pbarre{
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    height: 15px;
+
+
+    
+}
+#fme{
+    display: flex;
+    float: left;
+}
+#barrePlusText{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 /* bouton inscription */
 
 
