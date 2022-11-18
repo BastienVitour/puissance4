@@ -57,12 +57,31 @@ nav {
     justify-content: space-around;
 }
 
-#settings h2 {
+form {
     font-size: xx-large;
+    text-align: center;
 }
 
-#settings li {
+#theme_select {
+    margin: 20px;
+}
+
+select {
+    height: 35px;
+    background-color: #120D29;
+    color: whitesmoke;
+    border: none;
+    border-radius: 5px;
     font-size: large;
+}
+
+#launch {
+    background-color: #fe7f00;
+    border-radius: 3px;
+    padding: 15px;
+    color: white;
+    cursor: pointer;
+    font-size: 1em;
 }
 
 /*Css de la partie paramètres de jeu (fin)*/
@@ -75,13 +94,21 @@ nav {
 
 /*Css de la grille (début)*/
 
+/*#grille {
+
+}*/
+
 /*table {
     border: 3px solid whitesmoke; 
     border-collapse: collapse;
     background-color: #ff7700;
 }*/
 
-#grille_5 td {
+/*.grille {
+    display: none;
+}*/
+
+#grille_4 td {
     padding: 75px;
     border-radius: 25px;
     background-color: #ff7700;
@@ -123,6 +150,10 @@ caption {
     border-radius: 5px 5px 0px 5px;
     height: max-content;
     width: fit-content;
+    position: fixed;
+    bottom: 5%;
+    left: 70%;
+    visibility: hidden;
 }
 
 /*Css du titre du chat (début)*/
@@ -132,8 +163,17 @@ caption {
     font-size: x-large;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     border-radius: 5px 5px 0px 0px;
+}
 
+#hide_chat {
+    background-color: #ff7700;
+    border: none;
+    color: whitesmoke;
+    font-size: 2.5em;
+    margin-right: 5%;
+    cursor: pointer;
 }
 
 #chat_title img {
@@ -221,13 +261,21 @@ input {
 
 /*Css de la zone d'input (fin)*/
 
+/*Css de l'icône du chat*/
+
+#chat_icon {
+    position: fixed;
+    bottom: 2%;
+    left: 95%;
+    cursor: pointer;
+}
+
 /*Css du chat (fin)*/
 
 /*Css des règles (début)*/
 
 #rules {
     text-align: center;
-    max-width: 70%;
     font-size: larger;
     margin: 50px 0px;
 }
@@ -244,7 +292,6 @@ input {
     display: flex;
     font-size: 2.5em;
     justify-content: space-around;
-    max-width: 70%;
     margin: 50px 0px;
 }
 
