@@ -2,6 +2,7 @@
 $pdo=require_once 'includes/database.inc.php';
 session_start();
 $DB = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'root');
+
 ?>
 <!DOCTYPE html>
 <html>
