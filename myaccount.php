@@ -7,6 +7,28 @@ $DB = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'ro
 <!DOCTYPE html>
 <html>
 
+<?php
+$_SESSION['user_id'] = 3;
+            if (isset($_SESSION['user_id'])) {
+                echo $_SESSION['user_id'];
+                $button_link = 'memory.php';
+            }
+            else {
+                $button_link = 'login.php';
+            }
+$id_user = $_SESSION['user_id'];
+
+$rien_performance = false;
+$rien_temps = false;
+$rien_total = false;
+
+$rien_facile = false;
+$rien_moyen = false;
+$rien_expert = false;
+$rien_impossible = false;
+
+?>
+
 
 
 
@@ -46,7 +68,7 @@ $DB = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'ro
 
             <!-- PHP PROFIL -->
 <?php
-    $requete_pseudo = 'SELECT pseudo FROM user WHERE id=4';
+    $requete_pseudo = "SELECT * FROM user WHERE id='$id_user'";
     $pseudo = $mysqlClient->prepare($requete_pseudo);
     $pseudo->execute();
     $pseudo = $pseudo->fetchAll();
@@ -63,7 +85,7 @@ $DB = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'ro
 
             <!-- PHP DATE INSCRIPTION  -->
             <?php
-    $requete_date_inscription = 'SELECT date_inscription FROM user WHERE id=3';
+    $requete_date_inscription = "SELECT date_inscription FROM user WHERE id='$id_user'";
     $date_inscription = $mysqlClient->prepare($requete_date_inscription);
     $date_inscription->execute();
     $date_inscription = $date_inscription->fetchAll();
@@ -84,7 +106,7 @@ $DB = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'ro
 
             <!-- PHP MEILLEUR SCORE  -->
 <?php
-    $requete_meilleur_score = 'SELECT score FROM score ORDER BY `score`.`id_difficulty` ASC, `score`.`score` DESC';
+    $requete_meilleur_score = "SELECT score FROM score WHERE `score`.`id_user`='$id_user'ORDER BY `score`.`id_difficulty` ASC, `score`.`score` DESC";
     $meilleur_score = $mysqlClient->prepare($requete_meilleur_score);
     $meilleur_score->execute();
     $meilleur_score = $meilleur_score->fetchAll();
@@ -103,10 +125,11 @@ $DB = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'ro
 
  
         ];
-        $sqlbs = 'SELECT id_difficulty , difficulty.level AS `level`  
+        $sqlbs = "SELECT id_difficulty , difficulty.level AS `level`  
                   FROM score  
                   INNER JOIN difficulty ON score.id_difficulty = difficulty.id
-                  WHERE score = :best_score';
+                  WHERE score = :best_score
+                  AND `score`.`id_user`='$id_user'";
         $stmtbs= $DB->prepare($sqlbs);
         $stmtbs->execute($data_best_score);
 
@@ -128,7 +151,7 @@ $DB = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'ro
             <!-- PHP MEILLEUR TEMPS  -->
 <?php
 
-    $requete_meilleur_temps = 'SELECT score FROM score ORDER BY `score`.`score` DESC';
+    $requete_meilleur_temps = "SELECT score FROM score WHERE `score`.`id_user`='$id_user' ORDER BY `score`.`score` DESC";
     $meilleur_temps = $mysqlClient->prepare($requete_meilleur_temps);
     $meilleur_temps->execute();
     $meilleur_temps = $meilleur_temps->fetchAll();
@@ -147,10 +170,11 @@ $DB = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'ro
 
  
         ];
-        $sqlbt = 'SELECT id_difficulty , difficulty.level AS `level`  
+        $sqlbt = "SELECT id_difficulty , difficulty.level AS `level`  
                   FROM score  
                   INNER JOIN difficulty ON score.id_difficulty = difficulty.id
-                  WHERE score = :best_time';
+                  WHERE score = :best_time
+                  AND `score`.`id_user`='$id_user'";
         $stmtbt= $DB->prepare($sqlbt);
         $stmtbt->execute($data_best_time);
 
@@ -170,7 +194,7 @@ $DB = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'ro
 $dbpj = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'root');
 
 $dbpj->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$Sqlpj = 'SELECT count(*) as `total` FROM score';
+$Sqlpj = "SELECT count(*) as `total` FROM score WHERE `score`.`id_user`='$id_user'";
 $stmtpj = $dbpj->query($Sqlpj);
 $stmtpj->execute();
 $totalpj = $stmtpj->fetchAll();
@@ -222,41 +246,12 @@ $played_total=$played_total['total'];
 
 
 
-            <!-- PHP MEILLEUR SCORE DIFFICULTE  -->
-<?php
-        $DB_best_score = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'root');
-
-        $DB_best_score->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $data_best_score = [
-            'best_score' => $best_score,
-
- 
-        ];
-        $sqlbs = 'SELECT id_difficulty , score.pseudo AS `pseudo`  
-                  FROM score  
-                  INNER JOIN difficulty ON score.id_difficulty = difficulty.id
-                  WHERE score = :best_score';
-        $stmtbs= $DB->prepare($sqlbs);
-        $stmtbs->execute($data_best_score);
-
-
-
-    $stmtbs = $stmtbs->fetchAll();
-    foreach ($stmtbs as $user_rank) {
-    }
-    $user_rank=$user_rank['level']; 
-?>
-            <!-- PHP MEILLEUR SCORE DIFFICULTE -->
 
 
 
 
 
-<div id="rank">
 
-    <p class="style_css"> Vous etes classé : <?= $user_rank; ?> 
-
-</div>
 
 
 
@@ -267,22 +262,27 @@ $played_total=$played_total['total'];
 
                 <!-- PHP MEILLEUR TEMPS FACILE -->
 <?php
+$best_time_easy = NULL;
 
-$requete_meilleur_temps_facile = 'SELECT * FROM `score` WHERE `id_difficulty` = 1 ORDER BY `score`.`score` DESC';
+$requete_meilleur_temps_facile = "SELECT * FROM `score` WHERE `id_difficulty` = 1 AND `score`.`id_user`='$id_user' ORDER BY `score`.`score` DESC";
 $meilleur_temps_facile = $mysqlClient->prepare($requete_meilleur_temps_facile);
 $meilleur_temps_facile->execute();
 $meilleur_temps_facile = $meilleur_temps_facile->fetchAll();
 foreach ($meilleur_temps_facile as $best_time_easy) {
 }
-$best_time_easy=$best_time_easy['score'];
-?>
+if ($best_time_easy === NULL){
+    $best_time_easy = 'X';
+    $rien_facile = true;
+} else {
+    $best_time_easy=$best_time_easy['score'];
+}?>
                 <!-- PHP MEILLEUR TEMPS FACILE -->
                 <!-- PHP PARTIES JOUEES FACILE -->
 <?php
 $dbpj = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'root');
 
 $dbpj->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$Sqlpj = 'SELECT count(*) as `total` FROM score WHERE `id_difficulty` = 1';
+$Sqlpj = "SELECT count(*) as `total` FROM score WHERE `id_difficulty` = 1 AND `score`.`id_user`='$id_user' ";
 $stmtpj = $dbpj->query($Sqlpj);
 $stmtpj->execute();
 $totalpj = $stmtpj->fetchAll();
@@ -298,8 +298,14 @@ $played_easy=$played_easy['total'];
             <a href="memory.php">
             <img alt="easy" src="assets/images/facile.jpeg" id="easy"></a>
             <p id="pl">Facile</p>
-            <br><p class="style_css"> Joué : <?= $played_easy; ?> parties
-            <br><p class="style_css"> Meilleurs temps : <?= $best_time_easy; ?> secondes
+            <?php
+            if ($rien_facile === false){ ?>
+                <br><p class="style_css"> Joué : <?= $played_easy; ?> parties
+                <br><p class="style_css"> Meilleurs temps : <?= $best_time_easy; ?> secondes
+            <?php } else { ?>
+                <br><p class="style_css"> Vous avez joué aucune partie
+                <br><p class="style_css"> Vous n'avez aucun temps
+            <?php } ?>
 
 
 
@@ -309,22 +315,27 @@ $played_easy=$played_easy['total'];
 
                 <!-- PHP MEILLEUR TEMPS MOYEN -->
 <?php
+$best_time_medium = NULL;
 
-$requete_meilleur_temps_moyen = 'SELECT * FROM `score` WHERE `id_difficulty` = 2 ORDER BY `score`.`score` DESC';
+$requete_meilleur_temps_moyen = "SELECT * FROM `score` WHERE `id_difficulty` = 2 AND `score`.`id_user`='$id_user' ORDER BY `score`.`score` DESC";
 $meilleur_temps_moyen = $mysqlClient->prepare($requete_meilleur_temps_moyen);
 $meilleur_temps_moyen->execute();
 $meilleur_temps_moyen = $meilleur_temps_moyen->fetchAll();
 foreach ($meilleur_temps_moyen as $best_time_medium) {
 }
-$best_time_medium=$best_time_medium['score'];
-?>
+if ($best_time_medium === NULL){
+    $best_time_medium = 'X';
+    $rien_moyen = true;
+} else {
+    $best_time_medium=$best_time_medium['score'];
+}?>
                 <!-- PHP MEILLEUR TEMPS MOYEN -->
                 <!-- PHP PARTIES JOUEES MOYEN -->
 <?php
 $dbpj = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'root');
 
 $dbpj->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$Sqlpj = 'SELECT count(*) as `total` FROM score WHERE `id_difficulty` = 2';
+$Sqlpj = "SELECT count(*) as `total` FROM score WHERE `id_difficulty` = 2 AND `score`.`id_user`='$id_user' ";
 $stmtpj = $dbpj->query($Sqlpj);
 $stmtpj->execute();
 $totalpj = $stmtpj->fetchAll();
@@ -341,8 +352,15 @@ $played_medium=$played_medium['total'];
             <a href="memory.php">
             <img alt="medium" src="assets/images/medium.jpeg" id="medium"></a>
             <p id="pl">Intermédiaire</p>
-            <br><p class="style_css"> Joué : <?= $played_medium; ?> parties
-            <br><p class="style_css"> Meilleurs temps : <?= $best_time_medium; ?> secondes
+            <?php
+            if ($rien_moyen === false){ ?>
+                <br><p class="style_css"> Joué : <?= $played_medium; ?> parties
+                <br><p class="style_css"> Meilleurs temps : <?= $played_medium; ?> secondes
+            <?php } else { ?>
+                <br><p class="style_css"> Vous avez joué aucune partie
+                <br><p class="style_css"> Vous n'avez aucun temps
+            <?php } ?>
+
 
 
 
@@ -351,22 +369,26 @@ $played_medium=$played_medium['total'];
 
                 <!-- PHP MEILLEUR TEMPS EXPERT -->
 <?php
-
-$requete_meilleur_temps_expert = 'SELECT * FROM `score` WHERE `id_difficulty` = 3 ORDER BY `score`.`score` DESC';
+$best_time_expert = NULL;
+$requete_meilleur_temps_expert = "SELECT * FROM `score` WHERE `id_difficulty` = 3 AND `score`.`id_user`='$id_user' ORDER BY `score`.`score` DESC";
 $meilleur_temps_expert = $mysqlClient->prepare($requete_meilleur_temps_expert);
 $meilleur_temps_expert->execute();
 $meilleur_temps_expert = $meilleur_temps_expert->fetchAll();
 foreach ($meilleur_temps_expert as $best_time_expert) {
 }
-$best_time_expert=$best_time_expert['score'];
-?>
+if ($best_time_expert === NULL){
+    $best_time_expert = 'X';
+    $rien_expert = true;
+} else {
+    $best_time_expert=$best_time_expert['score'];
+}?>
                 <!-- PHP MEILLEUR TEMPS EXPERT -->
                 <!-- PHP PARTIES JOUEES EXPERT -->
 <?php
 $dbpj = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'root');
 
 $dbpj->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$Sqlpj = 'SELECT count(*) as `total` FROM score WHERE `id_difficulty` = 3';
+$Sqlpj = "SELECT count(*) as `total` FROM score WHERE `id_difficulty` = 3 AND `score`.`id_user`='$id_user'";
 $stmtpj = $dbpj->query($Sqlpj);
 $stmtpj->execute();
 $totalpj = $stmtpj->fetchAll();
@@ -382,8 +404,14 @@ $played_expert=$played_expert['total'];
             <a href="memory.php">
             <img alt="expert" src="assets/images/expert.jpeg" id="expert"></a>
             <p id="pl">Expert</p>
-            <br><p class="style_css"> Joué : <?= $played_expert; ?> parties
-            <br><p class="style_css"> Meilleurs temps : <?= $best_time_expert; ?> secondes
+            <?php
+            if ($rien_expert === false){ ?>
+                <br><p class="style_css"> Joué : <?= $played_expert; ?> parties
+                <br><p class="style_css"> Meilleurs temps : <?= $best_time_expert; ?> secondes
+            <?php } else { ?>
+                <br><p class="style_css"> Vous avez joué aucune partie
+                <br><p class="style_css"> Vous n'avez aucun temps
+            <?php } ?>
 
 
 
@@ -394,15 +422,23 @@ $played_expert=$played_expert['total'];
 
 
                 <!-- PHP MEILLEUR TEMPS IMPOSSIBLE -->
-<?php
-
-$requete_meilleur_temps_impossible = 'SELECT * FROM `score` WHERE `id_difficulty` = 4 ORDER BY `score`.`score` DESC';
-$meilleur_temps_impossible = $mysqlClient->prepare($requete_meilleur_temps_impossible);
-$meilleur_temps_impossible->execute();
-$meilleur_temps_impossible = $meilleur_temps_impossible->fetchAll();
-foreach ($meilleur_temps_impossible as $best_time_impossible) {
+                <?php
+$best_time_impossible=NULL;
+$requete_meilleur_temps_expert = "SELECT * FROM `score` WHERE `id_difficulty` = 4 AND `score`.`id_user`='$id_user' ORDER BY `score`.`score` DESC";
+$meilleur_temps_expert = $mysqlClient->prepare($requete_meilleur_temps_expert);
+$meilleur_temps_expert->execute();
+$meilleur_temps_expert = $meilleur_temps_expert->fetchAll();
+foreach ($meilleur_temps_expert as $best_time_impossible) {
 }
-$best_time_impossible=$best_time_impossible['score'];
+
+
+if ($best_time_impossible === NULL){
+    $best_time_impossible = 'X';
+    $rien = true;
+} else {
+    $best_time_impossible=$best_time_impossible['score'];
+}
+
 ?>
                 <!-- PHP MEILLEUR TEMPS IMPOSSIBLE -->
                 <!-- PHP PARTIES JOUEES IMPOSSIBLE -->
@@ -410,13 +446,14 @@ $best_time_impossible=$best_time_impossible['score'];
 $dbpj = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'root');
 
 $dbpj->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$Sqlpj = 'SELECT count(*) as `total` FROM score WHERE `id_difficulty` = 4';
+$Sqlpj = "SELECT count(*) as `total` FROM score WHERE `id_difficulty` = 4 AND `score`.`id_user`='$id_user'";
 $stmtpj = $dbpj->query($Sqlpj);
 $stmtpj->execute();
 $totalpj = $stmtpj->fetchAll();
 foreach ($totalpj as $played_impossible) {
 }
 $played_impossible=$played_impossible['total'];
+
 
 ?>
                 <!-- PHP PARTIES JOUEES IMPOSSIBLE -->
@@ -425,9 +462,16 @@ $played_impossible=$played_impossible['total'];
             <a href="memory.php">
             <img alt="impossible" src="assets/images/impossible.jpeg" id="impossible"></a>
             <p id="pl">Impossible</p> 
-            <br><p class="style_css"> Joué : <?= $played_impossible; ?> parties
-            <br><p class="style_css"> Meilleurs temps : <?= $best_time_impossible; ?> secondes
-
+            <?php
+            if ($rien_impossible === false){ ?>
+                <br><p class="style_css"> Joué : <?= $played_impossible; ?> parties
+                <br><p class="style_css"> Meilleurs temps : <?= $best_time_impossible; ?> secondes
+            <?php } else { ?>
+                <br><p class="style_css"> Vous avez joué aucune partie
+                <br><p class="style_css"> Vous n'avez aucun temps
+            <?php } ?>
+            
+        
         </div>    
     </div> <!-- Fin des scores des niveaux de jeu -->
 
@@ -553,6 +597,7 @@ if (isset($new_mail))
         echo '<p class="style_css">Email invalide</p>';
     }else { // SI email et mot de passe inexistant
         echo '<p class="style_css">Mot de passe et email inexistant</p>';
+        
     }
 
 
