@@ -8,7 +8,7 @@ $DB = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'ro
 <html>
 
 <?php
-$_SESSION['user_id'] = 6;
+$_SESSION['user_id'] = 3;
             if (isset($_SESSION['user_id'])) {
                 echo $_SESSION['user_id'];
                 $button_link = 'memory.php';
