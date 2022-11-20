@@ -116,10 +116,6 @@ $rien_impossible = false;
             <!-- PHP MEILLEUR SCORE DIFFICULTE  -->
 <?php
         $best_score_diff=NULL;
-
-        $DB_best_score = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'root');
-
-        $DB_best_score->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $data_best_score = [
             'best_score' => $best_score,
 
@@ -255,7 +251,7 @@ $played_total=$played_total['total'];
         <!-- MEILLEUR SCORE -->
         <?php
             if ($rien_performance === false){ ?>
-                <br><p class="style_css"> Meilleur performance : <?= $best_score; ?> s en difficulté <?=$best_score_diff; ?>
+                <br><p class="style_css"> Meilleur performance : <?= $best_score; ?> secondes en difficulté <?=$best_score_diff; ?>
             <?php } else { ?>
                 <br><p class="style_css"> Vous n'avez aucune performance 
         <?php } ?>
@@ -264,7 +260,7 @@ $played_total=$played_total['total'];
         <!-- MEILLEUR TEMPS -->
         <?php
             if ($rien_temps === false){ ?>
-                <br><p class="style_css"> Meilleur temps : <?= $best_time; ?> s en difficulté <?=$best_time_diff; ?>
+                <br><p class="style_css"> Meilleur temps : <?= $best_time; ?> secondes en difficulté <?=$best_time_diff; ?>
             <?php } else { ?>
                 <br><p class="style_css"> Vous n'avez aucun temps
         <?php } ?>
@@ -288,7 +284,7 @@ $played_total=$played_total['total'];
 
 
 
-
+                                        <!-- DEBUT DES STATS DES GAMES -->
 
 
 
@@ -319,9 +315,6 @@ if ($best_time_easy === NULL){
                 <!-- PHP MEILLEUR TEMPS FACILE -->
                 <!-- PHP PARTIES JOUEES FACILE -->
 <?php
-$dbpj = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'root');
-
-$dbpj->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $Sqlpj = "SELECT count(*) as `total` FROM score WHERE `id_difficulty` = 1 AND `score`.`id_user`='$id_user' ";
 $stmtpj = $dbpj->query($Sqlpj);
 $stmtpj->execute();
@@ -332,21 +325,34 @@ $played_easy=$played_easy['total'];
 
 ?>
                 <!-- PHP PARTIES JOUEES FACILE -->
+                <!-- PHP MOYENNE TEMPS FACILE -->
+                <?php
+$Sqlpj = "SELECT AVG(`score`) as `average` FROM score WHERE `id_difficulty` = 1 AND `score`.`id_user`='$id_user' ";
+$stmtpj = $dbpj->query($Sqlpj);
+$stmtpj->execute();
+$totalpj = $stmtpj->fetchAll();
+foreach ($totalpj as $average_time_easy) {
+}
+$average_time_easy=$average_time_easy['average'];
+?>
+                <!-- PHP MOYENNE TEMPS FACILE -->
 
 
-        <div id="facile"> <!-- Niveau facile -->
-            <a href="memory.php">
-            <img alt="easy" src="assets/images/facile.jpeg" id="easy"></a>
-            <p id="pl">Facile</p>
-            <?php
-            if ($rien_facile === false){ ?>
-                <br><p class="style_css"> Joué : <?= $played_easy; ?> parties
-                <br><p class="style_css"> Meilleurs temps : <?= $best_time_easy; ?> secondes
-            <?php } else { ?>
-                <br><p class="style_css"> Vous avez joué aucune partie
-                <br><p class="style_css"> Vous n'avez aucun temps
-            <?php } ?>
-
+                                            <div id="facile"> <!-- Niveau facile -->
+                                                <a href="memory.php">
+                                                <img alt="easy" src="assets/images/facile.jpeg" class="level"></a>
+                                                <p id="pl">Facile</p>
+                                                <?php
+                                                if ($rien_facile === false){ ?>
+                                                    <br><p class="style_css"> Joué : <?= $played_easy; ?> parties
+                                                    <br><p class="style_css"> Meilleurs temps : <?= $best_time_easy; ?> secondes
+                                                    <br><p class="style_css"> Moyenne des temps : <?= $average_time_easy; ?> secondes
+                                                <?php } else { ?>
+                                                    <br><p class="style_css"> Vous avez joué aucune partie
+                                                    <br><p class="style_css"> Vous n'avez aucun temps
+                                                    <br><p class="style_css"> Vous n'avez aucune moyenne
+                                                <?php } ?>
+                                            </div>
 
 
 
@@ -372,9 +378,6 @@ if ($best_time_medium === NULL){
                 <!-- PHP MEILLEUR TEMPS MOYEN -->
                 <!-- PHP PARTIES JOUEES MOYEN -->
 <?php
-$dbpj = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'root');
-
-$dbpj->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $Sqlpj = "SELECT count(*) as `total` FROM score WHERE `id_difficulty` = 2 AND `score`.`id_user`='$id_user' ";
 $stmtpj = $dbpj->query($Sqlpj);
 $stmtpj->execute();
@@ -385,22 +388,33 @@ $played_medium=$played_medium['total'];
 
 ?>
                 <!-- PHP PARTIES JOUEES MOYEN -->
+                <!-- PHP MOYENNE TEMPS MOYEN -->
+                <?php
+$Sqlpj = "SELECT AVG(`score`) as `average` FROM score WHERE `id_difficulty` = 2 AND `score`.`id_user`='$id_user' ";
+$stmtpj = $dbpj->query($Sqlpj);
+$stmtpj->execute();
+$totalpj = $stmtpj->fetchAll();
+foreach ($totalpj as $average_time_medium) {
+}
+$average_time_medium=$average_time_medium['average'];
+?>
+                <!-- PHP MOYENNE TEMPS MOYEN -->
 
-
-        </div>
-        <div id="intermediaire"> <!-- Niveau intermédiaire --> 
-            <a href="memory.php">
-            <img alt="medium" src="assets/images/medium.jpeg" id="medium"></a>
-            <p id="pl">Intermédiaire</p>
-            <?php
-            if ($rien_moyen === false){ ?>
-                <br><p class="style_css"> Joué : <?= $played_medium; ?> parties
-                <br><p class="style_css"> Meilleurs temps : <?= $played_medium; ?> secondes
-            <?php } else { ?>
-                <br><p class="style_css"> Vous avez joué aucune partie
-                <br><p class="style_css"> Vous n'avez aucun temps
-            <?php } ?>
-
+                                            <div id="intermediaire"> <!-- Niveau intermédiaire --> 
+                                                <a href="memory.php">
+                                                <img alt="medium" src="assets/images/medium.jpeg" class="level"></a>
+                                                <p id="pl">Intermédiaire</p>
+                                                <?php
+                                                if ($rien_moyen === false){ ?>
+                                                    <br><p class="style_css"> Joué : <?= $played_medium; ?> parties
+                                                    <br><p class="style_css"> Meilleurs temps : <?= $best_time_medium; ?> secondes
+                                                    <br><p class="style_css"> Moyenne des temps : <?= $average_time_medium; ?> secondes
+                                                <?php } else { ?>
+                                                    <br><p class="style_css"> Vous avez joué aucune partie
+                                                    <br><p class="style_css"> Vous n'avez aucun temps
+                                                    <br><p class="style_css"> Vous n'avez aucune moyenne
+                                                <?php } ?>
+                                            </div>
 
 
 
@@ -425,9 +439,6 @@ if ($best_time_expert === NULL){
                 <!-- PHP MEILLEUR TEMPS EXPERT -->
                 <!-- PHP PARTIES JOUEES EXPERT -->
 <?php
-$dbpj = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'root');
-
-$dbpj->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $Sqlpj = "SELECT count(*) as `total` FROM score WHERE `id_difficulty` = 3 AND `score`.`id_user`='$id_user'";
 $stmtpj = $dbpj->query($Sqlpj);
 $stmtpj->execute();
@@ -438,21 +449,34 @@ $played_expert=$played_expert['total'];
 
 ?>
                 <!-- PHP PARTIES JOUEES EXPERT -->
+                <!-- PHP MOYENNE TEMPS EXPERT -->
+                <?php
+$Sqlpj = "SELECT AVG(`score`) as `average` FROM score WHERE `id_difficulty` = 3 AND `score`.`id_user`='$id_user' ";
+$stmtpj = $dbpj->query($Sqlpj);
+$stmtpj->execute();
+$totalpj = $stmtpj->fetchAll();
+foreach ($totalpj as $average_time_expert) {
+}
+$average_time_expert=$average_time_expert['average'];
+?>
+                <!-- PHP MOYENNE TEMPS EXPERT -->
 
-        </div>
-        <div id="expert"> <!-- Niveau expert -->
-            <a href="memory.php">
-            <img alt="expert" src="assets/images/expert.jpeg" id="expert"></a>
-            <p id="pl">Expert</p>
-            <?php
-            if ($rien_expert === false){ ?>
-                <br><p class="style_css"> Joué : <?= $played_expert; ?> parties
-                <br><p class="style_css"> Meilleurs temps : <?= $best_time_expert; ?> secondes
-            <?php } else { ?>
-                <br><p class="style_css"> Vous avez joué aucune partie
-                <br><p class="style_css"> Vous n'avez aucun temps
-            <?php } ?>
 
+                                        <div id="expert"> <!-- Niveau expert -->
+                                            <a href="memory.php">
+                                            <img alt="expert" src="assets/images/expert.jpeg" class="level"></a>
+                                            <p id="pl">Expert</p>
+                                            <?php
+                                            if ($rien_expert === false){ ?>
+                                                <br><p class="style_css"> Joué : <?= $played_expert; ?> parties
+                                                <br><p class="style_css"> Meilleurs temps : <?= $best_time_expert; ?> secondes
+                                                <br><p class="style_css"> Moyenne des temps : <?= $average_time_expert; ?> secondes
+                                            <?php } else { ?>
+                                                <br><p class="style_css"> Vous avez joué aucune partie
+                                                <br><p class="style_css"> Vous n'avez aucun temps
+                                                <br><p class="style_css"> Vous n'avez aucune moyenne
+                                            <?php } ?>
+                                        </div>
 
 
 
@@ -483,9 +507,6 @@ if ($best_time_impossible === NULL){
                 <!-- PHP MEILLEUR TEMPS IMPOSSIBLE -->
                 <!-- PHP PARTIES JOUEES IMPOSSIBLE -->
 <?php
-$dbpj = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'root');
-
-$dbpj->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $Sqlpj = "SELECT count(*) as `total` FROM score WHERE `id_difficulty` = 4 AND `score`.`id_user`='$id_user'";
 $stmtpj = $dbpj->query($Sqlpj);
 $stmtpj->execute();
@@ -497,23 +518,37 @@ $played_impossible=$played_impossible['total'];
 
 ?>
                 <!-- PHP PARTIES JOUEES IMPOSSIBLE -->
-        </div>
-        <div id="impossible"> <!-- Niveau impossible -->     
-            <a href="memory.php">
-            <img alt="impossible" src="assets/images/impossible.jpeg" id="impossible"></a>
-            <p id="pl">Impossible</p> 
-            <?php
-            if ($rien_impossible === false){ ?>
-                <br><p class="style_css"> Joué : <?= $played_impossible; ?> parties
-                <br><p class="style_css"> Meilleurs temps : <?= $best_time_impossible; ?> secondes
-            <?php } else { ?>
-                <br><p class="style_css"> Vous avez joué aucune partie
-                <br><p class="style_css"> Vous n'avez aucun temps
-            <?php } ?>
-            
-        
-        </div>    
+                <!-- PHP MOYENNE TEMPS IMPOSSIBLE -->
+                <?php
+$Sqlpj = "SELECT AVG(`score`) as `average` FROM score WHERE `id_difficulty` = 4 AND `score`.`id_user`='$id_user' ";
+$stmtpj = $dbpj->query($Sqlpj);
+$stmtpj->execute();
+$totalpj = $stmtpj->fetchAll();
+foreach ($totalpj as $average_time_impossible) {
+}
+$average_time_impossible=$average_time_impossible['average'];
+?>
+                <!-- PHP MOYENNE TEMPS IMPOSSIBLE -->
+
+                                        <div id="impossible"> <!-- Niveau impossible -->     
+                                            <a href="memory.php">
+                                            <img alt="impossible" src="assets/images/impossible.jpeg" class="level"></a>
+                                            <p id="pl">Impossible</p> 
+                                            <?php
+                                            if ($rien_impossible === false){ ?>
+                                                <br><p class="style_css"> Joué : <?= $played_impossible; ?> parties
+                                                <br><p class="style_css"> Meilleurs temps : <?= $best_time_impossible; ?> secondes
+                                                <br><p class="style_css"> Moyenne des temps : <?= $average_time_impossible; ?> secondes
+                                            <?php } else { ?>
+                                                <br><p class="style_css"> Vous avez joué aucune partie
+                                                <br><p class="style_css"> Vous n'avez aucun temps
+                                                <br><p class="style_css"> Vous n'avez aucune moyenne
+                                            <?php } ?>
+                                        </div>    
     </div> <!-- Fin des scores des niveaux de jeu -->
+
+
+
 
 
 
@@ -609,11 +644,6 @@ if (isset($new_mail))
 
     if ($bdd_mail != NULL && $bdd_password != NULL ){ // SI email et mot de passe trouvé 
 
-
-
-        $DB = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'root');
-
-        $DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $data = [
             'new_mail' => $new_mail,
             'mdp' => $passwordhash,
@@ -725,9 +755,7 @@ if (isset($_POST['new_mdp']))
 
 
 
-        $DB = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'root');
 
-        $DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $new_password= hash('sha256',$_POST['new_mdp']);
         $data = [
             'new_mdp' => $new_password,
