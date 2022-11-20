@@ -1,5 +1,6 @@
 body{
     background-color: #11102f;
+    color: white;
 }
 body {
     margin: 0;
@@ -272,8 +273,7 @@ input{
 input {
     color: white;
 }
-.style_css{
-}
+
 h4{
     color: white;
     font-size: 100%;

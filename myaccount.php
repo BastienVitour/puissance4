@@ -1,6 +1,6 @@
 <?php 
-$pdo=require_once 'includes/database.inc.php';
 session_start();
+$pdo=require_once 'includes/database.inc.php';
 $DB = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'root');
 
 ?>
@@ -8,15 +8,8 @@ $DB = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'ro
 <html>
 
 <?php
-$_SESSION['user_id'] = 6;
-            if (isset($_SESSION['user_id'])) {
-                echo $_SESSION['user_id'];
-                $button_link = 'memory.php';
-            }
-            else {
-                $button_link = 'login.php';
-            }
-$id_user = $_SESSION['user_id'];
+
+$id_user = $_SESSION['user_id']['id'];
 
 $rien_performance = false;
 $rien_temps = false;
@@ -38,7 +31,6 @@ $rien_impossible = false;
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' href='assets/CSS/myaccount.css'>
     <link rel="shortcut icon" href="assets/images/icone.png" type="image/x-icon">
-    <script src='myaccount.js'></script>
 </head> <!-- Fin du Head -->
 
 
@@ -529,8 +521,8 @@ $played_impossible=$played_impossible['total'];
   
     <div id="modification"> <!-- Début des icones pour modifier ses informations-->
         <div id="mail"> <!-- Image liens vers les options modifier adresse mail-->
-            <li><a href="#edit_mail">
-            <img alt="Mail" src="https://icones.pro/wp-content/uploads/2021/03/icone-gmail-logo-png-orange.png" id="email"></a></li>
+            <a href="#edit_mail">
+            <img alt="Mail" src="https://icones.pro/wp-content/uploads/2021/03/icone-gmail-logo-png-orange.png" id="email"></a>
             <p id="pl">Modifier votre adresse mail</p>
         </div>     
 
@@ -546,8 +538,7 @@ $played_impossible=$played_impossible['total'];
 
     <br>
     <br id="edit_mail"> <!-- Ancre pour la modification de l'email -->
-    <br>
-    <br>
+
 
 
 
@@ -670,9 +661,9 @@ elseif($error !== false) {
 
 
     </form>
-    <div id="form"> <!-- Début du Formulaire de modification d'email-->
+    <div id="form_mail"> <!-- Début du Formulaire de modification d'email-->
         <h4 id="edit_info">Modifier votre adresse mail</h4>
-        <form method="POST"  action="#edit_mail" class="form">
+        <form method="POST"  action="#edit_mail" class="form" id="form">
             <input type="text" class="old_edit" name="old_mail" placeholder="Ancienne adresse mail"><br><br> <!-- Zone de texte "Ancienne adresse mail" -->
             <input type="text" class="new_edit" name="new_mail" placeholder="Nouvelle adresse mail"><br><br> <!-- Zone de texte "Nouvelle adresse mail" -->
             <input type="password" class="security_edit" name="mdp"      placeholder="Mot de passe"></textarea><br><br> <!-- Zone de texte "Mot de passe" -->
@@ -686,8 +677,7 @@ elseif($error !== false) {
 
     <br>
     <br id="edit_password"> <!-- Ancre pour la modification du mot de passe -->
-    <br>
-    <br>
+
 
 
 
@@ -784,9 +774,9 @@ elseif($error !== false) {
 
 
 
-    <div id="form"> <!-- Début du Formulaire de modification de mot de passe-->
+    <div id="form_mdp"> <!-- Début du Formulaire de modification de mot de passe-->
         <h4 id="edit_info">Modifier votre mot de passe</h4>
-        <form method="POST"  action ="#edit_password"class="form">
+        <form method="POST"  action ="#edit_password"class="form" id="form">
             <input type="text" class="old_edit" name="old_mdp" placeholder="Ancien mot de passe"><br><br> <!-- Zone de texte "Ancien mot de passe" -->
             <input type="text" class="new_edit" name="new_mdp" placeholder="Nouveau mot de passe"><br><br> <!-- Zone de texte "Nouveau mot de passe" -->
             <input type="text" class="security_edit" name="mail" placeholder="Votre adresse mail"></textarea><br><br> <!-- Zone de texte "Votre adresse mail" -->
@@ -807,6 +797,7 @@ elseif($error !== false) {
 include_once 'view/footer.inc.php';
 ?><!-- Fin du Footer-->
 
+<script src="assets/JS/myaccount.js"></script>
 
     </div> <!-- Fin de la div Body-->
 </body>
