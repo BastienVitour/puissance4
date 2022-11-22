@@ -216,22 +216,27 @@ if(!empty($_POST)){
                 }
                 ?>
                 <!-- Inpur pour le mot de passe         pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}([&#@=€$%*?\/:!\-+])"  required-->
-                <input type="password" name="pwd1" OnKeyDown="Check();" id="mdp1" class="input-mdp" placeholder="Mot de passe" >
+                <input type="password" name="pwd1" oninput="Check();" id="mdp1" class="input-mdp" placeholder="Mot de passe"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}([&#@=€$%*?\/:!\-+])"  required >
                 <br>
                 <br>
+               
 
-                <div id="barrePlusText">
+              <div id="barrePlusText">
                 <div id="pbarre">
                 <p id="faible" align="center" class="pbarre"></p>
                 <p id="moyen" align="center" class="pbarre"></p>
                 <p id="elevee" align="center" class="pbarre"></p>
                 </div>
+                <p id="fme"></p>
+      
                 
-                <p id="fme"> </p>
+
                 
             </div>
         </div>
-            
+        <br>
+            <br>
+                
             <div  id="motdepasse">
                 <?php
                 if (isset($er_mdp)){
@@ -239,7 +244,7 @@ if(!empty($_POST)){
                 <div><?= $er_mdp ?></div>
                 <?php 
                 }
-                ?>                                                                                                      <!-- pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}([&#@=€$%*?\/:!\-+])"-->
+                ?>                                                                                                      <!-- pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}([&#@=€$%*?\/:!\+_(){}ù£éè§çà^-])"-->
                 <!-- Input pour confirmer le mot de passe -->
                 <input type="password" name="pwd2" class="input-mdp" placeholder="Confirmer Mot de passe" >
             </div>
@@ -250,6 +255,7 @@ if(!empty($_POST)){
                 Inscription
             </button>
         </form>
+    </div>
     </div>
     <!--fin de l'insciption-->
     

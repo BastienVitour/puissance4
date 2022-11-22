@@ -1,35 +1,27 @@
 function Check()
 {
+    // variable getelement
     var password = document.getElementById("mdp1").value;
-    
-    
+    var faible =document.getElementById("faible");
+    var moyen= document.getElementById("moyen");
+    var elevee= document.getElementById("elevee");
+    var fme= document.getElementById("fme");
+    //variable pour les conditions
 	var passwordlow = password.toLowerCase();
-
 	var majuscule = false;
-
-    const introPara = document.getElementById("fme");
-    let contenu = introPara.innerHTML; 
+    var taille = password.length;
+    var numerique = false;
+	var special = false;
+    var realtaille=false;
 	
 	//On vérifie si il y a des majuscules
 	if(password != passwordlow)
 	{
 		majuscule = true;
 	}
-	
-	var taille = password.length;
-	var numerique = false;
-	var special = false;
-
-	// On vérifie qu'il y a des chiffres
+    
+    // On vérifie qu'il y a des chiffres
 	for(i=0;i<taille-1;i++)
-	{
-		caractere = password.substring(i-1,i+1);
-		if(password.match(/@/))
-		{
-			special = true;
-		}
-	}
-    for(i=0;i<taille-1;i++)
 	{
 		caractere = password.substring(i,i+1);
 		if(!isNaN(caractere))
@@ -37,52 +29,66 @@ function Check()
 			numerique = true;
 		}
 	}
-    console.log(special)
 
-	if((majuscule==false && numerique==false))
+	//on verifie qu'il y a des caracteres speciaux
+	for(i=0;i<taille-1;i++)
 	{
-		if(document.getElementById)
+		caractere = password.substring(i-1,i+1);
+		if(password.match(/[&#@=€$%*?\/:!\+_(){}ù£éè§çà^-]/gm))
 		{
-		document.getElementById("faible").style.backgroundColor = 'red';
-        document.getElementById("moyen").style.backgroundColor = 'gray';
-		document.getElementById("elevee").style.backgroundColor= 'gray';
-		document.getElementById("fme").style.color = 'red';
-		document.getElementById("pbarre").style.color = 'red';
-
-
-        introPara.innerHTML = "faible";
-
-		
+			special = true;
 		}
 	}
+    //on verifie que la taille est de 8
+    if (taille>=8) {
+        realtaille=true;
+    }
+    
+    console.log(special)
+
+//conditions pour les changements d'etats de la barre et des couleurs
+	if((majuscule==false && numerique==false && special==false && realtaille==false))
+	{
+		//couleur de la barre
+		faible.style.backgroundColor = '#830e0e';
+        moyen.style.backgroundColor = '#23235f';
+		elevee.style.backgroundColor= '#23235f';
+		//couleur du text
+		fme.style.color = '#830e0e';
+		//changement du text
+        fme.innerHTML = "week";
+
+		
+	}
+	
 	else
 	{
-		if((majuscule || numerique) && taille<=8)
+		if(majuscule==true && numerique==true && special==false && realtaille==true)
 		{
-			document.getElementById("faible").style.backgroundColor = 'orange';
-			document.getElementById("moyen").style.backgroundColor = 'orange';
-            document.getElementById("elevee").style.backgroundColor= 'gray';
-		    document.getElementById("fme").style.color = 'orange';
-
-            introPara.innerHTML = "moyen";
+		//couleur de la barre
+			faible.style.backgroundColor = '#d48a21';
+			moyen.style.backgroundColor = '#d48a21';
+            elevee.style.backgroundColor= '#23235f';
+		//couleur du text
+		    fme.style.color = '#d48a21';
+		//changement du text
+            fme.innerHTML = "medium";
 
 			
 		}
-		else if(majuscule && numerique && taille>8)
+		else if(majuscule==true && numerique==true && special==true && realtaille==true)
 		{
-			document.getElementById("faible").style.backgroundColor = 'green';
-			document.getElementById("moyen").style.backgroundColor = 'green';
-			document.getElementById("elevee").style.backgroundColor = 'green';
-		    document.getElementById("fme").style.color = 'green';
-
-            introPara.innerHTML = "elevee";
+		//couleur de la barre
+			faible.style.backgroundColor = '#256f2a';
+			moyen.style.backgroundColor = '#256f2a';
+			elevee.style.backgroundColor = '#256f2a';
+		//couleur du text
+		    fme.style.color = '#256f2a';
+		//changement du text
+            fme.innerHTML = "strong";
             
-		}else if(password.length=1){
-        document.getElementById("faible").style.backgroundColor = 'gray';
-        document.getElementById("moyen").style.backgroundColor = 'gray';
-		document.getElementById("elevee").style.backgroundColor= 'gray';
-        }
-	}
+	    }
+    }
 }
 
 

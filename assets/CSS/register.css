@@ -45,11 +45,12 @@ h1{  /* titre Principale*/
 
 #login{
     text-align: center;
-
+    justify-content: center;
+    display: flex;
     padding: 140px;
 }
 input{
-    width: 30%;
+    width: 350px;
     background-color: #252446;
     border: 0px;
     height: 40px;
@@ -60,10 +61,12 @@ input{
 
 #pbarre{
     display: flex;
-    width: 300px;
+    width: 100%;
     padding: 0;
     margin: 0;
-    background-color: gray;
+    background-color: #23235f;
+    border-radius: 15px;
+    border-radius: 15px;
     
 }
 .pbarre{
@@ -71,20 +74,29 @@ input{
     padding: 0;
     margin: 0;
     height: 15px;
-
-
     
+}
+#faible{
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
+}
+
+#elevee{
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
 }
 #fme{
     display: flex;
-    float: left;
+    text-align: left;
+    margin-top: -2px;
 }
 #barrePlusText{
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
+    height: 15px;
 }
+
+
 /* bouton inscription */
 
 
@@ -107,7 +119,7 @@ input{
 
 /* bas de la page*/
 footer{
-    background-color: #120d29;
+    background-color: #271966;
 }
 
 #not_credit {

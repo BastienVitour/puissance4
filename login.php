@@ -199,7 +199,7 @@ if(!empty($_POST)){
                 }
             ?>
                 <!-- input pour le mot de passe-->
-                <input type="password" class="input-mdp" name="pwd" placeholder="Mot de passe">
+                <input type="password" class="input-mdp" name="pwd" placeholder="Mot de passe"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}([&#@=€$%*?\/:!\-+])"  required>
             </div>
         
         <br>
