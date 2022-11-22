@@ -159,22 +159,22 @@ form{
 #edit_info{
     text-align: center;
 }
-.old_edit{
-    padding-right: 33%;
+.new_edit, .old_edit{
+    width: 30%;
     background-color: #252446;
     border: 0px;
+    height: 40px;
+    padding-left: 20px;
+    padding-right: 33%;
 }
 
-.new_edit{
-    padding-right: 33%;
-    background-color: #252446;
-    border: 0px;
-}
 .security_edit{
     padding-right: 20%;
     margin-left: 7%;
     background-color: #252446;
     border: 0px;
+    height: 40px;
+    width: 30%;
 
 }
 #bouton_connexion{
@@ -234,14 +234,7 @@ a:hover {
 }
 
 
-input{
-        width: 30%;
-        background-color: #252446;
-        border: 0px;
-        height: 40px;
-        padding-left: 20px;
-    
-}
+
 input {
     color: white;
 }
@@ -249,6 +242,4 @@ input {
 h4{
     color: white;
     font-size: 100%;
-}
-p{
 }

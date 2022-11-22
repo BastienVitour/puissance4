@@ -15,6 +15,9 @@ require_once 'includes/database.inc.php';
     <title>Memory </title>
 </head>
 <body>
+<?php                 
+$id_user = $_SESSION['user_id']['id'];
+?>
 
     <div id="mainblock">
 
@@ -180,107 +183,42 @@ require_once 'includes/database.inc.php';
 
             </div>
 
+
+
+
+
+
+                                <!-- STORY DE FLORIAN -->
             <div id="messages_area">
 
                 <?php 
 
-                $_SESSION['user'] = 3;
-                
-                //On va récupérer les infos de la base de données
-                //-->contenu du message, nom de l'utilisateur, date d'envoi du message, id de l'utilisateur, jour d'envoi du message
-                $messages = $mysqlClient->prepare('SELECT `message`.`message`, user.pseudo, `message`.date_message, `message`.id_user, `message`.id_game, DAY(`message`.date_message) AS `day` 
-                                                   FROM `message` INNER JOIN user 
-                                                   ON `message`.id_user= user.id 
-                                                   WHERE (NOW()+0-date_message+0)<1000000 AND `message`.id_game=1 
-                                                   ORDER BY `message`.date_message');
-                $messages->execute();
-                $messages = $messages->fetchAll();
+                // Enregistrement des messages au seind de la BDD
+                if (isset($_POST['message'])) {
+                    // ici on a bien recu des donnees d'un formulaire
 
-                foreach ($messages as $message) {
-
-                    $date = $message['date_message'];
-
-                    //On formate la date pour respecter un meilleur format
-                    $theDate = new DateTime($date);
-                    $message_datetime = $theDate->format('H:i');
-
-                    //echo $message['day'];
-                    //echo date('d');
-                    
-                    //Si celui qui a envoyé le message est l'utilisateur actuel
-                    if ($message['id_user'] == $_SESSION['user']) { ?>
-
-                <div class="user_message">
-
-                <!--Le nom de l'utilisateur-->
-                    <div class="me">
-                        <?php echo $message['pseudo'] ?>
-                    </div>
-
-                    <!--Le message de l'utilisateur-->
-                    <div class="user_text">
-                        <?php echo $message['message'] ?>
-                    </div>
-
-                    <!--La date/heure de l'envoi du message-->
-                    <div class="user_message_date">
-                        <?php
+                        //Initialisation des données
+                        $id_game = 1;
+                        $message = $_POST['message'];
+                        $date_message = date('Y-m-d H:i:s');
                         
-                        //Si le message a été envoyé aujourd'hui
-                        if ($message['day'] == date('d')) {
-                        
-                            echo 'Aujourd\'hui à '.$message_datetime; 
-                            
-                        } else {
-                            echo 'Hier à '.$message_datetime;
+
+
+                        if ($message != ""){ // Si un message est entré 
+                            echo ("message envoyé");
+                            $requete_message  = "INSERT INTO message (`id`, `id_game`, `id_user` , `message`, `date_message`) 
+                                                VALUES (NULL,$id_game,'$id_user','$message','$date_message')";
+                            $bdd_message = $mysqlClient->prepare($requete_message);
+                            $bdd_message->execute(['message' => $message]);
+                            $bdd_message = $bdd_message->fetch();
+                        } else { // Si rien n'est entré
+                            echo (" Pas de message à envoyer ");
                         }
-                        
-                        ?>
-                    </div>
-
-                </div>
-
-                <?php } else { 
-                    //Sinon si le message ne vient pas de l'utilisateur actuel
-                    ?>
-
-                <div class="others_message">
-
-                    <div id="others_image">
-                        <img src="assets/images/bot_avatar_whitesmoke.png" alt="others_avatar" width="50">
-                    </div>
-
-                    <div id="not_others_image">
-
-                    <!--Le nom de l'utilisateur-->
-                        <div class="other">
-                            <?php echo $message['pseudo'] ?>
-                        </div>
-
-                        <!--Le message de l'utilisateur-->
-                        <div class="others_text">
-                            <?php echo $message['message'] ?>
-                        </div>
-
-                        <!--La date d'envoi du message-->
-                        <div class="others_message_date">
-                            <?php
-                            //Si le message a été envoyé aujourd'hui
-                            if ($message['day'] == date('d')) {
-                        
-                                echo 'Aujourd\'hui à '.$message_datetime; 
-                                
-                            } else {
-                                echo 'Hier à '.$message_datetime;
-                            } 
-                            ?>
-                        </div>
-                
-                    </div>
-
-                </div>
-
-                <?php }} ?>             
+                }
+                 ?>             
+            <div class="user_message">
+            <p style='color:black;'>  <?= $message; ?> </p>
+            </div>
 
             </div>
 
@@ -296,6 +234,10 @@ require_once 'includes/database.inc.php';
             </div>
 
             <!--Fin de la partie chat-->
+
+                                        <!-- STORY DE FLORIAN -->
+
+
 
             </div>
 

@@ -1,3 +1,18 @@
+
+
+
+              // BOUTON POUR RENDRE LE MOT DE PASSE VISIBLE
+
+
+
+
+
+
+
+
+
+
+              // FORMULAIRE DE MODIFICATION EMAIL ET MDP
 let formMail = document.querySelector('#form_mail');
 let formMdp = document.querySelector('#form_mdp');
 
@@ -12,12 +27,12 @@ document.getElementById("mail").addEventListener('click', () => {
     const form = document.getElementById('#form_mail');
 
   if (formMail.style.display === 'none') {
-    // 👇️ this SHOWS the form
+    // Montre le form mail et cache le form mdp
     formMail.style.display = 'block';
     formMdp.style.display = 'none';
 
   } else {
-    // 👇️ this HIDES the form
+    // Cache le form mail
     formMail.style.display = 'none';
 
   }
@@ -30,12 +45,15 @@ document.getElementById("mdp").addEventListener('click', () => {
     const form = document.getElementById('#form_mdp');
 
   if (formMdp.style.display === 'none') {
-    // 👇️ this SHOWS the form
+    // Montre le form mdp et cache le form mail
     formMdp.style.display = 'block';
     formMail.style.display = 'none';
 
   } else {
-    // 👇️ this HIDES the form
+    // Cache le form mdp
     formMdp.style.display = 'none';
   }
 });
+
+
+

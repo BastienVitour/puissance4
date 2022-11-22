@@ -10,7 +10,7 @@ $DB = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'ro
 <?php
 
 $id_user = $_SESSION['user_id']['id'];
-
+//$id_user = 3;
 $rien_performance = false;
 $rien_temps = false;
 
@@ -280,15 +280,11 @@ $played_total=$played_total['total'];
 
 
 
-
+    <!-- ONGLET DE NAVIGATION STATS-RANK-MODIFICATION -->
 
 
 
                                         <!-- DEBUT DES STATS DES GAMES -->
-
-
-
-
 
 
 
@@ -804,9 +800,11 @@ elseif($error !== false) {
 
     <div id="form_mdp"> <!-- Début du Formulaire de modification de mot de passe-->
         <h4 id="edit_info">Modifier votre mot de passe</h4>
-        <form method="POST"  action ="#edit_password"class="form" id="form">
-            <input type="text" class="old_edit" name="old_mdp" placeholder="Ancien mot de passe"><br><br> <!-- Zone de texte "Ancien mot de passe" -->
-            <input type="text" class="new_edit" name="new_mdp" placeholder="Nouveau mot de passe"><br><br> <!-- Zone de texte "Nouveau mot de passe" -->
+        <form method="POST"  action ="#edit_password" class="form" id="form">
+            <input type="password" class="old_edit" name="old_mdp" placeholder="Ancien mot de passe">
+            <!--<input type="checkbox" id="bouton_show_pw">-->
+            <br><br> <!-- Zone de texte "Ancien mot de passe" -->
+            <input type="password" class="new_edit" name="new_mdp" placeholder="Nouveau mot de passe"><br><br> <!-- Zone de texte "Nouveau mot de passe" -->
             <input type="text" class="security_edit" name="mail" placeholder="Votre adresse mail"></textarea><br><br> <!-- Zone de texte "Votre adresse mail" -->
             <button id="bouton_connexion"> Envoyer </button> <!-- Bouton Envoyer -->
         </form>
