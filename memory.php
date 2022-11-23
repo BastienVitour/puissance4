@@ -12,7 +12,7 @@ require_once 'includes/database.inc.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/CSS/memory.css">
     <link rel="shortcut icon" href="assets/images/icone.png" type="image/x-icon">
-    <title>Memory </title>
+    <title>Memory</title>
 </head>
 <body>
 
@@ -33,31 +33,40 @@ require_once 'includes/database.inc.php';
 
         <div id="settings">
 
-            <!--Choix de la difficulté du jeu-->
+            <form>
 
-            <div id="difficulty_selection">
+                <!--Choix de la difficulté du jeu-->
 
-                <h2>Sélectionnez une difficulté :</h2> 
-                <ul>
-                    <li class="text_orange"><span class="gris">😁 Niveau facile : 24 cases 😁</span></li>
-                    <li class="text_orange"><span class="gris">🙂 Niveau intermédiaire : 64 cases 🙂</span></li>
-                    <li class="text_orange"><span class="gris">😠 Niveau expert : 144 cases </span>😠</li>
-                    <li class="text_orange"><span class="gris">👿 Niveau impossible : 400 cases 👿</span></li>
-                </ul>
+                <div id="difficulty_selection">
 
-            </div>
+                    <label for="difficulty" id="diffLabel">Sélectionnez une difficulté :</label>
 
-            <!--Choix du thème du jeu-->
+                    <select name="difficulty" id="diff_select">
+                        <option value="4">😁 Niveau facile : 16 cases 😁</option>
+                        <option value="8">🙂 Niveau intermédiaire : 64 cases 🙂</option>
+                        <option value="12">😠 Niveau expert : 144 cases 😠</option>
+                        <option value="20">👿 Niveau impossible : 400 cases 👿</option>
+                    </select>
 
-            <div id="theme_selection">
+                </div>
 
-                <h2>Choisissez un thème : </h2>
-                <ul>
-                    <li class="text_orange"><span class="gris">Thème 1</span></li>
-                    <li class="text_orange"><span class="gris">Thème 2</span></li>
-                    <li class="text_orange"><span class="gris">Thème 3</span></li>
-                </ul>
-            </div>
+                <!--Choix du thème du jeu-->
+
+                <div id="theme_selection">
+
+                    <label for="theme" id="themeLabel">Sélectionnez un thème : </label>
+
+                    <select name="theme" id="theme_select">
+                        <option value="1">Drapeaux</option>
+                        <option value="2">Thème 2</option>
+                        <option value="3">Thème 3</option>
+                    </select>
+
+                </div>
+
+                <button id="launch">Lancer la partie</button>
+
+            </form>
 
         </div>
 
@@ -67,105 +76,75 @@ require_once 'includes/database.inc.php';
 
         <div id="center_part">
 
-            <?php 
-            
-            $grille = 20;
+            <div id="grilles">
 
+                <?php 
 
-            switch ($grille) {
-                //Grille de 5*5
-                case 5: ?>
+                if (isset($_GET['difficulty'])) {
+                    $grille = $_GET['difficulty'];
+                }
+                else {
+                    $grille = 0;
+                }
 
-                <div id="grille_5" class="grille">
-                    <table>
-                        <caption>Niveau : Facile</caption>
+                switch ($grille) {
+                    //Grille de 4*4
+                    case 4: ?>
 
-                        <?php 
-                        for ($i = 0; $i < 5; $i++) {
-                            echo '<tr>';
-                                if ($i == 2) {
-                                    echo '<td></td>';
-                                    echo '<td></td>';
-                                    echo '<th></th>';
-                                    echo '<td></td>';
-                                    echo '<td></td>';
-                                }
-                                else {
-                                for ($j = 0; $j < 5; $j++) {
-                                    echo '<td></td>';
-                                } }
-                            echo '</tr>';
-                        }
-                        ?>
-                    </table>
-                </div>
+                    <div id="grille_4" class="grille">
+                        <table>
+                            <caption>Niveau : Facile</caption>
+
+            <?php  break;
                     
-       <?php    break;
+                    //Grille de 8*8
+                    case 8: ?> 
+
+                    <div id="grille_8" class="grille">
+                        <table>
+                            <caption>Niveau : Intermédiaire</caption>
+
+            <?php   break;
+
+                    //Grille de 12*12
+                    case 12: ?> 
+
+                    <div id="grille_12" class="grille">
+                        <table>
+                            <caption>Niveau : Difficile</caption>
+
+            <?php   break;
+
+                    //Grille de 20*20
+                    case 20: ?> 
+
+                    <div id="grille_20" class="grille">
+                        <table>
+                            <caption>Niveau : Impossible</caption>
+
+        <?php   }
+
+                $case = 0;
+
+                for ($i = 0; $i < $grille; $i++) {
+                    echo '<tr>';
+                    for ($j = 0; $j < $grille; $j++) {
+                        $case++;
+                        echo '<td class="memoryCase" id=case_'.$case.'>
+                        <div class="backCard"></div>
+                        <div class="frontCard"><img src="assets/images/theme_flags/france.png" class="image"></div>
+                        </td>';
+                    }
+                    echo '</tr>';
+                }
                 
-                //Grille de 8*8
-                case 8: ?> 
+                ?>
 
-                <div id="grille_8" class="grille">
-                    <table>
-                        <caption>Niveau : Intermédiaire</caption>
+                        </table>
 
-                        <?php 
-                        for ($i = 0; $i < 8; $i++) {
-                            echo '<tr>';
-                                for ($j = 0; $j < 8; $j++) {
-                                    echo '<td></td>';
-                                }
-                            echo '</tr>';
-                        }
-                        ?>
-                    </table>
-                </div>
+                    </div>
 
-        <?php   break;
-
-                //Grille de 12*12
-                case 12: ?> 
-
-                <div id="grille_12" class="grille">
-                    <table>
-                        <caption>Niveau : Difficile</caption>
-
-                        <?php 
-                        for ($i = 0; $i < 12; $i++) {
-                            echo '<tr>';
-                                for ($j = 0; $j < 12; $j++) {
-                                    echo '<td></td>';
-                                }
-                            echo '</tr>';
-                        }
-                        ?>
-                    </table>
-                </div>
-
-        <?php   break;
-
-                //Grille de 20*20
-                case 20: ?> 
-
-                <div id="grille_20" class="grille">
-                    <table>
-                        <caption>Niveau : Impossible</caption>
-
-                        <?php 
-                        for ($i = 0; $i < 20; $i++) {
-                            echo '<tr>';
-                                for ($j = 0; $j < 20; $j++) {
-                                    echo '<td></td>';
-                                }
-                            echo '</tr>';
-                        }
-                        ?>
-                    </table>
-                </div>
-
-    <?php   }
-            
-            ?>
+            </div>
 
             <!--Fin de la grille-->
 
@@ -175,8 +154,9 @@ require_once 'includes/database.inc.php';
 
             <div id="chat_title">
 
-                <img src="assets/images/bot_avatar.png" alt="bot" width="50">
+                <!--<img src="assets/images/bot_avatar.png" alt="bot" width="50">-->
                 <p>Chat Général </p>
+                <button id="hide_chat">-</button>
 
             </div>
 
@@ -184,15 +164,15 @@ require_once 'includes/database.inc.php';
 
                 <?php 
 
-                $_SESSION['user'] = 3;
+                $id = $_SESSION['user_id'];
                 
                 //On va récupérer les infos de la base de données
                 //-->contenu du message, nom de l'utilisateur, date d'envoi du message, id de l'utilisateur, jour d'envoi du message
-                $messages = $mysqlClient->prepare('SELECT `message`.`message`, user.pseudo, `message`.date_message, `message`.id_user, `message`.id_game, DAY(`message`.date_message) AS `day` 
+                $messages = $mysqlClient->prepare("SELECT `message`.`message`, user.pseudo, `message`.date_message, `message`.id_user, `message`.id_game, DAY(`message`.date_message) AS `day` 
                                                    FROM `message` INNER JOIN user 
-                                                   ON `message`.id_user= user.id 
+                                                   ON `message`.id_user = '$id' 
                                                    WHERE (NOW()+0-date_message+0)<1000000 AND `message`.id_game=1 
-                                                   ORDER BY `message`.date_message');
+                                                   ORDER BY `message`.date_message");
                 $messages->execute();
                 $messages = $messages->fetchAll();
 
@@ -208,7 +188,7 @@ require_once 'includes/database.inc.php';
                     //echo date('d');
                     
                     //Si celui qui a envoyé le message est l'utilisateur actuel
-                    if ($message['id_user'] == $_SESSION['user']) { ?>
+                    if ($message['id_user'] == $_SESSION['user_id']) { ?>
 
                 <div class="user_message">
 
@@ -295,32 +275,33 @@ require_once 'includes/database.inc.php';
 
             </div>
 
-            <!--Fin de la partie chat-->
-
+            <div id="chat_icon">
+            <img src="assets/images/chat_icon.png" width="40">
             </div>
+        
+        </div>
 
+            <!--Fin de la partie chat-->
+        
         <!--Début des stats de jeu-->
 
         <div id="game_stats">
 
-
             <div id="turn">
             
-                Tour : 0
+                Tour : <span id="turn_counter">0</span>
 
             </div>
 
             <div id="time">
             
-                Temps : 0 sec
+                Temps : <span name="counter" id="counter">0</span> sec
 
             </div>
 
         </div>
 
         <!--Fin des stats de jeu-->
-
-        
 
         <!--Début des règles du jeu-->
 
@@ -348,6 +329,8 @@ require_once 'includes/database.inc.php';
         <!--Fin du footer-->
 
     </div>
+
+    <script src="assets/JS/memory.js"></script>
     
 </body>
 </html>
