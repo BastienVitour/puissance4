@@ -235,7 +235,7 @@ if(!empty($_POST)){
             </div>
         </div>
         <br>
-            <br>
+            
                 
             <div  id="motdepasse">
                 <?php
