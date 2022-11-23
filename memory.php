@@ -12,7 +12,7 @@ require_once 'includes/database.inc.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/CSS/memory.css">
     <link rel="shortcut icon" href="assets/images/icone.png" type="image/x-icon">
-    <title>Memory </title>
+    <title>Memory</title>
 </head>
 <body>
 
@@ -42,18 +42,11 @@ require_once 'includes/database.inc.php';
                     <label for="difficulty" id="diffLabel">Sélectionnez une difficulté :</label>
 
                     <select name="difficulty" id="diff_select">
-                        <option value="4">😁 Niveau facile : 24 cases 😁</option>
+                        <option value="4">😁 Niveau facile : 16 cases 😁</option>
                         <option value="8">🙂 Niveau intermédiaire : 64 cases 🙂</option>
                         <option value="12">😠 Niveau expert : 144 cases 😠</option>
                         <option value="20">👿 Niveau impossible : 400 cases 👿</option>
                     </select>
-
-                    <!--<ul>
-                        <li class="text_orange"><span class="gris">😁 Niveau facile : 24 cases 😁</span></li>
-                        <li class="text_orange"><span class="gris">🙂 Niveau intermédiaire : 64 cases 🙂</span></li>
-                        <li class="text_orange"><span class="gris">😠 Niveau expert : 144 cases </span>😠</li>
-                        <li class="text_orange"><span class="gris">👿 Niveau impossible : 400 cases 👿</span></li>
-                    </ul>-->
 
                 </div>
 
@@ -64,16 +57,11 @@ require_once 'includes/database.inc.php';
                     <label for="theme" id="themeLabel">Sélectionnez un thème : </label>
 
                     <select name="theme" id="theme_select">
-                        <option value="1">Thème 1</option>
+                        <option value="1">Drapeaux</option>
                         <option value="2">Thème 2</option>
                         <option value="3">Thème 3</option>
                     </select>
 
-                    <!--<ul>
-                        <li class="text_orange"><span class="gris">Thème 1</span></li>
-                        <li class="text_orange"><span class="gris">Thème 2</span></li>
-                        <li class="text_orange"><span class="gris">Thème 3</span></li>
-                    </ul>-->
                 </div>
 
                 <button id="launch">Lancer la partie</button>
@@ -88,101 +76,75 @@ require_once 'includes/database.inc.php';
 
         <div id="center_part">
 
-            <?php 
+            <div id="grilles">
 
-            if (isset($_GET['difficulty'])) {
-                $grille = $_GET['difficulty'];
-            }
-            else {
-                $grille = 0;
-            }
+                <?php 
 
-            switch ($grille) {
-                //Grille de 4*4
-                case 4: ?>
+                if (isset($_GET['difficulty'])) {
+                    $grille = $_GET['difficulty'];
+                }
+                else {
+                    $grille = 0;
+                }
 
-                <div id="grille_4" class="grille">
-                    <table>
-                        <caption>Niveau : Facile</caption>
+                switch ($grille) {
+                    //Grille de 4*4
+                    case 4: ?>
 
-                        <?php 
-                        for ($i = 0; $i < $grille; $i++) {
-                            echo '<tr>';
-                                for ($j = 0; $j < $grille; $j++) {
-                                    echo '<td></td>';
-                                }
-                            echo '</tr>';
-                        }
-                        ?>
-                    </table>
-                </div>
+                    <div id="grille_4" class="grille">
+                        <table>
+                            <caption>Niveau : Facile</caption>
+
+            <?php  break;
                     
-       <?php    break;
+                    //Grille de 8*8
+                    case 8: ?> 
+
+                    <div id="grille_8" class="grille">
+                        <table>
+                            <caption>Niveau : Intermédiaire</caption>
+
+            <?php   break;
+
+                    //Grille de 12*12
+                    case 12: ?> 
+
+                    <div id="grille_12" class="grille">
+                        <table>
+                            <caption>Niveau : Difficile</caption>
+
+            <?php   break;
+
+                    //Grille de 20*20
+                    case 20: ?> 
+
+                    <div id="grille_20" class="grille">
+                        <table>
+                            <caption>Niveau : Impossible</caption>
+
+        <?php   }
+
+                $case = 0;
+
+                for ($i = 0; $i < $grille; $i++) {
+                    echo '<tr>';
+                    for ($j = 0; $j < $grille; $j++) {
+                        $case++;
+                        echo '<td class="memoryCase" id=case_'.$case.'>
+                        <div class="backCard"></div>
+                        <div class="frontCard"><img src="assets/images/theme_flags/france.png" class="image"></div>
+                        </td>';
+                    }
+                    echo '</tr>';
+                }
                 
-                //Grille de 8*8
-                case 8: ?> 
+                ?>
 
-                <div id="grille_8" class="grille">
-                    <table>
-                        <caption>Niveau : Intermédiaire</caption>
+                        </table>
 
-                        <?php 
-                        for ($i = 0; $i < $grille; $i++) {
-                            echo '<tr>';
-                                for ($j = 0; $j < $grille; $j++) {
-                                    echo '<td></td>';
-                                }
-                            echo '</tr>';
-                        }
-                        ?>
-                    </table>
-                </div>
+                    </div>
 
-        <?php   break;
-
-                //Grille de 12*12
-                case 12: ?> 
-
-                <div id="grille_12" class="grille">
-                    <table>
-                        <caption>Niveau : Difficile</caption>
-
-                        <?php 
-                        for ($i = 0; $i < $grille; $i++) {
-                            echo '<tr>';
-                                for ($j = 0; $j < $grille; $j++) {
-                                    echo '<td></td>';
-                                }
-                            echo '</tr>';
-                        }
-                        ?>
-                    </table>
-                </div>
-
-        <?php   break;
-
-                //Grille de 20*20
-                case 20: ?> 
-
-                <div id="grille_20" class="grille">
-                    <table>
-                        <caption>Niveau : Impossible</caption>
-
-                        <?php 
-                        for ($i = 0; $i < $grille; $i++) {
-                            echo '<tr>';
-                                for ($j = 0; $j < $grille; $j++) {
-                                    echo '<td></td>';
-                                }
-                            echo '</tr>';
-                        }
-                        ?>
-                    </table>
-                </div>
-
-    <?php   }
-            
-            ?>
+            </div>
 
             <!--Fin de la grille-->
 
@@ -226,7 +188,7 @@ require_once 'includes/database.inc.php';
                     //echo date('d');
                     
                     //Si celui qui a envoyé le message est l'utilisateur actuel
-                    if ($message['id_user'] == $_SESSION['user']) { ?>
+                    if ($message['id_user'] == $_SESSION['user_id']) { ?>
 
                 <div class="user_message">
 
@@ -325,7 +287,6 @@ require_once 'includes/database.inc.php';
 
         <div id="game_stats">
 
-
             <div id="turn">
             
                 Tour : <span id="turn_counter">0</span>
@@ -339,7 +300,6 @@ require_once 'includes/database.inc.php';
             </div>
 
         </div>
-
 
         <!--Fin des stats de jeu-->
 

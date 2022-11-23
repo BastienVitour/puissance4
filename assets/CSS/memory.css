@@ -94,22 +94,9 @@ select {
 
 /*Css de la grille (début)*/
 
-/*#grille {
-
-}*/
-
-/*table {
-    border: 3px solid whitesmoke; 
-    border-collapse: collapse;
-    background-color: #ff7700;
-}*/
-
-/*.grille {
-    display: none;
-}*/
-
 #grille_4 td {
-    padding: 75px;
+    max-width: max-content;
+    max-height: max-content;
     border-radius: 25px;
     background-color: #ff7700;
     border: 10px solid rgb(19, 17, 56);
@@ -117,20 +104,23 @@ select {
 
 #grille_8 td {
     border: 6px solid rgb(19, 17, 56);
-    padding: 46.875px;
+    max-width: max-content;
+    max-height: max-content;
     border-radius: 15px;
     background-color: #ff7700;
 }
 
 #grille_12 td {
-    padding: 31.25px;
+    max-width: max-content;
+    max-height: max-content;
     border-radius: 10px;
     background-color: #ff7700;
     border: 4px solid rgb(19, 17, 56);
 }
 
 #grille_20 td {
-    padding: 18.75px;
+    max-width: max-content;
+    max-height: max-content;
     border-radius: 8px;
     background-color: #ff7700;
     border: 3px solid rgb(19, 17, 56);
@@ -138,7 +128,41 @@ select {
 
 caption {
     font-size: 5em;
-    margin: 100px 0px 50px 0px;
+    margin-bottom: 50px;
+}
+
+.memoryCase {
+    cursor: pointer;
+    transform-style: preserve-3d;
+    position: relative;
+    transition: transform 1s ease-in;
+}
+
+.backCard {
+    backface-visibility: hidden;
+    position: relative;
+}
+
+.frontCard {
+    backface-visibility: hidden;
+    position: relative;
+    transform: rotateY('180deg');
+}
+
+#grille_4 .image {
+    width: 150px;
+}
+
+#grille_8 .image {
+    width: 75px;
+}
+
+#grille_12 .image {
+    width: 50px;
+}
+
+#grille_20 .image {
+    width: 50px;
 }
 
 /*Css de la grille (fin)*/
@@ -195,6 +219,8 @@ caption {
     overflow: scroll;
 }
 
+/*Css des messages que j'ai envoyés*/
+
 .user_message {
     color: rgb(120, 120, 120);
     display: flex;
@@ -217,6 +243,8 @@ caption {
     font-size: small;
     margin-right: 15px;
 }
+
+/*Css des messages envoyés par l'autre utilisateur*/
 
 .others_message {
     color: rgb(120, 120, 120);
