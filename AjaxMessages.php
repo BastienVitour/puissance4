@@ -45,7 +45,6 @@ $query->execute();
 $query = $query->fetchAll();
 
 
-echo json_encode(["status" => "Envoyé"]);
 }
 
 ?>

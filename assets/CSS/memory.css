@@ -124,7 +124,6 @@ caption {
     height: max-content;
     width: fit-content;
 }
-
 /*Css du titre du chat (début)*/
 
 #chat_title {
@@ -154,13 +153,29 @@ caption {
     margin-top: 15px;
     overflow: scroll;
 }
+#flex_user_message {
+    display: flex;
+    flex-direction:column;
+    align-items: flex-end;
+    margin-left: 15px;
+    margin-bottom: auto;
+    
+}
+#user_message {
+    color: black;
+    font-size: 20px;
+    padding: 10px;
+    border: solid black ;
+    margin: 10px;
+}
 
-.user_message {
+#other_message {
     color: rgb(120, 120, 120);
     display: flex;
-    flex-direction: column;
     align-items: flex-end;
-    margin: 15px 0px 0px 15px;
+    margin-left: 15px;
+    margin-right: 30px;
+    margin-bottom: auto;
 }
 
 .user_text {
@@ -178,12 +193,7 @@ caption {
     margin-right: 15px;
 }
 
-.others_message {
-    color: rgb(120, 120, 120);
-    display: flex;
-    align-items: center;
-    margin: 15px 0px 0px 15px;
-}
+
 
 .others_text {
     background-color: lightgrey;
