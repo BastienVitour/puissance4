@@ -72,12 +72,12 @@ const counter = document.getElementById('counter');
 //counter.innerText = minutes,':',secondes+'.'+centiemes;
 
 function increment() {
-    timer++
+    //timer++
     //secondes++;
-    //centiemes++;
-    //counter.innerText = minutes,':',secondes,'.',centiemes;
-    counter.innerText = timer;
-    /*if (centiemes == 100) {
+    centiemes++;
+    counter.textContent = minutes+' : '+secondes+'.'+centiemes;
+    //counter.innerText = timer;
+    if (centiemes == 100) {
         secondes++;
         timer++;
         centiemes = 0;
@@ -85,12 +85,12 @@ function increment() {
     if (secondes == 60) {
         minutes++;
         secondes = 0;
-    }*/
+    }
     //console.log(minutes,':',secondes,'.',centiemes);
     //console.log(timer);
 }
 
-setInterval(increment, 1000);
+setInterval(increment, 10);
 
 //--------------------------------------------
 
@@ -332,7 +332,146 @@ let animalsUrl = [
     'hippopotamus.png',
     'koala.png',
     'pig.png',
-    'wolf.png'
+    'wolf.png',
+    'axolotl.png',
+    'bear.png',
+    'bee.png',
+    'bison.png',
+    'camel.png',
+    'cheetah.png',
+    'chicken.png',
+    'cow.png',
+    'crab.png',
+    'crane.png',
+    'crocodile.png',
+    'deer.png',
+    'dog.png',
+    'dolphin.png',
+    'dragon.png',
+    'duck.png',
+    'eagle.png',
+    'elephant.png',
+    'fennec.png',
+    'flamingo.png',
+    'fox.png',
+    'frog.png',
+    'gazelle.png',
+    'gorilla.png',
+    'griffin.png',
+    'groundhog.png',
+    'hedgehog.png',
+    'horse.png',
+    'iguana.png',
+    'kangaroo.png',
+    'lemur.png',
+    'leopard.png',
+    'lion.png',
+    'monkey.png',
+    'narval.png',
+    'octopus.png',
+    'ostrich.png',
+    'otter.png',
+    'owl.png',
+    'panda.png',
+    'pangolin.png',
+    'parrot.png',
+    'penguin.png',
+    'platypus.png',
+    'raccoon.png',
+    'razorbill.png',
+    'red-panda.png',
+    'rhino.png',
+    'rooster.png',
+    'seal.png',
+    'sheep.png',
+    'shrimp.png',
+    'sloth.png',
+    'snake.png',
+    'squirrel.png',
+    'tapir.png',
+    'tiger.png',
+    'tortoise.png',
+    'tucan.png',
+    'turtle.png',
+    'unicorn.png',
+    'vulture.png',
+    'whale.png',
+    'zebra.png'
+]
+
+let mcUrl = [
+    'crafting-table.png',
+    'chest.png',
+    'enchanting-table.png',
+    'furnace.png',
+    'cobblestone.png',
+    'grass.png',
+    'bedrock.png',
+    'command-block.png',
+    'acacia-log.png',
+    'ancient-debris.png',
+    'barrel.png',
+    'beacon.png',
+    'bed.png',
+    'birch-log.png',
+    'blast-furnace.png',
+    'bookshelf.png',
+    'brewing-stand.png',
+    'bricks.png',
+    'cactus.png',
+    'cake.png',
+    'coal-ore.png',
+    'copper.png',
+    'crimson-stem.png',
+    'diamond-block.png',
+    'diamond-ore.png',
+    'diorite.png',
+    'dirt.png',
+    'dispenser.png',
+    'emerald-block.png',
+    'emerald-ore.png',
+    'end-stone.png',
+    'ender-chest.png',
+    'glowstone.png',
+    'gold-block.png',
+    'gold-ore.png',
+    'granite.png',
+    'gravel.png',
+    'hay-bale.png',
+    'ice.png',
+    'iron-block.png',
+    'iron-ore.png',
+    'jukebox.png',
+    'lapis-ore.png',
+    'leaves.png',
+    'mangrove-log.png',
+    'netherrack.png',
+    'note-block.png',
+    'oak-log.png',
+    'oak-planks.png',
+    'observer.png',
+    'obsidian.png',
+    'piston.png',
+    'prismarine-bricks.png',
+    'pumpkin.png',
+    'restone-block.png',
+    'redstone-lamp.png',
+    'redstone-ore.png',
+    'sand.png',
+    'shulker-box.png',
+    'slime-block.png',
+    'smoker.png',
+    'snow.png',
+    'soul-sand.png',
+    'spawner.png',
+    'sponge.png',
+    'spruce-log.png',
+    'sticky-piston.png',
+    'stone-bricks.png',
+    'stone.png',
+    'tnt.png',
+    'warped-stem.png',
+    'wool.png'
 ]
 
  function changeImageSrc(element, imageUrl) {
@@ -410,6 +549,20 @@ function generateImages() {
 
         case '3' :
             duplicate = [];
+            for (let i = 0; i < (memoryCases.length)/2; i++) {
+                duplicate.push(mcUrl[i]);
+            }
+            for (let i = 0; i < (memoryCases.length)/2; i++) {
+                duplicate.push(duplicate[i]);
+                console.log(duplicate[i]);
+            }
+
+            for (let i = 0; i < memoryCases.length; i++) {
+                let index = Math.floor(Math.random() * duplicate.length);
+                let source = duplicate[index];
+                duplicate.splice(index, 1);
+                changeImageSrc(images[i], 'assets/images/theme_mc/'+source);
+            }
             break;
     }
     
@@ -540,13 +693,6 @@ function change(i) {
 
             fetch('/assets/AJAX/create_score.php', createFetchOptions({ timer }))
             .then(response => { return response.text() });
-            
-            /*var val = confirm('Votre score :'+ timer+' secondes '+"Clique sur ok pour rejouer ou annuler pour retourner sur la page d'accueil");
-            if( val == true ) {
-                document.location.href="http://localhost:8888/memory.php"; 
-            } else {
-                document.location.href="http://localhost:8888/index.php"; 
-            }*/
 
         }
 

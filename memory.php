@@ -296,7 +296,7 @@ require_once 'includes/database.inc.php';
 
             <div id="time">
             
-                Temps : <span id="counter">0</span> sec
+                Temps : <span id="counter">0</span>
 
             </div>
 
