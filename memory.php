@@ -332,7 +332,16 @@ require_once 'includes/database.inc.php';
     </div>
 
     <div id="winner">
-        Vous avez gagné !
+        <p id="winText">
+            
+        </p>
+        
+
+        <div id="buttons">
+            <button id="replay"><a href="memory.php">Rejouer</button>
+            <button id="retour"><a href="index.php">Retour à l'accueil</button>
+        </div>
+
     </div>
 
     <script src="assets/JS/memory.js"></script>

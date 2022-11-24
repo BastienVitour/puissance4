@@ -342,8 +342,8 @@ input {
 
 #winner {
     position: fixed;
-    top: 40%;
-    left: 40%;
+    top: 35%;
+    left: 32%;
     color: #120D29;
     background-color: whitesmoke;
     padding: 5%;
@@ -351,6 +351,26 @@ input {
     border-radius: 10px;
     backdrop-filter: blur(10px);
     visibility: hidden;
+    text-align: center;
+    font-size: large;
+}
+
+#buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+#replay, #retour {
+    background-color: #fe7f00;
+    border-radius: 3px;
+    padding: 15px;
+    color: white;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+button a:hover {
+    color: whitesmoke;
 }
 
 /*Css de la partie footer (début)*/

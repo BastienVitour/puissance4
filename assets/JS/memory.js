@@ -357,10 +357,10 @@ function generateImages() {
         var quit = confirm('Désolé on a pas réussi à trouver assez d\'images pour ce thème')
 
         if (quit) {
-            document.location.href="http://localhost:8888/Repos/puissance4/memory.php?difficulty=20&theme=1";
+            document.location.href="http://localhost:8888/memory.php?difficulty=20&theme=1";
         }
         else {
-            document.location.href="http://localhost:8888/Repos/puissance4/memory.php?difficulty=20&theme=1";
+            document.location.href="http://localhost:8888/memory.php?difficulty=20&theme=1";
         }
 
     }
@@ -425,91 +425,6 @@ for (let i = 0; i < memoryCases.length; i++) {
     memoryCases[i].addEventListener('click', () => change(i));
     fronts[i].style.visibility = 'hidden';
 
-}
-
-function changes(i) {
-
-    if (!partieFinie) {
-
-        if (displayedFace[i] == 'back') {
-            fronts[i].style.visibility = 'visible';
-            displayedFace[i] = 'front';
-            returnedCards++;
-
-            //Si deux cartes sont retournées elles se retournent au bout de 2 secondes
-            if (returnedCards == 2) {
-
-                for (let i = 0; i < memoryCases.length; i++) {
-
-                    memoryCases[i].style.cursor = 'not-allowed!important';
-                    memoryCases[i].style.pointerEvents = 'none';
-
-                    if (displayedFace[i] == 'front') {
-
-                        if (state[i] == 'notFound') {
-
-                            displayedCards.push(images[i].src);
-
-                            if (displayedCards.length == 2) {
-
-                                //verifCards(displayedCards[0], displayedCards[1])
-
-                                if (displayedCards[0] == displayedCards[1]) {
-
-                                    console.log('identical');
-
-                                    for (let j = 0; j < memoryCases.length; j++) {
-
-                                        if (displayedFace[j] == 'front' && state[j] == 'notFound') {
-                                            state[j] = 'found';
-                                            //displayedFace[j] = 'front';
-                                            memoryCases[j].style.pointerEvents = 'none';
-                                            //console.log(j);
-                                            //console.log(state[j]);
-                                            //console.log(displayedFace[j])
-                                        }
-                                    }
-                                    foundCards+= 2;
-                                    displayedCards.splice(0, 2);
-                                }
-                                else {
-                                    displayedCards.splice(0, 2);
-                                }
-                            }
-                        }
-                    }
-                    if (displayedFace[i] == 'front' && state[i] == 'notFound') {
-                        console.log(state, displayedFace);
-                        console.log(i);
-                        setTimeout(function() {
-                            fronts[i].style.visibility = 'hidden';
-                            displayedFace[i] = 'back';
-                            returnedCards = 0;
-                            memoryCases[i].style.cursor = 'pointer';
-                            memoryCases[i].style.pointerEvents = 'auto';
-                        }, 2000 )     
-                    }
-                    else if (state[i] == 'found'){
-                        console.log(state[i]);
-                        console.log(displayedFace[i])
-                        setTimeout(function() {
-                            memoryCases[i].style.cursor = 'pointer';
-                            memoryCases[i].style.pointerEvents = 'none';
-                        }, 2000)
-                    }
-                    else {
-                        setTimeout(function() {
-                            memoryCases[i].style.cursor = 'pointer';
-                            memoryCases[i].style.pointerEvents = 'auto';
-                        }, 2000)
-                    }
-                    
-                }   
-            }
-        }
-    }
-    //console.log(returnedCards);
-    //console.log(foundCards);
 }
 
 let cardsId = [];
@@ -607,21 +522,36 @@ function change(i) {
         if (foundCards == memoryCases.length-2) {
             partieFinie = true;
             console.log('fini');
+            for (let i = 0; i < memoryCases.length; i++) {
+                console.log(i)
+                fronts[i].style.visibility = 'visible';
+            }
+            partieFinie = true;
+            console.log('fini');
+            
+            let popUp = document.getElementById('winner');
+            popUp.style.visibility = "visible";
+
+            let winMessage = document.getElementById("winText");
+            winMessage.textContent = 'Victoire ! Vous avez gagné en ' + timer + ' secondes !' ;
+
+            let main = document.getElementById("mainblock");
+            main.style.filter = "blur(10px)";
+
+            fetch('/assets/AJAX/create_score.php', createFetchOptions({ timer }))
+            .then(response => { return response.text() });
+            
+            /*var val = confirm('Votre score :'+ timer+' secondes '+"Clique sur ok pour rejouer ou annuler pour retourner sur la page d'accueil");
+            if( val == true ) {
+                document.location.href="http://localhost:8888/memory.php"; 
+            } else {
+                document.location.href="http://localhost:8888/index.php"; 
+            }*/
+
         }
 
     }
 
-}
-
-if (foundCards == memoryCases.length-2) {
-    partieFinie = true;
-    console.log('fini');
-}
-
-let popUp = document.getElementById('winner');
-
-if (partieFinie) {
-    
 }
 
 generateImages();
