@@ -1,5 +1,6 @@
 body{
     background-color: #11102f;
+    color: white;
 }
 body {
     margin: 0;
@@ -78,35 +79,6 @@ h1{ /* titre Principale*/
                 /* Fin Mon profil */
 
 
-                /* Début Barre de Progression */
-
-#level{
-    padding-top: 10%;
-    padding-bottom: 10%;
-    padding-left: 5%;
-    display: flex;
-}
-
-
-#barre {
-    width: 80%; 
-    background-color: #ddd; 
-    margin-left: 5%;
-    margin-right: 5%;
-
-}
-
-#level_progress {
-    text-align: right;
-    padding-top: 10px; 
-    padding-bottom: 22px; 
-    color: rgb(101, 67, 3); 
-    width: 90%; 
-    background-color: #04AA6D;
-}
-
-                /* Fin Barre de Progression */
-
 
                 /* Début des stats de game*/
 
@@ -118,10 +90,11 @@ h1{ /* titre Principale*/
     margin-bottom: 10%;
 }
 
-#easy, #medium, #expert, #impossible {
+.level{
     width: 150px;
-    height: 150px;
+    height: 150px;  
 }
+
 #played{
     margin-bottom: 0%;
     margin-top: 0%;
@@ -186,22 +159,22 @@ form{
 #edit_info{
     text-align: center;
 }
-.old_edit{
-    padding-right: 33%;
+.new_edit, .old_edit{
+    width: 30%;
     background-color: #252446;
     border: 0px;
+    height: 40px;
+    padding-left: 20px;
+    padding-right: 33%;
 }
 
-.new_edit{
-    padding-right: 33%;
-    background-color: #252446;
-    border: 0px;
-}
 .security_edit{
     padding-right: 20%;
     margin-left: 7%;
     background-color: #252446;
     border: 0px;
+    height: 40px;
+    width: 30%;
 
 }
 #bouton_connexion{
@@ -261,20 +234,11 @@ a:hover {
 }
 
 
-input{
-        width: 30%;
-        background-color: #252446;
-        border: 0px;
-        height: 40px;
-        padding-left: 20px;
-    
-}
+
 input {
     color: white;
 }
-.style_css{
-    color: white;
-}
+
 h4{
     color: white;
     font-size: 100%;
