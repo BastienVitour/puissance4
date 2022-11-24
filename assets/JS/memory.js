@@ -49,6 +49,8 @@ const interval = window.setInterval(getMessages, 3000);
 
 getMessages();
 
+
+//---------------------------------------------------------------
 //Ce code permet d'afficher ou de cacher le chat
 
 let chat_display = document.querySelector('#chat_icon');
@@ -72,7 +74,6 @@ chat_display.addEventListener('click', display_chat);
 chat_hide.addEventListener('click', hide_chat);
 
 //---------------------------------------------------------------
-
 //Ce code permet d'afficher et de cacher les différents élément au début de jeu
 
 let diffSel = document.querySelector('#diff_select');
@@ -580,6 +581,8 @@ function change(i) {
             partieFinie = true;
             console.log('fini');
             
+            fetch('/assets/AJAX/create_score.php', createFetchOptions({ timer }))
+            .then(response => { return response.text() });
             let popUp = document.getElementById('winner');
             popUp.style.visibility = "visible";
 
@@ -589,11 +592,10 @@ function change(i) {
             let main = document.getElementById("mainblock");
             main.style.filter = "blur(10px)";
 
-            fetch('/assets/AJAX/create_score.php', createFetchOptions({ timer }))
-            .then(response => { return response.text() });
             
-            /*var val = confirm('Votre score :'+ timer+' secondes '+"Clique sur ok pour rejouer ou annuler pour retourner sur la page d'accueil");
-            if( val == true ) {
+            
+            var val = confirm('Votre score :'+ timer+' secondes '+"Clique sur ok pour rejouer ou annuler pour retourner sur la page d'accueil");
+            /*if( val == true ) {
                 document.location.href="http://localhost:8888/memory.php"; 
             } else {
                 document.location.href="http://localhost:8888/index.php"; 
