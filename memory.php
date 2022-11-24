@@ -65,7 +65,7 @@ require_once 'includes/database.inc.php';
                 </div>
 
                 <button id="launch">Lancer la partie</button>
-                <input type="" id="monformulaire"  value="" />
+              
 
             </form>
 

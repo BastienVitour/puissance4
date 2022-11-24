@@ -80,27 +80,35 @@ counter.innerText = timer;
 
 function increment() {
     if (timer < 60) {
+        timer++;
+
         counter.innerText = timer;
         
         
-        timer++;
+        
     }
     else {
         return
     }
     var partieFini=false ;       
     
-                
-    if (timer==3) {
-        partieFini=true
+  
+    
+    if (partieFini){
+        fetch('/assets/AJAX/create_score.php', createFetchOptions({ timer }))
+        .then(response => { return response.text() });
         
     }
-    
-    if (partieFini==true){
-        fetch('/assets/AJAX/create_score.php', createFetchOptions({ timer }))
-        .then(response => { return response.text() })
+    if (partieFini) {
+       
+        var val = confirm('votre score :'+timer +'       '+"Clique sur ok pour rejouer sinon annuler pour retourner sur la page d'acceuil");
+            if( val == true ) {
+         document.location.href="http://localhost:8888/memory.php"; 
+        } else {
+            document.location.href="http://localhost:8888/index.php"; 
+        }   
     }
-    alert()
+    
 }
 setInterval(increment, 1000);
 //--------------------------------------------
