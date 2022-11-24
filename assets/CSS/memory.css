@@ -162,10 +162,13 @@ caption {
     
 }
 #user_message {
-    color: rgb(120, 120, 120);
-
-    
+    color: black;
+    font-size: 20px;
+    padding: 10px;
+    border: solid black ;
+    margin: 10px;
 }
+
 #other_message {
     color: rgb(120, 120, 120);
     display: flex;

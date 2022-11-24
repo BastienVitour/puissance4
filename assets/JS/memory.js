@@ -6,19 +6,16 @@ function getMessages(){
         const resultat = JSON.parse(requeteAjax.responseText);
         ;
         const html = resultat.reverse().map(function(message){
-            if (id_user == 8){
             return `
-            <div id="user_message" style="background-color:red;">
-                <span class="message">${message.message}</span>
-                <span class="id_user">${message.id_user}</span>
-                <span class="date_message">${message.date_message.substring(11, 16)}</span>
+            <div id="user_message">
+            <span class="id_user" style="border: solid black ;">${message.id_user}</span>
+            <span class="date_message">${message.date_message.substring(11, 16)}</span>
+            <span class="message">${message.message}</span>
             </div>
-            ` }
-            else {
-                console.log("error");
-        }})
+            `
+        })
         .join('');
-        const messages = document.querySelector('#flex_user_message');
+        const messages = document.querySelector('#messages_area');
         messages.innerHTML = html;
         messages.scrollTop = messages.scrollHeight;
     }   
@@ -49,3 +46,5 @@ function postMessage(event){
 document.querySelector('form').addEventListener('submit', postMessage);
 
 const interval = window.setInterval(getMessages, 3000);
+
+getMessages();
