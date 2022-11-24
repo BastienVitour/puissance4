@@ -58,7 +58,7 @@ require_once 'includes/database.inc.php';
 
                     <select name="theme" id="theme_select">
                         <option value="1">Drapeaux</option>
-                        <option value="2">Thème 2</option>
+                        <option value="2">Animaux</option>
                         <option value="3">Thème 3</option>
                     </select>
 
@@ -86,6 +86,13 @@ require_once 'includes/database.inc.php';
                 else {
                     $grille = 0;
                 }
+                if (isset($_GET['theme'])) {
+                    $theme = $_GET['theme'];
+                }
+                else {
+                    $theme = 0;
+                }
+                echo '<div id="theme_value">'.$theme.'</div>';
 
                 switch ($grille) {
                     //Grille de 4*4
@@ -130,7 +137,7 @@ require_once 'includes/database.inc.php';
                     echo '<tr>';
                     for ($j = 0; $j < $grille; $j++) {
                         $case++;
-                        echo '<td class="memoryCase" id=case_'.$case.'>
+                        echo '<td class="memoryCase" id='.$case.'>
                         <div class="backCard"></div>
                         <div class="frontCard"><img src="assets/images/theme_flags/france.png" class="image"></div>
                         </td>';
@@ -287,12 +294,6 @@ require_once 'includes/database.inc.php';
 
         <div id="game_stats">
 
-            <div id="turn">
-            
-                Tour : <span id="turn_counter">0</span>
-
-            </div>
-
             <div id="time">
             
                 Temps : <span id="counter">0</span> sec
@@ -328,6 +329,10 @@ require_once 'includes/database.inc.php';
         ?>
         <!--Fin du footer-->
 
+    </div>
+
+    <div id="winner">
+        Vous avez gagné !
     </div>
 
     <script src="assets/JS/memory.js"></script>

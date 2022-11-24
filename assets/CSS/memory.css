@@ -1,11 +1,16 @@
 body {
     background-color: rgb(19, 17, 56);
     color: whitesmoke;
+    /*filter: blur(10px);*/
 }
 body {
     margin: 0;
     padding: 0;
 }
+
+/*#mainblock {
+    filter: blur(10px);
+}*/
 
 a {
     text-decoration: none;
@@ -66,6 +71,10 @@ form {
     margin: 20px;
 }
 
+#theme_value {
+    display: none;
+}
+
 select {
     height: 35px;
     background-color: #120D29;
@@ -93,6 +102,10 @@ select {
 }
 
 /*Css de la grille (début)*/
+
+/*#grilles {
+    display: none;
+}*/
 
 #grille_4 td {
     max-width: max-content;
@@ -324,6 +337,21 @@ input {
 }
 
 /*Css des stats de jeu (fin)*/
+
+/*Css du pop-up de victoire*/
+
+#winner {
+    position: fixed;
+    top: 40%;
+    left: 40%;
+    color: #120D29;
+    background-color: whitesmoke;
+    padding: 5%;
+    border: 2px solid #fe7f00;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    visibility: hidden;
+}
 
 /*Css de la partie footer (début)*/
 

@@ -11,7 +11,6 @@ require_once 'includes/database.inc.php'
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='assets/CSS/accueil.css'>
     <link rel="shortcut icon" href="assets/images/icone.png" type="image/x-icon">
-    <script src='main.js'></script>
 </head>
 <body>
 
