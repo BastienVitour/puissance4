@@ -39,33 +39,40 @@ echo $_SESSION['user_id'];
 
         <div id="settings">
 
-            <!--Choix de la difficulté du jeu-->
+        <form>
 
-            <div id="difficulty_selection">
+<!--Choix de la difficulté du jeu-->
 
-                <h2>Sélectionnez une difficulté :</h2> 
-                <ul>
-                    <li class="text_orange"><span class="gris">😁 Niveau facile : 24 cases 😁</span></li>
-                    <li class="text_orange"><span class="gris">🙂 Niveau intermédiaire : 64 cases 🙂</span></li>
-                    <li class="text_orange"><span class="gris">😠 Niveau expert : 144 cases </span>😠</li>
-                    <li class="text_orange"><span class="gris">👿 Niveau impossible : 400 cases 👿</span></li>
-                </ul>
+<div id="difficulty_selection">
 
-            </div>
+    <label for="difficulty" id="diffLabel">Sélectionnez une difficulté :</label>
 
-            <!--Choix du thème du jeu-->
+    <select name="difficulty" id="diff_select">
+        <option value="4">😁 Niveau facile : 16 cases 😁</option>
+        <option value="8">🙂 Niveau intermédiaire : 64 cases 🙂</option>
+        <option value="12">😠 Niveau expert : 144 cases 😠</option>
+        <option value="20">👿 Niveau impossible : 400 cases 👿</option>
+    </select>
 
-            <div id="theme_selection">
+</div>
 
-                <h2>Choisissez un thème : </h2>
-                <ul>
-                    <li class="text_orange"><span class="gris">Thème 1</span></li>
-                    <li class="text_orange"><span class="gris">Thème 2</span></li>
-                    <li class="text_orange"><span class="gris">Thème 3</span></li>
-                </ul>
-            </div>
+<!--Choix du thème du jeu-->
 
-        </div>
+<div id="theme_selection">
+
+    <label for="theme" id="themeLabel">Sélectionnez un thème : </label>
+
+    <select name="theme" id="theme_select">
+        <option value="1">Drapeaux</option>
+        <option value="2">Animaux</option>
+        <option value="3">Thème 3</option>
+    </select>
+
+</div>
+
+<button id="launch">Lancer la partie</button>
+
+</form>
 
         <!--Fin du choix des paramètres du jeu-->
 
