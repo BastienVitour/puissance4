@@ -149,17 +149,26 @@ require_once 'includes/database.inc.php';
 
             <!--Fin de la grille-->
 
-            <!--Début de la partie chat-->
+           <!--Début de la partie chat-->
 
         <div id="chat">
+        <br id="chatancre"> <!-- Ancre pour le tchat -->
 
             <div id="chat_title">
 
                 <img src="assets/images/bot_avatar.png" alt="bot" width="50">
-                <p>Chat Anonyme </p>
-                <button id="hide_chat">-</button>
+                <p>Chat Général Anonyme </p>
 
             </div>
+
+
+
+
+
+
+
+
+                                <!-- STORY DE FLORIAN -->
 
             <div id="messages_area">
                 <div id="message">
@@ -176,6 +185,9 @@ require_once 'includes/database.inc.php';
 
     
                 <!-- CHAT -->
+
+
+
                 </div>
             </div>
 
@@ -197,15 +209,6 @@ require_once 'includes/database.inc.php';
 
             </div>
 
-            </div>
-
-            </div>
-
-            <div id="chat_icon">
-            <img src="assets/images/chat_icon.png" width="40">
-            </div>
-        
-        </div>
 
             <!--Fin de la partie chat-->
         
@@ -264,6 +267,7 @@ require_once 'includes/database.inc.php';
     </div>
 
     <script src="assets/JS/memory.js"></script>
+    
     
 </body>
 </html>
