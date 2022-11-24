@@ -9,7 +9,7 @@ $DB = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'ro
 
 <?php
 
-$id_user = $_SESSION['user_id']['id'];
+$id_user = $_SESSION['user_id'];
 //$id_user = 3;
 $rien_performance = false;
 $rien_temps = false;

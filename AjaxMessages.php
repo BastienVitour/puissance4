@@ -46,8 +46,6 @@ $query = $db->prepare("INSERT INTO message (`id`, `id_game`, `id_user` , `messag
 $query->execute();
 $query = $query->fetchAll();
 
-var_dump( $mysqlClient->errorInfo());
-
 echo json_encode(["status" => "Envoyé"]);
 }
 
