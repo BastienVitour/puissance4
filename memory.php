@@ -39,7 +39,7 @@ echo $_SESSION['user_id'];
 
         <div id="settings">
 
-        <form>
+        <form id="bastien">
 
 <!--Choix de la difficulté du jeu-->
 
@@ -80,107 +80,85 @@ echo $_SESSION['user_id'];
 
         <div id="center_part">
 
-            <?php 
-            
-            $grille = 20;
+        <div id="grilles">
+
+<?php 
+
+if (isset($_GET['difficulty'])) {
+    $grille = $_GET['difficulty'];
+}
+else {
+    $grille = 0;
+}
+if (isset($_GET['theme'])) {
+    $theme = $_GET['theme'];
+}
+else {
+    $theme = 0;
+}
+echo '<div id="theme_value">'.$theme.'</div>';
+
+switch ($grille) {
+    //Grille de 4*4
+    case 4: ?>
+
+    <div id="grille_4" class="grille">
+        <table>
+            <caption>Niveau : Facile</caption>
+
+<?php  break;
+    
+    //Grille de 8*8
+    case 8: ?> 
+
+    <div id="grille_8" class="grille">
+        <table>
+            <caption>Niveau : Intermédiaire</caption>
+
+<?php   break;
+
+    //Grille de 12*12
+    case 12: ?> 
+
+    <div id="grille_12" class="grille">
+        <table>
+            <caption>Niveau : Difficile</caption>
+
+<?php   break;
+
+    //Grille de 20*20
+    case 20: ?> 
+
+    <div id="grille_20" class="grille">
+        <table>
+            <caption>Niveau : Impossible</caption>
+
+<?php   }
+
+$case = 0;
+
+for ($i = 0; $i < $grille; $i++) {
+    echo '<tr>';
+    for ($j = 0; $j < $grille; $j++) {
+        $case++;
+        echo '<td class="memoryCase" id='.$case.'>
+        <div class="backCard"></div>
+        <div class="frontCard"><img src="assets/images/theme_flags/france.png" class="image"></div>
+        </td>';
+    }
+    echo '</tr>';
+}
+
+?>
+
+    
+
+        </div>
+    </div>
+     
 
 
-            switch ($grille) {
-                //Grille de 5*5
-                case 5: ?>
-
-                <div id="grille_5" class="grille">
-                    <table>
-                        <caption>Niveau : Facile</caption>
-
-                        <?php 
-                        for ($i = 0; $i < 5; $i++) {
-                            echo '<tr>';
-                                if ($i == 2) {
-                                    echo '<td></td>';
-                                    echo '<td></td>';
-                                    echo '<th></th>';
-                                    echo '<td></td>';
-                                    echo '<td></td>';
-                                }
-                                else {
-                                for ($j = 0; $j < 5; $j++) {
-                                    echo '<td></td>';
-                                } }
-                            echo '</tr>';
-                        }
-                        ?>
-                    </table>
-                </div>
-                    
-       <?php    break;
-                
-                //Grille de 8*8
-                case 8: ?> 
-
-                <div id="grille_8" class="grille">
-                    <table>
-                        <caption>Niveau : Intermédiaire</caption>
-
-                        <?php 
-                        for ($i = 0; $i < 8; $i++) {
-                            echo '<tr>';
-                                for ($j = 0; $j < 8; $j++) {
-                                    echo '<td></td>';
-                                }
-                            echo '</tr>';
-                        }
-                        ?>
-                    </table>
-                </div>
-
-        <?php   break;
-
-                //Grille de 12*12
-                case 12: ?> 
-
-                <div id="grille_12" class="grille">
-                    <table>
-                        <caption>Niveau : Difficile</caption>
-
-                        <?php 
-                        for ($i = 0; $i < 12; $i++) {
-                            echo '<tr>';
-                                for ($j = 0; $j < 12; $j++) {
-                                    echo '<td></td>';
-                                }
-                            echo '</tr>';
-                        }
-                        ?>
-                    </table>
-                </div>
-
-        <?php   break;
-
-                //Grille de 20*20
-                case 20: ?> 
-
-                <div id="grille_20" class="grille">
-                    <table>
-                        <caption>Niveau : Impossible</caption>
-
-                        <?php 
-                        for ($i = 0; $i < 20; $i++) {
-                            echo '<tr>';
-                                for ($j = 0; $j < 20; $j++) {
-                                    echo '<td></td>';
-                                }
-                            echo '</tr>';
-                        }
-                        ?>
-                    </table>
-                </div>
-
-    <?php   }
-            
-            ?>
-
-            <!--Fin de la grille-->
+<!--Fin de la grille-->
 
             <!--Début de la partie chat-->
 
@@ -233,7 +211,7 @@ echo $_SESSION['user_id'];
 
             <div id="message_input">
 
-                <form action="AjaxMessages.php?task=write" method="POST">
+                <form id="formAjax" action="AjaxMessages.php?task=write" method="POST">
                     <input type="text" minlength="3" name="message1" id="message1" placeholder="Votre message...">
                     <button type="submit">Envoyer</button>
                 </form>
@@ -258,16 +236,11 @@ echo $_SESSION['user_id'];
         <div id="game_stats">
 
 
-            <div id="turn">
             
-                Tour : 0
-
-            </div>
 
             <div id="time">
-            
-                Temps : 0 sec
 
+	                Temps : <span id="counter">0</span> sec
             </div>
 
         </div>
@@ -293,7 +266,7 @@ echo $_SESSION['user_id'];
         <!--Fin des règles du jeu-->
 
         <!--Début du footer-->
-        <script src="assets/JS/memory.js"></script>
+        
         <?php
 
         include_once 'view/footer.inc.php';
@@ -301,6 +274,6 @@ echo $_SESSION['user_id'];
         <!--Fin du footer-->
 
     </div>
-    
+<script src="assets/JS/memory.js"></script>    
 </body>
 </html>

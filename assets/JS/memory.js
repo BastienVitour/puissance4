@@ -43,7 +43,7 @@ function postMessage(event){
     requeteAjax.send(data);
 
 }
-document.querySelector('form').addEventListener('submit', postMessage);
+document.querySelector('#formAjax').addEventListener('submit', postMessage);
 
 const interval = window.setInterval(getMessages, 3000);
 
