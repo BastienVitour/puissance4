@@ -548,14 +548,14 @@ $average_time_impossible=$average_time_impossible['average'];
   
     <div id="modification"> <!-- Début des icones pour modifier ses informations-->
         <div id="mail"> <!-- Image liens vers les options modifier adresse mail-->
-            <a href="#edit_mail">
-            <img alt="Mail" src="https://icones.pro/wp-content/uploads/2021/03/icone-gmail-logo-png-orange.png" id="email"></a>
+            
+            <img alt="Mail" src="https://icones.pro/wp-content/uploads/2021/03/icone-gmail-logo-png-orange.png" id="email">
             <p id="pl">Modifier votre adresse mail</p>
         </div>     
 
         <div id="mdp"> <!-- Image liens vers les options modifier password-->
-            <a href="#edit_password">
-            <img alt="Password" src="https://icones.pro/wp-content/uploads/2022/08/icone-de-cadenas-de-securite-orange.png" id="password"></a>
+            
+            <img alt="Password" src="https://icones.pro/wp-content/uploads/2022/08/icone-de-cadenas-de-securite-orange.png" id="password">
             <p id="pl"> Modifier votre mot de passe</p>
         </div>
     </div> <!-- Fin des icones pour modifier ses informations-->
