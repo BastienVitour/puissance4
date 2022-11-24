@@ -154,7 +154,6 @@ caption {
     overflow: scroll;
 }
 #flex_user_message {
-    color: rgb(120, 120, 120);
     display: flex;
     flex-direction:column;
     align-items: flex-end;
@@ -164,8 +163,7 @@ caption {
 }
 #user_message {
     color: rgb(120, 120, 120);
-    margin-left: 15px;
-    margin-bottom: auto;
+
     
 }
 #other_message {

@@ -1,3 +1,4 @@
+
 <?php
 $db = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'root');
 
@@ -17,7 +18,7 @@ if($task == "write"){
 
 function getMessages(){
     global $db;
-    $resultat=$db->query("SELECT * FROM `message` WHERE `id_user` = 8  ORDER BY `message`.`date_message` DESC LIMIT 20");
+    $resultat=$db->query("SELECT * FROM `message` WHERE `id_user` = 8 AND (NOW()+0-date_message+0)<1000000  ORDER BY `message`.`date_message` DESC ");
     $messages = $resultat->fetchAll();
     echo json_encode($messages); 
 }
