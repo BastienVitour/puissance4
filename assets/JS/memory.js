@@ -1,4 +1,3 @@
-console.log("aaaaaaaaaaaaaaaaaaaaaa")
 function getMessages(){
     const requeteAjax = new XMLHttpRequest();
     requeteAjax.open("GET","AjaxMessages.php");
