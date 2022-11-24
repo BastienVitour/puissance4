@@ -1,17 +1,4 @@
 
-
-
-              // BOUTON POUR RENDRE LE MOT DE PASSE VISIBLE
-
-
-
-
-
-
-
-
-
-
               // FORMULAIRE DE MODIFICATION EMAIL ET MDP
 let formMail = document.querySelector('#form_mail');
 let formMdp = document.querySelector('#form_mdp');

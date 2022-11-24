@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 require_once 'includes/database.inc.php';
@@ -175,6 +176,7 @@ $id_user = $_SESSION['user_id']['id'];
             <!--Début de la partie chat-->
 
         <div id="chat">
+        <br id="chatancre"> <!-- Ancre pour le tchat -->
 
             <div id="chat_title">
 
@@ -188,44 +190,40 @@ $id_user = $_SESSION['user_id']['id'];
 
 
 
+
+
                                 <!-- STORY DE FLORIAN -->
+
             <div id="messages_area">
-
-                <?php 
-
-                // Enregistrement des messages au seind de la BDD
-                if (isset($_POST['message'])) {
-                    // ici on a bien recu des donnees d'un formulaire
-
-                        //Initialisation des données
-                        $id_game = 1;
-                        $message = $_POST['message'];
-                        $date_message = date('Y-m-d H:i:s');
-                        
+                <div id="message">
 
 
-                        if ($message != ""){ // Si un message est entré 
-                            echo ("message envoyé");
-                            $requete_message  = "INSERT INTO message (`id`, `id_game`, `id_user` , `message`, `date_message`) 
-                                                VALUES (NULL,$id_game,'$id_user','$message','$date_message')";
-                            $bdd_message = $mysqlClient->prepare($requete_message);
-                            $bdd_message->execute(['message' => $message]);
-                            $bdd_message = $bdd_message->fetch();
-                        } else { // Si rien n'est entré
-                            echo (" Pas de message à envoyer ");
-                        }
-                }
-                 ?>             
-            <div class="user_message">
-            <p style='color:black;'>  <?= $message; ?> </p>
+                                <!-- 1ER MESSAGE DE USER -->
+            
+                <!-- CHAT -->
+                <div id="flex_user_message">
+                    <div id="user_message">
+                    </div> <br>
+                </div>
+    
+                <!-- CHAT -->
+
+
+
+                </div>
             </div>
 
-            </div>
+
+
+
+
+
+
 
             <div id="message_input">
 
-                <form action="" method="post">
-                    <input type="text" name="message" id="message" placeholder="Votre message...">
+                <form action="AjaxMessages.php?task=write" method="POST">
+                    <input type="text" minlength="3" name="message1" id="message1" placeholder="Votre message...">
                     <button type="submit">Envoyer</button>
                 </form>
 
@@ -233,9 +231,12 @@ $id_user = $_SESSION['user_id']['id'];
 
             </div>
 
+
             <!--Fin de la partie chat-->
 
                                         <!-- STORY DE FLORIAN -->
+
+
 
 
 
@@ -282,7 +283,7 @@ $id_user = $_SESSION['user_id']['id'];
         <!--Fin des règles du jeu-->
 
         <!--Début du footer-->
-
+        <script src="assets/JS/memory.js"></script>
         <?php
 
         include_once 'view/footer.inc.php';

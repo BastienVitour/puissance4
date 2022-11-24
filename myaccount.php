@@ -335,8 +335,7 @@ $average_time_easy=$average_time_easy['average'];
 
 
                                             <div id="facile"> <!-- Niveau facile -->
-                                                <a href="memory.php">
-                                                <img alt="easy" src="assets/images/facile.jpeg" class="level"></a>
+                                                <img alt="easy" src="assets/images/facile.jpeg" class="level">
                                                 <p id="pl">Facile</p>
                                                 <?php
                                                 if ($rien_facile === false){ ?>
@@ -397,8 +396,7 @@ $average_time_medium=$average_time_medium['average'];
                 <!-- PHP MOYENNE TEMPS MOYEN -->
 
                                             <div id="intermediaire"> <!-- Niveau intermédiaire --> 
-                                                <a href="memory.php">
-                                                <img alt="medium" src="assets/images/medium.jpeg" class="level"></a>
+                                                <img alt="medium" src="assets/images/medium.jpeg" class="level">
                                                 <p id="pl">Intermédiaire</p>
                                                 <?php
                                                 if ($rien_moyen === false){ ?>
@@ -459,8 +457,7 @@ $average_time_expert=$average_time_expert['average'];
 
 
                                         <div id="expert"> <!-- Niveau expert -->
-                                            <a href="memory.php">
-                                            <img alt="expert" src="assets/images/expert.jpeg" class="level"></a>
+                                            <img alt="expert" src="assets/images/expert.jpeg" class="level">
                                             <p id="pl">Expert</p>
                                             <?php
                                             if ($rien_expert === false){ ?>
@@ -527,8 +524,7 @@ $average_time_impossible=$average_time_impossible['average'];
                 <!-- PHP MOYENNE TEMPS IMPOSSIBLE -->
 
                                         <div id="impossible"> <!-- Niveau impossible -->     
-                                            <a href="memory.php">
-                                            <img alt="impossible" src="assets/images/impossible.jpeg" class="level"></a>
+                                            <img alt="impossible" src="assets/images/impossible.jpeg" class="level">
                                             <p id="pl">Impossible</p> 
                                             <?php
                                             if ($rien_impossible === false){ ?>
@@ -809,6 +805,7 @@ elseif($error !== false) {
             <button id="bouton_connexion"> Envoyer </button> <!-- Bouton Envoyer -->
         </form>
     </div> <!-- Fin du Formulaire de modification de mot de passe-->
+
 
 
 

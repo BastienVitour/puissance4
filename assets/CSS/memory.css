@@ -153,15 +153,28 @@ caption {
     margin-top: 15px;
     overflow: scroll;
 }
-
-.user_message {
+#flex_user_message {
     color: rgb(120, 120, 120);
     display: flex;
-    flex-direction: column;
+    flex-direction:column;
+    align-items: flex-end;
+    margin-left: 15px;
+    margin-bottom: auto;
+    
+}
+#user_message {
+    color: rgb(120, 120, 120);
+    margin-left: 15px;
+    margin-bottom: auto;
+    
+}
+#other_message {
+    color: rgb(120, 120, 120);
+    display: flex;
     align-items: flex-end;
     margin-left: 15px;
     margin-right: 30px;
-
+    margin-bottom: auto;
 }
 
 .user_text {
@@ -179,12 +192,7 @@ caption {
     margin-right: 15px;
 }
 
-.others_message {
-    color: rgb(120, 120, 120);
-    display: flex;
-    align-items: center;
-    margin: 15px 0px 0px 15px;
-}
+
 
 .others_text {
     background-color: lightgrey;
