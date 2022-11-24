@@ -131,7 +131,7 @@ if(!empty($_POST)){
             $DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             
             $sql = "INSERT INTO user (pseudo, email, `password` , date_inscription, date_last_connexion) VALUES
-            ('$_POST[pseudo]','$_POST[mail]','$passwordhash','$date_creation_compte','$date_creation_compte')";
+            ('$pseudo','$_POST[mail]','$passwordhash','$date_creation_compte','$date_creation_compte')";
                 
             $DB->exec($sql);
 

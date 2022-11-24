@@ -131,8 +131,8 @@ if(!empty($_POST)){
             $stmt2 =$DB->prepare("SELECT `id` FROM user WHERE email='$_POST[mail]'");
             $stmt2->execute([$email]);
             $user = $stmt2->fetch();
-            $_SESSION["user_id"]=$user;
-            echo $_SESSION["user_id"]['id'];
+            $_SESSION["user_id"]=$user['id'];
+            
          
         
             
@@ -199,7 +199,7 @@ if(!empty($_POST)){
                 }
             ?>
                 <!-- input pour le mot de passe-->
-                <input type="password" class="input-mdp" name="pwd" placeholder="Mot de passe"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}([&#@=€$%*?\/:!\-+])"  required>
+                <input type="password" class="input-mdp" name="pwd" placeholder="Mot de passe" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}([&#@=€$%*?\/:!\-+])">
             </div>
         
         <br>

@@ -46,7 +46,7 @@ $DB = new PDO('mysql:host=localhost;dbname=puissance4;charset=utf8', 'root', 'ro
 
             <!-- PHP PROFIL -->
 <?php
-    $requete_pseudo = 'SELECT pseudo FROM user WHERE id=4';
+    $requete_pseudo = 'SELECT pseudo FROM user WHERE id='.$_SESSION['user_id'];
     $pseudo = $mysqlClient->prepare($requete_pseudo);
     $pseudo->execute();
     $pseudo = $pseudo->fetchAll();

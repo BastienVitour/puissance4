@@ -7,6 +7,7 @@ function addScore(){
 
     $score=  '<script src="..." type="text/javascript">timer</script>';
     echo $score;
+    
 
     
 

@@ -65,6 +65,7 @@ require_once 'includes/database.inc.php';
                 </div>
 
                 <button id="launch">Lancer la partie</button>
+                <input type="" id="monformulaire"  value="" />
 
             </form>
 
@@ -289,7 +290,7 @@ require_once 'includes/database.inc.php';
 
             <div id="turn">
             
-                Tour : <span id="turn_counter">0</span>
+                Tour : <span id="turn_counter"></span>
 
             </div>
 
@@ -298,6 +299,13 @@ require_once 'includes/database.inc.php';
                 Temps : <span name="counter" id="counter">0</span> sec
 
             </div>
+            
+
+
+
+
+
+        
 
         </div>
 
