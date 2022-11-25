@@ -1,303 +1,7 @@
 body {
     background-color: rgb(19, 17, 56);
     color: whitesmoke;
-}
-body {
-    margin: 0;
-    padding: 0;
-}
-
-a {
-    text-decoration: none;
-    color: currentColor;
-}
-
-a:hover {
-    color: #fe7f00;
-}
-
-/*Css de la partie header (début)*/
-#power_memory {
-    margin-left: 15px;
-}
-#bg_image {
-    background-image: url(https://images.hdqwalls.com/wallpapers/cyber-outrun-vaporwave-synth-retro-car-4k-m6.jpg);
-    background-attachment: fixed;
-    background-position: 50%;
-    background-position-y: 47%;
-    background-size: 100%;
-    padding-bottom: 30px;
-    margin-bottom: 50px;
-}
-
-header {
-    display: flex;
-    justify-content: space-between;
-}
-
-#power_memory {
-    margin-left: 15px;
-}
-
-.links {
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-nav {
-    display: flex;
-}
-
-/*Css de la partie header (fin)*/
-
-/*Css de la partie paramètres de jeu (début)*/
-
-#settings {
-    display: flex;
-    justify-content: space-around;
-}
-
-#settings h2 {
-    font-size: xx-large;
-}
-
-#settings li {
-    font-size: large;
-}
-
-/*Css de la partie paramètres de jeu (fin)*/
-
-#center_part {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-/*Css de la grille (début)*/
-
-/*table {
-    border: 3px solid whitesmoke; 
-    border-collapse: collapse;
-    background-color: #ff7700;
-}*/
-
-#grille_5 td {
-    padding: 75px;
-    border-radius: 25px;
-    background-color: #ff7700;
-    border: 10px solid rgb(19, 17, 56);
-}
-
-#grille_8 td {
-    border: 6px solid rgb(19, 17, 56);
-    padding: 46.875px;
-    border-radius: 15px;
-    background-color: #ff7700;
-}
-
-#grille_12 td {
-    padding: 31.25px;
-    border-radius: 10px;
-    background-color: #ff7700;
-    border: 4px solid rgb(19, 17, 56);
-}
-
-#grille_20 td {
-    padding: 18.75px;
-    border-radius: 8px;
-    background-color: #ff7700;
-    border: 3px solid rgb(19, 17, 56);
-}
-
-caption {
-    font-size: 5em;
-    margin: 100px 0px 50px 0px;
-}
-
-/*Css de la grille (fin)*/
-
-/*Css du chat (début)*/
-
-#chat {
-    background-color: whitesmoke;
-    border-radius: 5px 5px 0px 5px;
-    height: max-content;
-    width: fit-content;
-}
-/*Css du titre du chat (début)*/
-
-#chat_title {
-    background-color: rgb(255, 119, 0);
-    font-size: x-large;
-    display: flex;
-    align-items: center;
-    border-radius: 5px 5px 0px 0px;
-
-}
-
-#chat_title img {
-    margin-left: 15px;
-}
-
-#chat_title p {
-    margin-left: 15px;
-}
-
-/*Css du titre du chat (fin)*/
-
-/*Css des messages (début)*/
-
-#messages_area {
-    width: 400px;
-    height: 40vh;
-    margin-top: 15px;
-    overflow: scroll;
-}
-#flex_user_message {
-    display: flex;
-    flex-direction:column;
-    align-items: flex-end;
-    margin-left: 15px;
-    margin-bottom: auto;
-    
-}
-#user_message {
-    color: black;
-    font-size: 20px;
-    padding: 10px;
-    border: solid black ;
-    margin: 10px;
-}
-
-#other_message {
-    color: rgb(120, 120, 120);
-    display: flex;
-    align-items: flex-end;
-    margin-left: 15px;
-    margin-right: 30px;
-    margin-bottom: auto;
-}
-
-.user_text {
-    background-color: #ff7700;
-    color: whitesmoke;
-    border-radius: 5px;
-    padding: 7px;
-    margin: 5px 15px 5px 0px;
-    max-width: 225px;
-    word-wrap: break-word;
-}
-
-.me, .user_message_date {
-    font-size: small;
-    margin-right: 15px;
-}
-
-
-
-.others_text {
-    background-color: lightgrey;
-    color: black;
-    border-radius: 5px;
-    padding: 7px;
-    margin: 5px 0px 5px 15px;
-    width: fit-content;
-    max-width: 225px;
-    word-wrap: break-word;
-}
-
-.other, .others_message_date {
-    font-size: small;
-    margin-left: 15px;
-}
-
-/*Css des messages (fin)*/
-
-/*Css de la zone d'input*/
-
-#message_input {
-    margin: 25px;
-}
-
-input {
-    width: 250px;
-    padding: 10px 0px 10px 10px;
-}
-
-#message_input button {
-    border: none;
-    font-weight: bold;
-}
-
-/*Css de la zone d'input (fin)*/
-
-/*Css du chat (fin)*/
-
-/*Css des règles (début)*/
-
-#rules {
-    text-align: center;
-    max-width: 70%;
-    font-size: larger;
-    margin: 50px 0px;
-}
-
-#rules h2 {
-    font-size: xx-large;
-}
-
-/*Css des règles (fin)*/
-
-/*Css des stats de jeu (début)*/
-
-#game_stats {
-    display: flex;
-    font-size: 2.5em;
-    justify-content: space-around;
-    max-width: 70%;
-    margin: 50px 0px;
-}
-
-/*Css des stats de jeu (fin)*/
-
-/*Css de la partie footer (début)*/
-
-footer {
-    background-color: #120D29;
-    margin-top: 20px;
-}
-
-#not_credit {
-    display:flex;
-    justify-content: space-around;
-}
-
-#reseaux_sociaux {
-    display: flex;
-    align-items: center;
-}
-
-.bouton_reseaux_sociaux {
-    border: 2px solid #120D29;
-}
-
-ul li {
-    list-style-type: square;
-}
-
-.text_orange {
-    color: orange;
-}
-
-.gris {
-    color: whitesmoke;
-}
-
-/*Css de la partie footer (fin)*/
-
-body {
-    background-color: rgb(19, 17, 56);
-    color: whitesmoke;
+ 
     /*filter: blur(10px);*/
 }
 body {
@@ -392,17 +96,16 @@ select {
 
 /*Css de la partie paramètres de jeu (fin)*/
 
-#center_part {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
+
+    
+
 
 /*Css de la grille (début)*/
 
-/*#grilles {
-    display: none;
-}*/
+#grilles {
+    display: flex;
+    justify-content: center;
+}
 
 #grille_4 td {
     max-width: max-content;
@@ -479,15 +182,21 @@ caption {
 
 /*Css du chat (début)*/
 
+#chatDiv {
+    display: flex;
+    justify-content: center;
+}
+
 #chat {
+
     background-color: whitesmoke;
     border-radius: 5px 5px 0px 5px;
     height: max-content;
     width: fit-content;
-    position: fixed;
+    /*position: fixed;
     bottom: 5%;
     left: 70%;
-    visibility: hidden;
+    visibility: hidden;*/
 }
 
 /*Css du titre du chat (début)*/
@@ -497,10 +206,13 @@ caption {
     font-size: x-large;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+
+    justify-content: space-around;
     border-radius: 5px 5px 0px 0px;
 }
-
+#text_chat_titre{
+    text-align: left;
+}
 #hide_chat {
     background-color: #ff7700;
     border: none;
@@ -531,14 +243,13 @@ caption {
 
 /*Css des messages que j'ai envoyés*/
 
-.user_message {
-    color: rgb(120, 120, 120);
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    margin: 15px 0px 0px 15px;
+#user_message {
+    color: black;
+    font-size: 20px;
+    padding: 10px;
+    border: solid black ;
+    margin: 10px;
 }
-
 .user_text {
     background-color: #ff7700;
     color: whitesmoke;

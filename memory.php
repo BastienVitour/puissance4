@@ -4,7 +4,7 @@ session_start();
 require_once 'includes/database.inc.php';
 
 //header("refresh: 5"); 
-echo $_SESSION['user_id'];
+
 
 ?>
 <!DOCTYPE html>
@@ -73,6 +73,8 @@ echo $_SESSION['user_id'];
 <button id="launch">Lancer la partie</button>
 
 </form>
+
+        </div>
 
         <!--Fin du choix des paramètres du jeu-->
 
@@ -151,78 +153,18 @@ for ($i = 0; $i < $grille; $i++) {
 
 ?>
 
-    
+        </table></div></table></div></table></div></table></div></div>
 
-        </div>
-    </div>
+       
+
+    
      
 
 
 <!--Fin de la grille-->
 
-            <!--Début de la partie chat-->
-
-        <div id="chat">
-        <br id="chatancre"> <!-- Ancre pour le tchat -->
-
-            <div id="chat_title">
-
-                <img src="assets/images/bot_avatar.png" alt="bot" width="50">
-                <p>Chat Général Anonyme </p>
-
-            </div>
-
-
-
-
-
-
-
-
-                                <!-- STORY DE FLORIAN -->
-
-            <div id="messages_area">
-                <div id="message">
-
-
-                                <!-- 1ER MESSAGE DE USER -->
             
-                <!-- CHAT -->
-                <div id="flex_user_message">
-                    <div id="user_message">
-                    </div> <br>
-                </div>
-                
-
-    
-                <!-- CHAT -->
-
-
-
-                </div>
-            </div>
-
-                
-
-
-
-
-
-
-            <div id="message_input">
-
-                <form id="formAjax" action="AjaxMessages.php?task=write" method="POST">
-                    <input type="text" minlength="3" name="message1" id="message1" placeholder="Votre message...">
-                    <button type="submit">Envoyer</button>
-                </form>
-
-            </div>
-
-            </div>
-
-
-            <!--Fin de la partie chat-->
-
+  
                                         <!-- STORY DE FLORIAN -->
 
 
@@ -246,6 +188,54 @@ for ($i = 0; $i < $grille; $i++) {
         </div>
 
         <!--Fin des stats de jeu-->
+
+        <!--Début de la partie chat-->
+
+        <div id="chatDiv">
+
+            <div id="chat">
+            <br id="chatancre"> <!-- Ancre pour le tchat -->
+
+                <div id="chat_title">
+
+                    <img src="assets/images/bot_avatar.png" alt="bot" width="50">
+                    <p id="text_chat_titre">Chat Général Anonyme </p>
+
+                </div>
+
+                                    <!-- STORY DE FLORIAN -->
+
+                <div id="messages_area">
+                    <div id="message">
+
+
+                                    <!-- 1ER MESSAGE DE USER -->
+                
+                    <!-- CHAT -->
+                    <div id="flex_user_message">
+                        <div id="user_message">
+                        </div> <br>
+                    </div>
+                    
+                    <!-- CHAT -->
+
+                    </div>
+                </div>
+
+                <div id="message_input">
+
+                    <form id="formAjax" action="AjaxMessages.php?task=write" method="POST">
+                        <input type="text" minlength="3" name="message1" id="message1" placeholder="Votre message...">
+                        <button type="submit">Envoyer</button>
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+    
+            <!--Fin de la partie chat-->
                         
 
         <!--Début des règles du jeu-->
@@ -274,6 +264,19 @@ for ($i = 0; $i < $grille; $i++) {
         <!--Fin du footer-->
 
     </div>
+    <div id="winner">
+        <p id="winText">
+            
+        </p>
+        
+
+        <div id="buttons">
+            <button id="replay"><a href="memory.php">Rejouer</button>
+            <button id="retour"><a href="index.php">Retour à l'accueil</button>
+        </div>
+
+    </div>
+        
 <script src="assets/JS/memory.js"></script>    
 </body>
 </html>

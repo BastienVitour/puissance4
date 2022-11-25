@@ -8,9 +8,10 @@ function getMessages(){
         const html = resultat.reverse().map(function(message){
             return `
             <div id="user_message">
+            
+            <span class="date_message" style="border: solid black ;">${message.date_message.substring(11, 16)}</span>
             <span class="id_user" style="border: solid black ;">${message.id_user}</span>
-            <span class="date_message">${message.date_message.substring(11, 16)}</span>
-            <span class="message">${message.message}</span>
+            <span class="message">:${message.message}</span>
             </div>
             `
         })
@@ -52,7 +53,7 @@ getMessages();
 
 //---------------------------------------------------------------
 //Ce code permet d'afficher ou de cacher le chat
-
+/*
 let chat_display = document.querySelector('#chat_icon');
 
 let chat = document.querySelector('#chat');
@@ -72,10 +73,11 @@ function hide_chat() {
 chat_display.addEventListener('click', display_chat);
 
 chat_hide.addEventListener('click', hide_chat);
-
+*/
 //---------------------------------------------------------------
 //Ce code permet d'afficher et de cacher les différents élément au début de jeu
 
+let chat = document.querySelector('#chat');
 let diffSel = document.querySelector('#diff_select');
 let diffLabel = document.querySelector('#diffLabel');
 let themeSel = document.querySelector('#theme_select');
@@ -91,6 +93,7 @@ function prepare() {
     themeSel.style.display = 'inline';
     themeLabel.style.display = 'contents';
     launchButton.style.display = 'inline';
+    chat.style.display = 'none';
     stats.style.display = 'none';
     grid.style.display = 'none';
 }
@@ -101,6 +104,7 @@ function launch() {
     themeSel.style.display = 'none';
     themeLabel.style.display = 'none';
     launchButton.style.display = 'none';
+    chat.style.display = 'block';
     stats.style.display = 'flex';
     grid.style.display = 'contents';
 }
@@ -110,6 +114,7 @@ document.onload = prepare();
 launchButton.addEventListener('click', launch());
 //launchButton.addEventListener('click', generateImages)
 
+//------------------------------------------------
 //------------------------------------------------
 
 //Le timer du jeu
@@ -124,12 +129,12 @@ const counter = document.getElementById('counter');
 //counter.innerText = minutes,':',secondes+'.'+centiemes;
 
 function increment() {
-    timer++
+    //timer++
     //secondes++;
-    //centiemes++;
-    //counter.innerText = minutes,':',secondes,'.',centiemes;
-    counter.innerText = timer;
-    /*if (centiemes == 100) {
+    centiemes++;
+    counter.textContent = minutes+' : '+secondes+'.'+centiemes;
+    //counter.innerText = timer;
+    if (centiemes == 100) {
         secondes++;
         timer++;
         centiemes = 0;
@@ -137,12 +142,14 @@ function increment() {
     if (secondes == 60) {
         minutes++;
         secondes = 0;
-    }*/
+    }
     //console.log(minutes,':',secondes,'.',centiemes);
     //console.log(timer);
 }
 
-setInterval(increment, 1000);
+setInterval(increment, 10);
+
+//--------------------------------------------
 
 //--------------------------------------------
 
@@ -480,7 +487,17 @@ for (let i = 0; i < memoryCases.length; i++) {
 }
 
 let cardsId = [];
-
+// fonction fetch---------
+function createFetchOptions(bodyData) {
+    return {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: new URLSearchParams(bodyData)
+    }
+}
+//--------------------------
 function change(i) {
 
     if (!partieFinie) {
@@ -581,8 +598,6 @@ function change(i) {
             partieFinie = true;
             console.log('fini');
             
-            fetch('/assets/AJAX/create_score.php', createFetchOptions({ timer }))
-            .then(response => { return response.text() });
             let popUp = document.getElementById('winner');
             popUp.style.visibility = "visible";
 
@@ -592,14 +607,29 @@ function change(i) {
             let main = document.getElementById("mainblock");
             main.style.filter = "blur(10px)";
 
-            
-            
-            var val = confirm('Votre score :'+ timer+' secondes '+"Clique sur ok pour rejouer ou annuler pour retourner sur la page d'accueil");
-            /*if( val == true ) {
-                document.location.href="http://localhost:8888/memory.php"; 
-            } else {
-                document.location.href="http://localhost:8888/index.php"; 
-            }*/
+            stats.style.visibility = 'hidden';
+
+            let difficulty = 0;
+
+            switch (memoryCases.length) {
+                
+                case 16 : 
+                    difficulty = 1;
+                    break;
+                case 64 : 
+                    difficulty = 2;
+                    break;
+                case 144 : 
+                    difficulty = 3;
+                    break;
+                case 400 : 
+                    difficulty = 4;
+                    break;
+
+            } 
+
+            fetch('assets/AJAX/create_score.php', createFetchOptions({ timer, difficulty }))
+            .then(response => { return response.text() });
 
         }
 

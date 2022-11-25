@@ -126,17 +126,7 @@ require_once 'includes/database.inc.php'
                     <!--Ici on affichera le classement de l'utilisateur actuel pour qu'il puisse se comparer aux autres
                         même s'il n'est pas dans le top 10
                     -->
-                    <table id="me" class="podium">
-                        <tr>
-                            <td class="classement"></td>
-                            <td class="gamename"></td>
-                            <td class="pseudo"></td>
-                            <td class="difficulty"></td>
-                            <td class="score"></td>
-                            <td class="datetime"></td>
-                        </tr>
-                    </table>
-
+                    
                 </div>
 
                 <div class="side">
