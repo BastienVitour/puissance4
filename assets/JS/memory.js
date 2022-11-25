@@ -1,3 +1,4 @@
+//affichage des message
 function getMessages(){
     const requeteAjax = new XMLHttpRequest();
     requeteAjax.open("GET","AjaxMessages.php");
@@ -30,7 +31,7 @@ function getMessages(){
     requeteAjax.send();
 }
 
-
+//envoie des message
 function postMessage(event){
     event.preventDefault();
 
@@ -789,10 +790,10 @@ function change(i) {
                     break;
 
             } 
-
-            fetch('assets/AJAX/create_score.php', createFetchOptions({ timer, difficulty }))
-            .then(response => { return response.text() });
-
+            //fetch-----------------------------------------------------------------------------------
+            fetch('assets/AJAX/create_score.php', createFetchOptions({ timer, difficulty }))         //
+            .then(response => { return response.text() });                                           //
+            //----------------------------------------------------------------------------------------
         }
 
     }
