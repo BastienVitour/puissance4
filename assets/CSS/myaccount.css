@@ -156,6 +156,10 @@ form{
     padding-bottom: 15%;
 
 }
+.style_css{
+    display: flex;
+    justify-content: center;
+}
 #edit_info{
     text-align: center;
 }
