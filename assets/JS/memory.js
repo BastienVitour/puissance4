@@ -770,7 +770,6 @@ function change(i) {
 
                     if (state[j] == 'notFound' && displayedFace[j] == 'front') {
 
-                        console.log('eeeehhh ?')
                         memoryCases[j].style.transform = 'rotateY(180deg)'
                         //fronts[j].style.visibility = 'hidden';
                         displayedFace[j] = 'back';
