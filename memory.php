@@ -195,7 +195,7 @@ require_once 'includes/database.inc.php';
                                 //-->contenu du message, nom de l'utilisateur, date d'envoi du message, id de l'utilisateur, jour d'envoi du message
                                 $messages = $mysqlClient->prepare("SELECT `message`.`message`, user.pseudo, `message`.date_message, `message`.id_user, `message`.id_game, DAY(`message`.date_message) AS `day` 
                                                                 FROM `message` INNER JOIN user 
-                                                                ON `message`.id_user = '$id' 
+                                                                ON `message`.id_user = 3
                                                                 WHERE (NOW()+0-date_message+0)<1000000 AND `message`.id_game=1 
                                                                 ORDER BY `message`.date_message");
                                 $messages->execute();

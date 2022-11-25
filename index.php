@@ -93,7 +93,13 @@ require_once 'includes/database.inc.php'
                 <div id="left">
 
                     <div id="num_games">
-                    <p>XXX <br> Parties Jouées</p>
+                    <p>
+                    <?php
+                    $num = $mysqlClient->prepare('SELECT COUNT(score) AS num_scores FROM score');
+                    $num->execute();
+                    $num = $num->fetch();
+                    echo $num['num_scores']; ?>
+                        <br> Parties Jouées</p>
                     </div>
 
                     <div id="best_time">
