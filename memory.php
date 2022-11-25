@@ -154,7 +154,7 @@ require_once 'includes/database.inc.php';
 
                 ?>
 
-                        </table></div></table></div></table></div></table></div></div>
+                        </table></div></div>
 
         <!--Fin de la grille-->
 
