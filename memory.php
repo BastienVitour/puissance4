@@ -59,7 +59,7 @@ require_once 'includes/database.inc.php';
                     <select name="theme" id="theme_select">
                         <option value="1">Drapeaux</option>
                         <option value="2">Animaux</option>
-                        <option value="3">Thème 3</option>
+                        <option value="3">Mc</option>
                     </select>
 
                 </div>

@@ -33,12 +33,14 @@ let grid = document.querySelector('.grille');
 let stats = document.querySelector('#game_stats');
 let timeDisplay = document.querySelector('#time');
 
+
 function prepare() {
     diffSel.style.display = 'inline';
     diffLabel.style.display = 'contents';
     themeSel.style.display = 'inline';
     themeLabel.style.display = 'contents';
     launchButton.style.display = 'inline';
+    chat.style.display = 'none';
     stats.style.display = 'none';
     grid.style.display = 'none';
 }
@@ -49,6 +51,7 @@ function launch() {
     themeSel.style.display = 'none';
     themeLabel.style.display = 'none';
     launchButton.style.display = 'none';
+    chat.style.display = 'block';
     stats.style.display = 'flex';
     grid.style.display = 'contents';
 }
@@ -325,6 +328,9 @@ let flagsUrl = [
 ]
 
 let animalsUrl = [
+    'penguin.png',
+    'lion.png',
+    'dolphin.png',
     'butterfly.png',
     'chinchilla.png',
     'giraffe.png',
@@ -346,7 +352,6 @@ let animalsUrl = [
     'crocodile.png',
     'deer.png',
     'dog.png',
-    'dolphin.png',
     'dragon.png',
     'duck.png',
     'eagle.png',
@@ -365,7 +370,6 @@ let animalsUrl = [
     'kangaroo.png',
     'lemur.png',
     'leopard.png',
-    'lion.png',
     'monkey.png',
     'narval.png',
     'octopus.png',
@@ -375,7 +379,6 @@ let animalsUrl = [
     'panda.png',
     'pangolin.png',
     'parrot.png',
-    'penguin.png',
     'platypus.png',
     'raccoon.png',
     'razorbill.png',
@@ -690,6 +693,8 @@ function change(i) {
 
             let main = document.getElementById("mainblock");
             main.style.filter = "blur(10px)";
+
+            counter.style.visibility = "hidden";
 
             fetch('/assets/AJAX/create_score.php', createFetchOptions({ timer }))
             .then(response => { return response.text() });
