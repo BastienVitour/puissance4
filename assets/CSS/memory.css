@@ -1,0 +1,417 @@
+body {
+    background-color: rgb(19, 17, 56);
+    color: whitesmoke;
+ 
+    /*filter: blur(10px);*/
+}
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/*#mainblock {
+    filter: blur(10px);
+}*/
+
+a {
+    text-decoration: none;
+    color: currentColor;
+}
+
+a:hover {
+    color: #fe7f00;
+}
+
+/*Css de la partie header (début)*/
+#power_memory {
+    margin-left: 15px;
+}
+#bg_image {
+    background-image: url(https://images.hdqwalls.com/wallpapers/cyber-outrun-vaporwave-synth-retro-car-4k-m6.jpg);
+    background-attachment: fixed;
+    background-position: 50%;
+    background-position-y: 47%;
+    background-size: 100%;
+    padding-bottom: 30px;
+    margin-bottom: 50px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+#power_memory {
+    margin-left: 15px;
+}
+
+.links {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+nav {
+    display: flex;
+}
+
+/*Css de la partie header (fin)*/
+
+/*Css de la partie paramètres de jeu (début)*/
+
+#settings {
+    display: flex;
+    justify-content: space-around;
+}
+
+form {
+    font-size: xx-large;
+    text-align: center;
+}
+
+#theme_select {
+    margin: 20px;
+}
+
+#theme_value {
+    display: none;
+}
+
+select {
+    height: 35px;
+    background-color: #120D29;
+    color: whitesmoke;
+    border: none;
+    border-radius: 5px;
+    font-size: large;
+}
+
+#launch {
+    background-color: #fe7f00;
+    border-radius: 3px;
+    padding: 15px;
+    color: white;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+/*Css de la partie paramètres de jeu (fin)*/
+
+
+    
+
+
+/*Css de la grille (début)*/
+
+#grilles {
+    display: flex;
+    justify-content: center;
+}
+
+#grille_4 td {
+    max-width: max-content;
+    max-height: max-content;
+    border-radius: 25px;
+    background-color: #ff7700;
+    border: 10px solid rgb(19, 17, 56);
+}
+
+#grille_8 td {
+    border: 6px solid rgb(19, 17, 56);
+    max-width: max-content;
+    max-height: max-content;
+    border-radius: 15px;
+    background-color: #ff7700;
+}
+
+#grille_12 td {
+    max-width: max-content;
+    max-height: max-content;
+    border-radius: 10px;
+    background-color: #ff7700;
+    border: 4px solid rgb(19, 17, 56);
+}
+
+#grille_20 td {
+    max-width: max-content;
+    max-height: max-content;
+    border-radius: 8px;
+    background-color: #ff7700;
+    border: 3px solid rgb(19, 17, 56);
+}
+
+caption {
+    font-size: 5em;
+    margin-bottom: 50px;
+}
+
+.memoryCase {
+    cursor: pointer;
+    transform-style: preserve-3d;
+    position: relative;
+    transition: transform 1s ease-in;
+}
+
+.backCard {
+    backface-visibility: hidden;
+    position: relative;
+}
+
+.frontCard {
+    backface-visibility: hidden;
+    position: relative;
+    transform: rotateY('180deg');
+}
+
+#grille_4 .image {
+    width: 150px;
+}
+
+#grille_8 .image {
+    width: 75px;
+}
+
+#grille_12 .image {
+    width: 50px;
+}
+
+#grille_20 .image {
+    width: 50px;
+}
+
+/*Css de la grille (fin)*/
+
+/*Css du chat (début)*/
+
+#chatDiv {
+    display: flex;
+    justify-content: center;
+}
+
+#chat {
+
+    background-color: whitesmoke;
+    border-radius: 5px 5px 0px 5px;
+    height: max-content;
+    width: fit-content;
+    /*position: fixed;
+    bottom: 5%;
+    left: 70%;
+    visibility: hidden;*/
+}
+
+/*Css du titre du chat (début)*/
+
+#chat_title {
+    background-color: rgb(255, 119, 0);
+    font-size: x-large;
+    display: flex;
+    align-items: center;
+    position: relative;
+    bottom: 19px;
+    justify-content: space-around;
+    border-radius: 5px 5px 0px 0px;
+}
+#text_chat_titre{
+    text-align: left;
+}
+#hide_chat {
+    background-color: #ff7700;
+    border: none;
+    color: whitesmoke;
+    font-size: 2.5em;
+    margin-right: 5%;
+    cursor: pointer;
+}
+
+#chat_title img {
+    margin-left: 15px;
+}
+
+/*Css du titre du chat (fin)*/
+
+/*Css des messages (début)*/
+
+#messages_area {
+    width: 400px;
+    height: 40vh;
+    margin-top: 15px;
+    overflow: scroll;
+}
+
+/*Css des messages que j'ai envoyés*/
+
+#user_message {
+    color: black;
+    font-size: 20px;
+    padding: 10px;
+    border: solid #817874 ;
+    border-radius: 10px;
+    margin: 10px;
+}
+.user_text {
+    background-color: #ff7700;
+    color: whitesmoke;
+    border-radius: 5px;
+    padding: 7px;
+    margin: 5px 15px 5px 0px;
+    max-width: 225px;
+    word-wrap: break-word;
+}
+
+.me, .user_message_date {
+    font-size: small;
+    margin-right: 15px;
+}
+
+/*Css des messages envoyés par l'autre utilisateur*/
+
+.others_message {
+    color: rgb(120, 120, 120);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 15px 0px 0px 15px;
+}
+
+.others_text {
+    background-color: lightgrey;
+    color: black;
+    border-radius: 5px;
+    padding: 7px;
+    margin: 5px 0px 5px 15px;
+    width: fit-content;
+    max-width: 330px;
+    word-wrap: break-word;
+}
+
+.other, .others_message_date {
+    font-size: small;
+    margin-left: 15px;
+
+}
+
+/*Css des messages (fin)*/
+
+/*Css de la zone d'input*/
+
+#message_input {
+    margin: 25px;
+}
+
+input {
+    width: 250px;
+    padding: 10px 0px 10px 10px;
+}
+
+#message_input button {
+    border: none;
+    font-weight: bold;
+}
+
+/*Css de la zone d'input (fin)*/
+
+/*Css de l'icône du chat*/
+
+#chat_icon {
+    position: fixed;
+    bottom: 2%;
+    left: 95%;
+    cursor: pointer;
+}
+
+/*Css du chat (fin)*/
+
+/*Css des règles (début)*/
+
+#rules {
+    text-align: center;
+    font-size: larger;
+    margin: 50px 0px;
+}
+
+#rules h2 {
+    font-size: xx-large;
+}
+
+/*Css des règles (fin)*/
+
+/*Css des stats de jeu (début)*/
+
+#game_stats {
+    display: flex;
+    font-size: 2.5em;
+    justify-content: space-around;
+    margin: 50px 0px;
+}
+
+/*Css des stats de jeu (fin)*/
+
+/*Css du pop-up de victoire*/
+
+#winner {
+    position: fixed;
+    top: 35%;
+    left: 32%;
+    color: #120D29;
+    background-color: whitesmoke;
+    padding: 5%;
+    border: 2px solid #fe7f00;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    visibility: hidden;
+    text-align: center;
+    font-size: large;
+}
+
+#buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+#replay, #retour {
+    background-color: #fe7f00;
+    border-radius: 3px;
+    padding: 15px;
+    color: white;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+button a:hover {
+    color: whitesmoke;
+}
+
+/*Css de la partie footer (début)*/
+
+footer {
+    background-color: #120D29;
+    margin-top: 20px;
+}
+
+#not_credit {
+    display:flex;
+    justify-content: space-around;
+}
+
+#reseaux_sociaux {
+    display: flex;
+    align-items: center;
+}
+
+.bouton_reseaux_sociaux {
+    border: 2px solid #120D29;
+}
+
+ul li {
+    list-style-type: square;
+}
+
+.text_orange {
+    color: orange;
+}
+
+.gris {
+    color: whitesmoke;
+}
+
+/*Css de la partie footer (fin)*/

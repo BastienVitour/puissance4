@@ -1,0 +1,16 @@
+.mySquare {
+    width: 100px;
+    height: 100px;
+    background: red;
+  }
+  
+  body,
+  html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+  }
+  
+
+ 
+  
