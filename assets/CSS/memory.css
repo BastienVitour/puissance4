@@ -206,7 +206,8 @@ caption {
     font-size: x-large;
     display: flex;
     align-items: center;
-
+    position: relative;
+    bottom: 19px;
     justify-content: space-around;
     border-radius: 5px 5px 0px 0px;
 }
@@ -223,10 +224,6 @@ caption {
 }
 
 #chat_title img {
-    margin-left: 15px;
-}
-
-#chat_title p {
     margin-left: 15px;
 }
 
@@ -247,7 +244,8 @@ caption {
     color: black;
     font-size: 20px;
     padding: 10px;
-    border: solid black ;
+    border: solid #817874 ;
+    border-radius: 10px;
     margin: 10px;
 }
 .user_text {
@@ -270,7 +268,8 @@ caption {
 .others_message {
     color: rgb(120, 120, 120);
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     margin: 15px 0px 0px 15px;
 }
 
@@ -281,13 +280,14 @@ caption {
     padding: 7px;
     margin: 5px 0px 5px 15px;
     width: fit-content;
-    max-width: 225px;
+    max-width: 330px;
     word-wrap: break-word;
 }
 
 .other, .others_message_date {
     font-size: small;
     margin-left: 15px;
+
 }
 
 /*Css des messages (fin)*/

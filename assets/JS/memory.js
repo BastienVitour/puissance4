@@ -6,12 +6,19 @@ function getMessages(){
         const resultat = JSON.parse(requeteAjax.responseText);
         ;
         const html = resultat.reverse().map(function(message){
-            return `
+            /*return `
             <div id="user_message">
             
-            <span class="date_message" style="border: solid black ;">${message.date_message.substring(11, 16)}</span>
-            <span class="id_user" style="border: solid black ;">${message.id_user}</span>
-            <span class="message">:${message.message}</span>
+            <span class="date_message" style="border: solid #817874 ;">${message.date_message.substring(11, 16)}</span>
+            <span class="id_user" style="border: solid #817874 ;">${message.id_user}</span>
+            <span class="message" style="word-wrap: break-word;"> : ${message.message}</span>
+            </div>
+            `*/
+            return `
+            <div class="others_message">
+            <div class="other">Joueur ${message.id_user}</div>
+            <div class="others_text">${message.message}</div>
+            <div class="others_message_date">${message.date_message.substring(11, 16)}</div>
             </div>
             `
         })
@@ -384,6 +391,9 @@ let flagsUrl = [
 ]
 
 let animalsUrl = [
+    'penguin.png',
+    'lion.png',
+    'dolphin.png',
     'butterfly.png',
     'chinchilla.png',
     'giraffe.png',
@@ -391,7 +401,143 @@ let animalsUrl = [
     'hippopotamus.png',
     'koala.png',
     'pig.png',
-    'wolf.png'
+    'wolf.png',
+    'axolotl.png',
+    'bear.png',
+    'bee.png',
+    'bison.png',
+    'camel.png',
+    'cheetah.png',
+    'chicken.png',
+    'cow.png',
+    'crab.png',
+    'crane.png',
+    'crocodile.png',
+    'deer.png',
+    'dog.png',
+    'dragon.png',
+    'duck.png',
+    'eagle.png',
+    'elephant.png',
+    'fennec.png',
+    'flamingo.png',
+    'fox.png',
+    'frog.png',
+    'gazelle.png',
+    'gorilla.png',
+    'griffin.png',
+    'groundhog.png',
+    'hedgehog.png',
+    'horse.png',
+    'iguana.png',
+    'kangaroo.png',
+    'lemur.png',
+    'leopard.png',
+    'monkey.png',
+    'narval.png',
+    'octopus.png',
+    'ostrich.png',
+    'otter.png',
+    'owl.png',
+    'panda.png',
+    'pangolin.png',
+    'parrot.png',
+    'platypus.png',
+    'raccoon.png',
+    'razorbill.png',
+    'red-panda.png',
+    'rhino.png',
+    'rooster.png',
+    'seal.png',
+    'sheep.png',
+    'shrimp.png',
+    'sloth.png',
+    'snake.png',
+    'squirrel.png',
+    'tapir.png',
+    'tiger.png',
+    'tortoise.png',
+    'tucan.png',
+    'turtle.png',
+    'unicorn.png',
+    'vulture.png',
+    'whale.png',
+    'zebra.png'
+]
+
+let mcUrl = [
+    'crafting-table.png',
+    'chest.png',
+    'enchanting-table.png',
+    'furnace.png',
+    'cobblestone.png',
+    'grass.png',
+    'bedrock.png',
+    'command-block.png',
+    'acacia-log.png',
+    'ancient-debris.png',
+    'barrel.png',
+    'beacon.png',
+    'bed.png',
+    'birch-log.png',
+    'blast-furnace.png',
+    'bookshelf.png',
+    'brewing-stand.png',
+    'bricks.png',
+    'cactus.png',
+    'cake.png',
+    'coal-ore.png',
+    'copper.png',
+    'crimson-stem.png',
+    'diamond-block.png',
+    'diamond-ore.png',
+    'diorite.png',
+    'dirt.png',
+    'dispenser.png',
+    'emerald-block.png',
+    'emerald-ore.png',
+    'end-stone.png',
+    'ender-chest.png',
+    'glowstone.png',
+    'gold-block.png',
+    'gold-ore.png',
+    'granite.png',
+    'gravel.png',
+    'hay-bale.png',
+    'ice.png',
+    'iron-block.png',
+    'iron-ore.png',
+    'jukebox.png',
+    'lapis-ore.png',
+    'leaves.png',
+    'mangrove-log.png',
+    'netherrack.png',
+    'note-block.png',
+    'oak-log.png',
+    'oak-planks.png',
+    'observer.png',
+    'obsidian.png',
+    'piston.png',
+    'prismarine-bricks.png',
+    'pumpkin.png',
+    'restone-block.png',
+    'redstone-lamp.png',
+    'redstone-ore.png',
+    'sand.png',
+    'shulker-box.png',
+    'slime-block.png',
+    'smoker.png',
+    'snow.png',
+    'soul-sand.png',
+    'spawner.png',
+    'sponge.png',
+    'spruce-log.png',
+    'sticky-piston.png',
+    'stone-bricks.png',
+    'stone.png',
+    'tnt.png',
+    'warped-stem.png',
+    'wool.png'
 ]
 
  function changeImageSrc(element, imageUrl) {
@@ -469,6 +615,22 @@ function generateImages() {
 
         case '3' :
             duplicate = [];
+            for (let i = 0; i < (memoryCases.length)/2; i++) {
+                duplicate.push(mcUrl[i]);
+            }
+            for (let i = 0; i < (memoryCases.length)/2; i++) {
+                duplicate.push(duplicate[i]);
+                console.log(duplicate[i]);
+            }
+
+            for (let i = 0; i < memoryCases.length; i++) {
+                let index = Math.floor(Math.random() * duplicate.length);
+                let source = duplicate[index];
+                duplicate.splice(index, 1);
+                changeImageSrc(images[i], 'assets/images/theme_mc/'+source);
+            }
+
+            break;
             break;
     }
     
