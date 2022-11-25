@@ -95,17 +95,18 @@ select {
 
 /*Css de la partie paramètres de jeu (fin)*/
 
-#center_part {
+/*#center_part {
     display: flex;
     justify-content: space-around;
     align-items: center;
-}
+}*/
 
 /*Css de la grille (début)*/
 
-/*#grilles {
-    display: none;
-}*/
+#grilles {
+    display: flex;
+    justify-content: center;
+}
 
 #grille_4 td {
     max-width: max-content;
@@ -181,6 +182,11 @@ caption {
 /*Css de la grille (fin)*/
 
 /*Css du chat (début)*/
+
+#chatDiv {
+    display: flex;
+    justify-content: center;
+}
 
 #chat {
     background-color: whitesmoke;
@@ -310,6 +316,7 @@ input {
     bottom: 2%;
     left: 95%;
     cursor: pointer;
+    visibility: hidden;
 }
 
 /*Css du chat (fin)*/
