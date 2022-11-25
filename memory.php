@@ -21,6 +21,9 @@ require_once 'includes/database.inc.php';
 <?php                 
 
 ?>
+    <div id="userId">
+        <?= $_SESSION['user_id'] ?>
+    </div>
 
     <div id="mainblock">
 

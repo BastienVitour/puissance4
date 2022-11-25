@@ -1,4 +1,6 @@
 //affichage des message
+let idUser = parseInt(document.querySelector('#userId').innerText);
+
 function getMessages(){
     const requeteAjax = new XMLHttpRequest();
     requeteAjax.open("GET","AjaxMessages.php");
@@ -15,13 +17,38 @@ function getMessages(){
             <span class="message" style="word-wrap: break-word;"> : ${message.message}</span>
             </div>
             `*/
-            return `
+            if (message.id_user == idUser) {
+                //console.log('message de l\'user actuel');
+                return `
+            <div class="user_message">
+            <span class="me">Joueur ${message.id_user}</span>
+            <span class="user_text">${message.message}</span>
+            <span class="user_message_date">${message.date_message.substring(11, 16)}</span>
+            
+            </div>
+            `
+            }
+            else {
+                //console.log(message.id_user)
+                //console.log(idUser)
+                //console.log(message.id_user == idUser)
+                return `
             <div class="others_message">
             <div class="other">Joueur ${message.id_user}</div>
             <div class="others_text">${message.message}</div>
             <div class="others_message_date">${message.date_message.substring(11, 16)}</div>
             </div>
             `
+            }
+            
+            
+            /*return `
+            <div class="others_message">
+            <div class="other">Joueur ${message.id_user}</div>
+            <div class="others_text">${message.message}</div>
+            <div class="others_message_date">${message.date_message.substring(11, 16)}</div>
+            </div>
+            `*/
         })
         .join('');
         const messages = document.querySelector('#messages_area');
@@ -165,6 +192,7 @@ themeSel.addEventListener('change', function() {
 let memoryCases = document.getElementsByClassName('memoryCase');
 let images = document.getElementsByClassName('image');
 let fronts = document.getElementsByClassName('frontCard');
+let backs = document.getElementsByClassName('backCard');
 
 //Nombre de cartes retournées
 let returnedCards = 0;
@@ -654,7 +682,14 @@ for (let i = 0; i < memoryCases.length; i++) {
     state[i] = 'notFound';
     displayedFace[i] = 'back';
     memoryCases[i].addEventListener('click', () => change(i));
-    fronts[i].style.visibility = 'hidden';
+    memoryCases[i].style.pointerEvents = 'none';
+    setTimeout(function() {
+        memoryCases[i].style.transform = 'rotateY(180deg)';
+        memoryCases[i].style.pointerEvents = 'auto';
+    }, 2000);
+    
+    //fronts[i].style.visibility = 'hidden';
+    //backs[i].style.visibility = 'visible';
 
 }
 
@@ -675,14 +710,15 @@ function change(i) {
 
     if (!partieFinie) {
 
-        //console.log(displayedFace[i])
+        console.log(displayedFace[i])
 
         if (displayedFace[i] == 'back') {
 
             if (returnedCards < 2) {
 
                 //Si moins de 2 cartes sont retournées, on ne fait que retourner la carte actuelle
-                fronts[i].style.visibility = 'visible';
+                memoryCases[i].style.transform = 'rotateY(0deg)'
+                //fronts[i].style.visibility = 'visible';
                 displayedFace[i] = 'front';
                 returnedCards++;
                 displayedCards.push(images[i].src);
@@ -724,7 +760,7 @@ function change(i) {
 
                     //console.log('not identical');
 
-                    //S iles 2 cartes ne sont pas identiques
+                    //Si les 2 cartes ne sont pas identiques
                     displayedCards.splice(0, 2);
                     cardsId.splice(0, 2);
 
@@ -734,7 +770,9 @@ function change(i) {
 
                     if (state[j] == 'notFound' && displayedFace[j] == 'front') {
 
-                        fronts[j].style.visibility = 'hidden';
+                        console.log('eeeehhh ?')
+                        memoryCases[j].style.transform = 'rotateY(180deg)'
+                        //fronts[j].style.visibility = 'hidden';
                         displayedFace[j] = 'back';
                         returnedCards = 0;
 
@@ -754,7 +792,8 @@ function change(i) {
 
                 }
 
-                fronts[i].style.visibility = 'visible';
+                memoryCases[i].style.transform = 'rotateY(0deg)'
+                //fronts[i].style.visibility = 'visible';
                 displayedFace[i] = 'front';
                 returnedCards++;
                 displayedCards.push(images[i].src);

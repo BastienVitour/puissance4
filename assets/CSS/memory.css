@@ -9,6 +9,10 @@ body {
     padding: 0;
 }
 
+#userId {
+    display: none;
+}
+
 /*#mainblock {
     filter: blur(10px);
 }*/
@@ -148,7 +152,7 @@ caption {
     cursor: pointer;
     transform-style: preserve-3d;
     position: relative;
-    transition: transform 1s ease-in;
+    transition: transform 0.4s ease-in;
 }
 
 .backCard {
@@ -240,14 +244,23 @@ caption {
 
 /*Css des messages que j'ai envoyés*/
 
-#user_message {
+/*#user_message {
     color: black;
     font-size: 20px;
     padding: 10px;
     border: solid #817874 ;
     border-radius: 10px;
     margin: 10px;
+}*/
+
+.user_message {
+    color: rgb(120, 120, 120);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin: 15px 0px 0px 15px;
 }
+
 .user_text {
     background-color: #ff7700;
     color: whitesmoke;
