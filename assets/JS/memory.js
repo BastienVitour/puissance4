@@ -31,7 +31,7 @@ function getMessages(){
     requeteAjax.send();
 }
 
-//envoie des message
+//Envoi des messages
 function postMessage(event){
     event.preventDefault();
 
@@ -83,7 +83,7 @@ chat_display.addEventListener('click', display_chat);
 chat_hide.addEventListener('click', hide_chat);
 */
 //---------------------------------------------------------------
-//Ce code permet d'afficher et de cacher les différents élément au début de jeu
+//Ce code permet d'afficher et de cacher les différents éléments au début de jeu
 
 let chat = document.querySelector('#chat');
 let diffSel = document.querySelector('#diff_select');
@@ -120,9 +120,7 @@ function launch() {
 document.onload = prepare();
 
 launchButton.addEventListener('click', launch());
-//launchButton.addEventListener('click', generateImages)
 
-//------------------------------------------------
 //------------------------------------------------
 
 //Le timer du jeu
@@ -134,14 +132,9 @@ let timer = 0;
 
 const counter = document.getElementById('counter');
 
-//counter.innerText = minutes,':',secondes+'.'+centiemes;
-
 function increment() {
-    //timer++
-    //secondes++;
     centiemes++;
     counter.textContent = minutes+' : '+secondes+'.'+centiemes;
-    //counter.innerText = timer;
     if (centiemes == 100) {
         secondes++;
         timer++;
@@ -151,17 +144,13 @@ function increment() {
         minutes++;
         secondes = 0;
     }
-    //console.log(minutes,':',secondes,'.',centiemes);
-    //console.log(timer);
 }
 
 setInterval(increment, 10);
 
 //--------------------------------------------
 
-//--------------------------------------------
-
-let diffValue = diffSel.value;
+/*let diffValue = diffSel.value;
 diffSel.addEventListener('change', function() {
     diffValue = diffSel.value;
     console.log(diffValue);
@@ -171,23 +160,31 @@ let themeValue = themeSel.value;
 themeSel.addEventListener('change', function() {
     themeValue = themeSel.value;
     console.log(themeValue);
-})
+})*/
 
 let memoryCases = document.getElementsByClassName('memoryCase');
 let images = document.getElementsByClassName('image');
 let fronts = document.getElementsByClassName('frontCard');
 
+//Nombre de cartes retournées
 let returnedCards = 0;
 
+//Etat de cartes (si elles sont retournées et trouvées)
 let displayedFace = {}
 let state = {}
 
+//Liste des différentes cartes retournées
 let displayedCards = [];
 
+//On mettra les id des cartes retournées (incrémentés automatiquement) ici
+let cardsId = [];
+
+//Nombre de cartes trouvées
 let foundCards = 0;
 
 let partieFinie = false;
 
+//Les images du thème drapeaux
 let flagsUrl = [
     'france.png',
     'uk.png',
@@ -391,6 +388,7 @@ let flagsUrl = [
     'england.png'
 ]
 
+//Les images du thème animaux
 let animalsUrl = [
     'penguin.png',
     'lion.png',
@@ -466,6 +464,7 @@ let animalsUrl = [
     'zebra.png'
 ]
 
+//Les images du thème Minecraft
 let mcUrl = [
     'crafting-table.png',
     'chest.png',
@@ -521,7 +520,7 @@ let mcUrl = [
     'piston.png',
     'prismarine-bricks.png',
     'pumpkin.png',
-    'restone-block.png',
+    'redstone-block.png',
     'redstone-lamp.png',
     'redstone-ore.png',
     'sand.png',
@@ -541,41 +540,48 @@ let mcUrl = [
     'wool.png'
 ]
 
- function changeImageSrc(element, imageUrl) {
-    element.src = imageUrl;
-  }
+//Fonction pour changer l'url des images
+function changeImageSrc(element, imageUrl) {
+element.src = imageUrl;
+}
 
+//Array dans lequel on va lister les images qu'on utilisera et qu'on doublera
 let duplicate = [];
 
 function generateImages() {
 
-    let diffValue = diffSel.value;
+    /*let diffValue = diffSel.value;
     diffSel.addEventListener('change', function() {
         diffValue = diffSel.value;
         console.log(diffValue);
-    });
+    });*/
 
     let theme = document.getElementById('theme_value');
 
     let themeValue = theme.innerText;
 
+    //On n'a pas trouvé assez d'images pour les thèmes 2 et 3 donc on fait une redirection si
+    //quelqu'un veut faire le niveau impossible avec ces thèmes
+
     if (memoryCases.length == 400 && themeValue != 1) {
         var quit = confirm('Désolé on a pas réussi à trouver assez d\'images pour ce thème')
 
         if (quit) {
-            document.location.href="http://localhost:8888/memory.php?difficulty=20&theme=1";
+            document.location.href="memory.php?difficulty=20&theme=1";
         }
         else {
-            document.location.href="http://localhost:8888/memory.php?difficulty=20&theme=1";
+            document.location.href="memory.php?difficulty=20&theme=1";
         }
 
     }
 
-    console.log(diffValue);
-    console.log(themeValue);
+    //console.log(diffValue);
+    //console.log(themeValue);
 
+    //On choisit quelle liste d'images on va sélectionner en fonction du thème
     switch (themeValue) {
 
+        //Si le thème 1 (drapeaux) est choisi
         case '1' :
             duplicate = [];
             for (let i = 0; i < (memoryCases.length)/2; i++) {
@@ -583,7 +589,7 @@ function generateImages() {
             }
             for (let i = 0; i < (memoryCases.length)/2; i++) {
                 duplicate.push(duplicate[i]);
-                console.log(duplicate[i]);
+                //console.log(duplicate[i]);
             }
 
             for (let i = 0; i < memoryCases.length; i++) {
@@ -595,15 +601,16 @@ function generateImages() {
 
             break;
 
+        //Si le thème 2 (animaux) est choisi
         case '2' :
             duplicate = [];
-            console.log(memoryCases.length)
+            //console.log(memoryCases.length)
             for (let i = 0; i < (memoryCases.length)/2; i++) {
                 duplicate.push(animalsUrl[i]);
             }
             for (let i = 0; i < (memoryCases.length)/2; i++) {
                 duplicate.push(duplicate[i]);
-                console.log(duplicate[i]);
+                //console.log(duplicate[i]);
             }
 
             for (let i = 0; i < memoryCases.length; i++) {
@@ -614,6 +621,7 @@ function generateImages() {
             }
             break;
 
+        //Si le thème 3 (Minecraft) est choisi
         case '3' :
             duplicate = [];
             for (let i = 0; i < (memoryCases.length)/2; i++) {
@@ -621,7 +629,7 @@ function generateImages() {
             }
             for (let i = 0; i < (memoryCases.length)/2; i++) {
                 duplicate.push(duplicate[i]);
-                console.log(duplicate[i]);
+                //console.log(duplicate[i]);
             }
 
             for (let i = 0; i < memoryCases.length; i++) {
@@ -632,14 +640,15 @@ function generateImages() {
             }
 
             break;
-            break;
     }
     
 }
 
-console.log(diffValue);
-console.log(memoryCases.length);
+//console.log(diffValue);
+//console.log(memoryCases.length);
 
+//Initialisation : on dit que chaque case n'est pas trouvée, 
+//qu'elle n'est pas retournée et on lui ajoute un event listener au clic
 for (let i = 0; i < memoryCases.length; i++) {
 
     state[i] = 'notFound';
@@ -649,7 +658,6 @@ for (let i = 0; i < memoryCases.length; i++) {
 
 }
 
-let cardsId = [];
 // fonction fetch---------
 function createFetchOptions(bodyData) {
     return {
@@ -661,16 +669,19 @@ function createFetchOptions(bodyData) {
     }
 }
 //--------------------------
+
+//La fonction qui se lance quand on clique sur une case
 function change(i) {
 
     if (!partieFinie) {
 
-        console.log(displayedFace[i])
+        //console.log(displayedFace[i])
 
         if (displayedFace[i] == 'back') {
 
             if (returnedCards < 2) {
 
+                //Si moins de 2 cartes sont retournées, on ne fait que retourner la carte actuelle
                 fronts[i].style.visibility = 'visible';
                 displayedFace[i] = 'front';
                 returnedCards++;
@@ -679,16 +690,22 @@ function change(i) {
                 const cardId = memoryCases[i].id-1;
                 cardsId.push(cardId);
 
+                if (foundCards == memoryCases.length-2 || foundCards == memoryCases.length-1) {
+                    foundCards++
+                }
+
             }
 
+            //Si 2 cartes sont déjà retournées
             else if (returnedCards == 2) {
 
-                console.log(displayedCards[0]);
-                console.log(displayedCards[1]);
+                //console.log(displayedCards[0]);
+                //console.log(displayedCards[1]);
 
+                //Si les 2 cartes sont identiques
                 if (displayedCards[0] == displayedCards[1]) {
 
-                    console.log('identical')
+                    //console.log('identical')
 
                     for (let j = 0; j < cardsId.length; j++) {
 
@@ -705,8 +722,9 @@ function change(i) {
 
                 else {
 
-                    console.log('not identical');
+                    //console.log('not identical');
 
+                    //S iles 2 cartes ne sont pas identiques
                     displayedCards.splice(0, 2);
                     cardsId.splice(0, 2);
 
@@ -748,18 +766,19 @@ function change(i) {
 
         }
 
-        console.log(returnedCards)
+        //console.log(returnedCards)
         console.log(foundCards);
 
-        if (foundCards == memoryCases.length-2) {
+        //Définit les choses à faire à la fin de la partie
+        if (foundCards == memoryCases.length-1) {
             partieFinie = true;
-            console.log('fini');
+            //console.log('fini');
             for (let i = 0; i < memoryCases.length; i++) {
-                console.log(i)
+                //console.log(i)
                 fronts[i].style.visibility = 'visible';
             }
             partieFinie = true;
-            console.log('fini');
+            //console.log('fini');
             
             let popUp = document.getElementById('winner');
             popUp.style.visibility = "visible";

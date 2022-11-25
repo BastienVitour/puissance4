@@ -39,40 +39,40 @@ require_once 'includes/database.inc.php';
 
         <div id="settings">
 
-        <form id="bastien">
+            <form id="bastien">
 
-<!--Choix de la difficulté du jeu-->
+                <!--Choix de la difficulté du jeu-->
 
-<div id="difficulty_selection">
+                <div id="difficulty_selection">
 
-    <label for="difficulty" id="diffLabel">Sélectionnez une difficulté :</label>
+                    <label for="difficulty" id="diffLabel">Sélectionnez une difficulté :</label>
 
-    <select name="difficulty" id="diff_select">
-        <option value="4">😁 Niveau facile : 16 cases 😁</option>
-        <option value="8">🙂 Niveau intermédiaire : 64 cases 🙂</option>
-        <option value="12">😠 Niveau expert : 144 cases 😠</option>
-        <option value="20">👿 Niveau impossible : 400 cases 👿</option>
-    </select>
+                    <select name="difficulty" id="diff_select">
+                        <option value="4">😁 Niveau facile : 16 cases 😁</option>
+                        <option value="8">🙂 Niveau intermédiaire : 64 cases 🙂</option>
+                        <option value="12">😠 Niveau expert : 144 cases 😠</option>
+                        <option value="20">👿 Niveau impossible : 400 cases 👿</option>
+                    </select>
 
-</div>
+                </div>
 
-<!--Choix du thème du jeu-->
+                <!--Choix du thème du jeu-->
 
-<div id="theme_selection">
+                <div id="theme_selection">
 
-    <label for="theme" id="themeLabel">Sélectionnez un thème : </label>
+                    <label for="theme" id="themeLabel">Sélectionnez un thème : </label>
 
-    <select name="theme" id="theme_select">
-        <option value="1">Drapeaux</option>
-        <option value="2">Animaux</option>
-        <option value="3">Mc</option>
-    </select>
+                    <select name="theme" id="theme_select">
+                        <option value="1">Drapeaux</option>
+                        <option value="2">Animaux</option>
+                        <option value="3">Mc</option>
+                    </select>
 
-</div>
+                </div>
 
-<button id="launch">Lancer la partie</button>
+                <button id="launch">Lancer la partie</button>
 
-</form>
+            </form>
 
         </div>
 
@@ -82,107 +82,95 @@ require_once 'includes/database.inc.php';
 
         <div id="center_part">
 
-        <div id="grilles">
+            <div id="grilles">
 
-<?php 
+                <?php 
 
-if (isset($_GET['difficulty'])) {
-    $grille = $_GET['difficulty'];
-}
-else {
-    $grille = 0;
-}
-if (isset($_GET['theme'])) {
-    $theme = $_GET['theme'];
-}
-else {
-    $theme = 0;
-}
-echo '<div id="theme_value">'.$theme.'</div>';
+                if (isset($_GET['difficulty'])) {
+                    $grille = $_GET['difficulty'];
+                }
+                else {
+                    $grille = 0;
+                }
+                if (isset($_GET['theme'])) {
+                    $theme = $_GET['theme'];
+                }
+                else {
+                    $theme = 0;
+                }
+                echo '<div id="theme_value">'.$theme.'</div>';
 
-switch ($grille) {
-    //Grille de 4*4
-    case 4: ?>
+                switch ($grille) {
+                    //Grille de 4*4
+                    case 4: ?>
 
-    <div id="grille_4" class="grille">
-        <table>
-            <caption>Niveau : Facile</caption>
+                    <div id="grille_4" class="grille">
+                        <table>
+                            <caption>Niveau : Facile</caption>
 
-<?php  break;
-    
-    //Grille de 8*8
-    case 8: ?> 
+                 <?php break;
+                    
+                    //Grille de 8*8
+                    case 8: ?> 
 
-    <div id="grille_8" class="grille">
-        <table>
-            <caption>Niveau : Intermédiaire</caption>
+                    <div id="grille_8" class="grille">
+                        <table>
+                            <caption>Niveau : Intermédiaire</caption>
 
-<?php   break;
+                 <?php  break;
 
-    //Grille de 12*12
-    case 12: ?> 
+                    //Grille de 12*12
+                    case 12: ?> 
 
-    <div id="grille_12" class="grille">
-        <table>
-            <caption>Niveau : Difficile</caption>
+                    <div id="grille_12" class="grille">
+                        <table>
+                            <caption>Niveau : Difficile</caption>
 
-<?php   break;
+                 <?php  break;
 
-    //Grille de 20*20
-    case 20: ?> 
+                    //Grille de 20*20
+                    case 20: ?> 
 
-    <div id="grille_20" class="grille">
-        <table>
-            <caption>Niveau : Impossible</caption>
+                    <div id="grille_20" class="grille">
+                        <table>
+                            <caption>Niveau : Impossible</caption>
 
-<?php   }
+        <?php  }
 
-$case = 0;
+                $case = 0;
+                
+                //Génération de la grille en fonction de la difficulté
+                for ($i = 0; $i < $grille; $i++) {
+                    echo '<tr>';
+                    for ($j = 0; $j < $grille; $j++) {
+                        $case++;
+                        echo '<td class="memoryCase" id='.$case.'>
+                        <div class="backCard"></div>
+                        <div class="frontCard"><img src="assets/images/theme_flags/france.png" class="image"></div>
+                        </td>';
+                    }
+                    echo '</tr>';
+                }
 
-for ($i = 0; $i < $grille; $i++) {
-    echo '<tr>';
-    for ($j = 0; $j < $grille; $j++) {
-        $case++;
-        echo '<td class="memoryCase" id='.$case.'>
-        <div class="backCard"></div>
-        <div class="frontCard"><img src="assets/images/theme_flags/france.png" class="image"></div>
-        </td>';
-    }
-    echo '</tr>';
-}
+                ?>
 
-?>
+                        </table></div></table></div></table></div></table></div></div>
 
-        </table></div></table></div></table></div></table></div></div>
+        <!--Fin de la grille-->
 
-       
-
-    
-     
-
-
-<!--Fin de la grille-->
-
-            
+        </div>
   
-                                        <!-- STORY DE FLORIAN -->
-
-
-
-
-
-            </div>
+                <!-- STORY DE FLORIAN -->
+        
 
         <!--Début des stats de jeu-->
 
         <div id="game_stats">
 
-
-            
-
             <div id="time">
 
-	                Temps : <span id="counter">0</span> sec
+	                Temps : <span id="counter">0</span>
+
             </div>
 
         </div>
@@ -194,8 +182,10 @@ for ($i = 0; $i < $grille; $i++) {
         <div id="chatDiv">
 
             <div id="chat">
-            <br id="chatancre"> <!-- Ancre pour le tchat -->
 
+                <br id="chatancre"> <!-- Ancre pour le tchat -->
+
+                <!--Le titre du chat-->
                 <div id="chat_title">
 
                     <img src="assets/images/bot_avatar.png" alt="bot" width="50">
@@ -205,19 +195,19 @@ for ($i = 0; $i < $grille; $i++) {
 
                                     <!-- STORY DE FLORIAN -->
 
+                <!--Zone des messages-->
                 <div id="messages_area">
                     <div id="message">
-
-
                                     <!-- 1ER MESSAGE DE USER -->
                 
-                    <!-- CHAT -->
-                    <div id="flex_user_message">
-                        <div id="user_message">
-                        </div> <br>
-                    </div>
-                    
-                    <!-- CHAT -->
+                        <!-- CHAT -->
+                        <div id="flex_user_message">
+
+                            <div id="user_message"></div> <br>
+
+                        </div>
+                        
+                        <!-- CHAT -->
 
                     </div>
                 </div>
@@ -264,10 +254,11 @@ for ($i = 0; $i < $grille; $i++) {
         <!--Fin du footer-->
 
     </div>
+
+    <!--Pop-up de victoire-->
     <div id="winner">
-        <p id="winText">
-            
-        </p>
+
+        <p id="winText"></p>
         
 
         <div id="buttons">
